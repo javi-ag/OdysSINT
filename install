@@ -1,0 +1,155 @@
+#!/bin/bash
+
+#Colores
+green="\e[0;32m\033[1m"
+end="\033[0m\e[0m"
+red="\e[0;31m\033[1m"
+blue="\e[0;34m\033[1m"
+yellow="\e[0;33m\033[1m"
+purple="\e[0;35m\033[1m"
+cyan="\e[0;36m\033[1m"
+gray="\e[0;37m\033[1m"
+
+
+
+function mostrar_banner() {
+	echo
+	echo -e "${purple}"
+	echo -e "	    ███████        █████                            █████ ██████   █████ ███████████"
+	echo -e "	  ███░░░░░███     ░░███                            ░░███ ░░██████ ░░███ ░█░░░███░░░█"
+	echo -e "	 ███     ░░███  ███████  █████ ████  █████   █████  ░███  ░███░███ ░███ ░   ░███  ░ "
+	echo -e "	░███      ░███ ███░░███ ░░███ ░███  ███░░   ███░░   ░███  ░███░░███░███     ░███    "
+	echo -e "	░███      ░███░███ ░███  ░███ ░███ ░░█████ ░░█████  ░███  ░███ ░░██████     ░███    "
+	echo -e "	░░███     ███ ░███ ░███  ░███ ░███  ░░░░███ ░░░░███ ░███  ░███  ░░█████     ░███    "
+	echo -e "	░░░███████░  ░░████████ ░░███████  ██████  ██████  █████ █████  ░░█████    █████    "
+	echo -e "	   ░░░░░░░     ░░░░░░░░   ░░░░░███ ░░░░░░  ░░░░░░  ░░░░░ ░░░░░    ░░░░░    ░░░░░    "
+	echo -e "	                          ███ ░███                                                  "
+	echo -e "	                         ░░██████                                                   "
+	echo -e "	                          ░░░░░░                                                    "
+	echo -e "${end}"
+	echo -e "  \t\t   ${gray}Script de instalación y uso de herramientas OSINT${end}"
+	echo -e "  \t"
+	echo -e "  \t\t\t  ${red}Master Ciberseguridad 12ª Edición ${end}"
+	echo -e "  \t\t\t  Autor: ${blue}Javier Aguilar${end}"
+	echo -e "  \t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
+	echo -e "  \t\t\t  Versión ${blue}1.0${end}"
+	echo -e "  \t\t\t  Última modificación: ${blue}15-03-2024${end}"
+	
+}
+
+# Declaracion de variables
+username=""
+file=$(readlink -f $0)
+current_path=$(dirname $file)
+info_path=$current_path/info
+declare githome=$HOME/git
+declare odysinthome=$HOME/odyssint
+declare extensionhome=$HOME/extensiones
+declare userdesktop=""
+
+trap ctrl_c INT
+
+#Función que permite pulsar ctrl+x en cualquier momento.
+function ctrl_c() {
+	echo -e "\n${yellow}[*]${end}${gray}Saliendo...${end}"
+	tput cnorm
+
+	exit 0
+}
+
+# Función para mostrar el menú principal
+function mostrar_menu_principal() {
+    echo "Seleccione una opción:"
+    echo "1. Actualizar el sistema e instalar requerimientos"
+    echo "2. Comprobar script desde GitHub y volver a ejecutar"
+    echo "3. Instalar herramientas OSINT"
+    echo "4. Listado de herramientas OSINT"
+    echo "5. Volver al menú principal"
+    echo "6. Salir del script"
+}
+
+# Función para actualizar el sistema e instalar requerimientos
+function actualizar_sistema() {
+
+    echo "Actualizando el sistema..."
+    sudo apt update #&& sudo apt upgrade -y
+    echo "Instalando requerimientos..."
+    # Coloca aquí los comandos para instalar los requerimientos
+    clear
+    mostrar_banner
+    echo -e "${green}Sistema actualizado...${end}"
+}
+
+# Función para instalar herramientas OSINT
+function instalar_herramientas_osint() {
+    echo "Instalando herramientas OSINT..."
+    # Coloca aquí los comandos para instalar las herramientas OSINT
+}
+
+# Función para actualizar el script desde GitHub y volver a ejecutar el script
+function actualizar_y_ejecutar_script() {
+    echo "Actualizando el script desde GitHub..."
+    git pull origin master # Asumiendo que el script está en un repositorio de GitHub
+    echo "Volviendo a ejecutar el script..."
+    ./$0
+    exit
+}
+
+# Función para mostrar el listado de herramientas OSINT
+function listar_herramientas_osint() {
+    echo "Listado de herramientas OSINT instaladas:"
+    # Coloca aquí el listado de herramientas OSINT instaladas
+    echo "Seleccione una herramienta para ver su ayuda:"
+    # Coloca aquí el código para mostrar la ayuda de la herramienta seleccionada
+}
+
+# Función para salir del script
+function salir_del_script() {
+    echo "¿Estás seguro de que quieres salir del script? Presiona 'S' para confirmar."
+    read -n1 -s tecla
+    if [[ $tecla == "S" || $tecla == "s" ]]; then
+        echo "¡Hasta pronto!"
+        exit
+    else
+        echo "Continuando en el script..."
+    fi
+}
+
+# Función para manejar las opciones del menú principal
+function manejar_opcion_principal() {
+    case $1 in
+        1)
+            actualizar_sistema
+            ;;
+        2)
+            instalar_herramientas_osint
+            ;;
+        3)
+            actualizar_y_ejecutar_script
+            ;;
+        4)
+            listar_herramientas_osint
+            ;;
+        5)
+            mostrar_banner
+            ;;
+        6)
+            salir_del_script
+            ;;
+        *)
+            echo "Opción inválida."
+            ;;
+    esac
+}
+
+# Mostrar banner inicial
+mostrar_banner
+
+# Bucle para mostrar el menú principal y procesar opciones
+while true; do
+    mostrar_menu_principal
+    read opcion_principal
+
+    manejar_opcion_principal $opcion_principal
+done
+
