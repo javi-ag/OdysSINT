@@ -29,7 +29,7 @@ function mostrar_banner() {
 	echo -e "${end}"
 	echo -e "  \t\t   ${gray}Script de instalación y uso de herramientas OSINT${end}"
 	echo -e "  \t"
-	echo -e "  \t\t\t  ${red}Master Ciberseguridad 12ª Edición ${end}"
+	echo -e "  \t\t\t  ${green}Master Ciberseguridad 12ª Edición ${end}"
 	echo -e "  \t\t\t  Autor: ${blue}Javier Aguilar${end}"
 	echo -e "  \t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
 	echo -e "  \t\t\t  Versión ${blue}1.0${end}"
@@ -69,15 +69,46 @@ function mostrar_menu_principal() {
 }
 
 # Función para actualizar el sistema e instalar requerimientos
-function actualizar_sistema() {
+function actualizar_sistema_y_requerimientos() {
+
+
+    # Lista de aplicaciones a instalar
+    aplicaciones=("git" "python3" "otra_aplicacion")
+    
+    echo -e "Se va a actualizar el sistema e instalar las siguientes aplicaciones:"
+    for app in "${aplicaciones[@]}"; do
+    echo -e "- ${blue}$app${end}"
+    done
+    echo  "Presiona 'S/s' para confirmar y cualquier otra tecla para volver."
+    read -n 1 -s tecla_confirmacion
+    if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
+    echo "Procediendo:"
+    echo 
+    else
+        echo "Volviendo al menú principal..."
+        return
+    fi
 
     echo "Actualizando el sistema..."
-    sudo apt update #&& sudo apt upgrade -y
-    echo "Instalando requerimientos..."
-    # Coloca aquí los comandos para instalar los requerimientos
-    clear
-    mostrar_banner
-    echo -e "${green}Sistema actualizado...${end}"
+    sudo apt update > /dev/null 2>&1 #&& sudo apt upgrade -y
+    if [ $? -eq 0 ]; then
+        echo -e "${green}Sistema actualizado correctamente.${end}"
+    else
+        echo -e "${red}Error al actualizar el sistema.${end}"
+    fi
+
+    # Instalar cada aplicación y verificar la instalación
+    for app in "${aplicaciones[@]}"; do
+        echo
+        echo -e "Instalando ${blue}$app...${end}"
+        sudo apt-get install -y $app > /dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            echo -e "${green}$app instalado correctamente.${end}"
+        else
+            echo -e "${red}Error al instalar $app. Presiona cualquier tecla para continuar...${end}"
+            read -n 1 -s -r
+        fi
+    done
 }
 
 # Función para instalar herramientas OSINT
@@ -119,7 +150,7 @@ function salir_del_script() {
 function manejar_opcion_principal() {
     case $1 in
         1)
-            actualizar_sistema
+            actualizar_sistema_y_requerimientos
             ;;
         2)
             instalar_herramientas_osint
@@ -137,7 +168,7 @@ function manejar_opcion_principal() {
             salir_del_script
             ;;
         *)
-            echo "Opción inválida."
+            echo -e "${red}Opción inválida.${end}"
             ;;
     esac
 }
