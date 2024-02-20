@@ -232,18 +232,18 @@ function actualizar_y_ejecutar_script() {
 	echo -e "\n"
 
     # URL del archivo en GitHub
-    github_url="https://github.com/javi-ag/OdyssINT/blob/main/OdyssINT"
+    github_url="https://raw.githubusercontent.com/javi-ag/OdyssINT/main/OdyssINT"
 
    # Nombre del archivo
    script_name="OdyssINT"
 
-
-    echo "Actualizando el script desde GitHub..."
     wget -O "$script_name" "$github_url"
     chmod +x "$script_name"
-    echo "Volviendo a ejecutar el script..."
     ./"$script_name"
-    exit
+    mostrar_banner
+    echo -e "${byellow}Script actualizado${end}"
+    mostrar_menu_principal
+
 }
 
 # Función para instalar herramientas OSINT
