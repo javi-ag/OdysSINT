@@ -239,10 +239,9 @@ function actualizar_y_ejecutar_script() {
 
     wget -O "$script_name" "$github_url"
     chmod +x "$script_name"
+    echo -e "${byellow}Script actualizado, se va a volver a ejecutar${end}"
+    sleep 5
     ./"$script_name"
-    mostrar_banner
-    echo -e "${byellow}Script actualizado${end}"
-    mostrar_menu_principal
 
 }
 
