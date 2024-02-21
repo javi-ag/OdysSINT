@@ -55,6 +55,10 @@ function mostrar_banner() {
 #Directorio de trabajo de OdyssINT
 declare odyssinthome=$HOME/odyssint
 
+#Requerimientos OdyssINT
+declare requerimientos=("git" "python3" "python3-pip" "firefox" "openjdk-17-jdk")
+
+
 # Función para mostrar el menú principal
 function mostrar_menu_principal() {
 
@@ -126,7 +130,8 @@ function listar_herramientas_osint()
         echo -e ${bblue}"3. Spiderfoot"
 	echo -e ${blue}"   Herramienta de recopilación de información online. Escanea IPs, dominios "
 	echo -e ${blue}"   y nombres de usuario para encontrar información relevante.."${end}
-
+        echo -e ${bblue}"4. Maltego"
+	echo -e ${blue}"   Herramienta que recopila y analiza datos de fuentes abiertas para la realización de investigaciones"${end}
 	echo -e ${bblue}"9. Firefox - Extensiones"${end}
 	echo -e ${byellow}"0. Volver a menú principal"${end}
 	read -p "Opción: " herramientas_osint
@@ -139,6 +144,7 @@ function listar_herramientas_osint()
 	        echo -e "${byellow}theHarvester no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
 	        read instalar
 	        if [ "$instalar" = "s" ]; then
+	            comprobar_requerimientos
 	            instalar_theHarvester
 	        else
 	            return
@@ -154,6 +160,7 @@ function listar_herramientas_osint()
 	        echo -e "${byellow}recon-ng no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
 	        read instalar
 	        if [ "$instalar" = "s" ]; then
+	            comprobar_requerimientos
 	            instalar_recon-ng
 	        else
 	            return
@@ -164,16 +171,33 @@ function listar_herramientas_osint()
                 listar_herramientas_osint;;
 		3)  
          	# Verificar si Spiderfoot está instalado
-		if [ ! -d "$odyssinthome/spiderfoot" ]; then
+		if ! command -v $odyssinthome/spiderfoot/sfcli.py &> /dev/null; then
 	        echo -e "${byellow}Spiderfoot no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
 	        read instalar
 	        if [ "$instalar" = "s" ]; then
+	            comprobar_requerimientos
 	            instalar_spiderfoot
 	        else
 	            return
 	        fi
 	        fi
                 gnome-terminal -- /bin/bash -c "python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec /bin/bash"
+                mostrar_banner
+                listar_herramientas_osint;;
+                
+                4)  
+         	# Verificar si Maltego está instalado
+		if ! command -v maltego &> /dev/null; then
+	        echo -e "${byellow}Maltego no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
+	        read instalar
+	        if [ "$instalar" = "s" ]; then
+	            comprobar_requerimientos
+	            instalar_maltego
+	        else
+	            return
+	        fi
+		fi
+                gnome-terminal -- /bin/bash -c "maltego; exec /bin/bash"
                 mostrar_banner
                 listar_herramientas_osint;;
 		9)
@@ -199,12 +223,13 @@ function listar_configurar_odyssint()
         echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
         echo "Seleccione una opción:"
-        echo -e ${bgreen} "1. Actualizar el sistema e instalar requerimientos de OdyssINT"${end}
+        echo -e ${bgreen} "1. Actualizar el sistema e instalar requerimientos de OdyssINT ${bred}(Requiere permiso root)"${end}
         echo -e ${bgreen} "2. Actualizar script desde GitHub y volver a ejecutar"${end}
         echo -e ${bgreen} "3. Instalar o actualizar herramientas OSINT"${end}
         echo -e ${bgreen} "4. Instalar o actualizar herramientas complementarias"${end}
         echo -e ${bgreen} "5. Instalar o actualizar extensiones firefox"${end}
         echo -e ${bgreen} "6. Instalar o actualizar marcadores en firefox" ${end}
+        echo -e ${bred}   "7. Desinstalar todo y limpiar instalación de OdyssINT (Requiere permiso root)" ${end}
         echo -e ${byellow} "0. Volver a menú principal"${end}
 	read -p "Opción: " configurar_odyssint
 
@@ -228,6 +253,9 @@ function listar_configurar_odyssint()
 		6) 
                    mostrar_banner 
 		   instalar_marcadores_firefox;;
+   		7) 
+                   mostrar_banner 
+		   desinstalar_odyssint;;
 		0) 
 		   mostrar_banner
 		   mostrar_menu_principal;;
@@ -245,32 +273,34 @@ function actualizar_sistema_y_requerimientos() {
         echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
         echo -e ${bblue}"                         Configurar OdyssINT > Sistema y requerimientos                     "${end}
 	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo "\n"
+	echo -e "\n"
+
+
+    # Comprobar si la carpeta $odyssinthome existe
+    if [ ! -d "$odyssinthome" ]; then
+        echo "Creando directorio $odyssinthome..."
+        mkdir -p $odyssinthome
+    fi
 	
     # Archivo de registro específico
-    log_file="$odyssinthome/logs_script/$(date +'%Y-%m-%d-%H-%M')-actualizacion.log"
+    log_file="$odyssinthome/$(date +'%Y-%m-%d-%H-%M')-actualizacion.log"
     
-    # Lista de aplicaciones a instalar
-    aplicaciones=("git" "python3" "OTRA" "python3-pip" "firefox" "OTRA")
-    
-    echo -e "Se va a actualizar el sistema e instalar las siguientes aplicaciones:"
-    for app in "${aplicaciones[@]}"; do
-    echo -e "- ${blue}$app${end}"
+    echo -e "Se va a actualizar el sistema e instalar las siguientes aplicaciones requeridas:"
+    for app in "${requerimientos[@]}"; do
+    echo -e "-${blue}$app${end}"
     done
     echo -e "${byellow}Presiona 'S/s' para confirmar y cualquier otra tecla para volver.${end}"
     read -n 1 -s tecla_confirmacion
     if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
     echo "Procediendo:"
-    echo 
     else
         mostrar_banner
         echo -e "${byellow}Volviendo al menú principal...${end}"
         mostrar_menu_principal
     fi
-
     echo "Actualizando el sistema..." | tee -a "$log_file"
     echo "apt update" >> "$log_file"
-    sudo apt update >> "$log_file" 2>&1 #&& sudo apt upgrade -y
+    sudo apt update && sudo apt upgrade -y >> "$log_file" 2>&1
     if [ $? -eq 0 ]; then
         echo -e "${green}Sistema actualizado correctamente.${end}"
     else
@@ -278,7 +308,7 @@ function actualizar_sistema_y_requerimientos() {
     fi
 
     # Instalar cada aplicación y verificar la instalación
-    for app in "${aplicaciones[@]}"; do
+    for app in "${requerimientos[@]}"; do
         echo
         echo -e "Instalando ${blue}$app...${end}" | tee -a "$log_file"
         echo "apt-get install -y $app" >> "$log_file" 2>&1
@@ -327,14 +357,20 @@ function instalar_herramientas_osint() {
         echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
 
+    # Comprobar si la carpeta $odyssinthome existe
+    if [ ! -d "$odyssinthome" ]; then
+        echo "Creando directorio $odyssinthome..."
+        mkdir -p $odyssinthome
+    fi
+
     # Archivo de registro específico
-    log_file="$odyssinthome/logs_script/$(date +'%Y-%m-%d-%H-%M')-instalacion_osint.log"
+    log_file="$odyssinthome/$(date +'%Y-%m-%d-%H-%M')-instalacion_osint.log"
 
     # Lista de aplicaciones a instalar
-    aplicaciones=("theHarvester" "recon-ng" "OTRA")
+    aplicacionesOSINT=("theHarvester" "recon-ng" "Spiderfoot" "Maltego")
     
     echo -e "Se va instalar las siguientes aplicaciones OSINT:"
-    for app in "${aplicaciones[@]}"; do
+    for app in "${aplicacionesOSINT[@]}"; do
     echo -e "- ${blue}$app${end}"
     done
     echo -e "${red}IMPORTANTE: Se tiene que haber ejecutado el primer paso para su correcta instalación.${end}"
@@ -349,26 +385,32 @@ function instalar_herramientas_osint() {
         mostrar_menu_principal
     fi
 
-    # Comprobar si la carpeta $odyssinthome existe
-    if [ ! -d "$odyssinthome" ]; then
-        echo "Creando directorio $odyssinthome..."
-        mkdir -p $odyssinthome
-    fi
-
     #Funciones de instalación de herramientas OSINT
     instalar_theHarvester
     instalar_recon-ng
     instalar_spiderfoot
+    instalar_maltego
     
     read -p "$(echo -e "${green}Instalación finalizada, pulsa cualquier tecla para continuar${end}") " confirmacion
     mostrar_banner
     mostrar_menu_principal
 }
 
+# Función para comprobar e instalar aplicaciones si no están instaladas
+function comprobar_requerimientos() {
+
+    echo -e "${byellow}Comprobando requerimientos...${end}"
+    for app in "${requerimientos[@]}"; do
+        if ! command -v "$app" &> /dev/null; then
+            sudo apt-get install -y "$app"  # Asumiendo que se está usando apt como gestor de paquetes
+        fi
+    done
+}
+
 # Función para instalar theHarvester
 function instalar_theHarvester() {
     # Descarga e instala TheHarvester desde GitHub
-    if [ ! -d "$odyssinthome/theHarvester" ]; then
+   if ! command -v $odyssinthome/theHarvester/theHarvester.py &> /dev/null; then
         echo "Descargando TheHarvester desde GitHub..."
         git clone https://github.com/laramies/theHarvester.git $odyssinthome/theHarvester 
         # Cambiar al directorio de TheHarvester
@@ -386,7 +428,7 @@ function instalar_theHarvester() {
 
 # Función para instalar Recon-ng
 function instalar_recon-ng() {
-    if [ ! -d "$odyssinthome/recon-ng" ]; then
+	if ! command -v $odyssinthome/recon-ng/recon-ng &> /dev/null; then
         echo "Descargando TheHarvester desde GitHub..."
 	git clone https://github.com/lanmaster53/recon-ng.git $odyssinthome/recon-ng
         # Cambiar al directorio de Recon-ng
@@ -402,7 +444,7 @@ function instalar_recon-ng() {
 
 # Función para instalar spiderfoot
 function instalar_spiderfoot() {
-    if [ ! -d "$odyssinthome/spiderfoot" ]; then
+	if ! command -v $odyssinthome/spiderfoot/sfcli.py &> /dev/null; then
         echo "Descargando Spiderfoot desde GitHub..."
         git clone https://github.com/smicallef/spiderfoot.git $odyssinthome/spiderfoot
         # Cambiar al directorio de Spiderfoot
@@ -413,6 +455,25 @@ function instalar_spiderfoot() {
         echo -e "${green}Spiderfoot instalado correctamente.${end}"
     else
     echo -e "${green}Spiderfoot ya está instalado.${end}" 	    
+    fi
+}
+
+# Función para instalar Maltego
+function instalar_maltego() {
+	if ! command -v maltego &> /dev/null; then
+        # Descarga e instala Maltego
+        echo "Descargando Maltego..."
+        wget --directory-prefix=$odyssinthome/maltego https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.6.0.deb
+        #sudo apt install openjdk-17-jdk
+        # Cambiar al directorio de Spiderfoot
+	cd $odyssinthome/maltego
+	# Instalar Spiderfoot
+        echo "Instalando Maltego..."
+        sudo dpkg -i Maltego.v4.6.0.deb
+        sudo apt install -f
+        echo -e "${green}Maltego instalado correctamente.${end}"
+    else
+    echo -e "${green}Maltego ya está instalado.${end}" 	    
     fi
 }
 
@@ -513,8 +574,8 @@ function instalar_marcadores_firefox()  {
     echo -e "${cyan}Sigue los siguientes pasos para sincronizar los marcadores a través de esta extensión:"    
     echo -e "1. Se abrirá la ventana de addons de firefox, abre la extensión 'BookmarkHub - sync bookmarks'."
     echo -e "2. Ve a la pestaña 'Preferences'."
-    echo -e "3. En el campo 'Github Token', pega el valor '${end}${red}ghp_ Veqj8jZi2X4paEfLj ejtJgrdKNumyE32hu73${end}${cyan}' (Eliminando los espacios)."
-    echo -e "4. En el campo 'Gist ID', pega el valor ${end}'${red}eb886a54972ba0512d73fe33fdd9a4d9${cyan}'."
+    echo -e "3. En el campo 'Github Token', pega el valor '${end}${red}ghp_Veqj8j Zi2X4paEfLj ejtJgrdKNumyE32hu73${end}${cyan}' (Eliminando los espacios)."
+    echo -e "4. En el campo 'Gist ID', pega el valor ${end}'${red}38a4f99ab9c2f2ab255bf122aa36f97f${cyan}'."
     echo -e "5. Selecciona ahora el icono de la extensión en la parte superior derecha del navegador,"
     echo -e "   el icono es un símbolo de un marcador de páginas blanco con un fondo gris."
     echo -e "6. Ejecuta ${end}${red}\"Download Bookmarks\"${end}${cyan} y espera a que la extensión"
@@ -537,6 +598,35 @@ function instalar_marcadores_firefox()  {
     mostrar_banner
     echo -e "${green}Instalación de marcadores completada.${end}"    
     listar_configurar_odyssint    
+
+}
+
+# Función eliminar herramientas instaladas y limpiar directorio de OdyssINT
+function desinstalar_odyssint()  {
+
+    echo -e ${bred}"--------------------------------------------------------------------------------------------"${end}
+    echo -e ${bred}"                         Configurar OdyssINT > Desinstalar OdyssINT                         "${end}
+    echo -e ${bred}"--------------------------------------------------------------------------------------------"${end}
+    echo -e "\n"
+
+    echo -e ${bred}"Se van a desinstalar las siguientes aplicaciones:"
+    for app in "${requerimientos[@]}"; do
+    echo -e "- $app"
+    done
+    echo -e "${bred}Además, se eliminará la carpeta $odyssinthome."${end}
+    echo -e "${byellow}Presiona 'S/s' para confirmar y cualquier otra tecla para volver.${end}"
+    read -n 1 -s tecla_confirmacion
+    if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
+    rm -rf $odyssinthome
+    sudo apt-get purge $requerimientos
+    mostrar_banner
+    echo -e "${byellow}Aplicaciones desinstaladas y carpeta de Odyssint eliminada...${end}"
+    mostrar_menu_principal
+    else
+        mostrar_banner
+        echo -e "${byellow}Volviendo al menú principal...${end}"
+        mostrar_menu_principal
+    fi
 
 }
 
