@@ -63,7 +63,7 @@ function ctrl_c() {
 	exit 0
 }
 
-# Función para mostrar el menú de configuración de OdyssINT
+# Función para mostrar el menú principal
 function mostrar_menu_principal() {
 
     echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
@@ -74,10 +74,10 @@ function mostrar_menu_principal() {
     echo -e "1. Listar herramientas OSINT"
     echo -e "2. Configurar OdyssINT"
     echo -e "0. Salir del script"
+    read -p "Opción: " menu_principal
 
-read menu_principal
 
-case $menu_principal in
+    case $menu_principal in
         1)
             mostrar_banner
             listar_herramientas_osint;;
@@ -94,6 +94,20 @@ case $menu_principal in
 
 }
 
+# Función para salir del script
+function salir_del_script() {
+    echo -e "${byellow}¿Estás seguro de que quieres salir del script? Presiona 'S/s' para confirmar.${end}"
+    read -n1 -s tecla
+    if [[ $tecla == "S" || $tecla == "s" ]]; then
+        echo "¡Hasta pronto!"
+        exit
+    else
+        mostrar_banner
+	mostrar_menu_principal
+    fi
+}
+
+# Función para mostrar el menú de herramientas OSINT
 function listar_herramientas_osint()
 {
 
@@ -102,26 +116,64 @@ function listar_herramientas_osint()
         echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
         echo -e "\n"
         echo "Seleccione una opción:"
-	echo -e ${bblue}"[1] Usar la herramienta"${end}
-	echo -e ${bblue}"[2] Volver al Menú Principal"${end}
-	echo -e ${bblue}"[3] OTRO"${end}
-	read herramientas_osint
+	echo -e ${bblue}"1. The Harvester"
+	echo -e ${blue}"   Extrae información de correos electrónicos, nombres de usuario y subdominios de diferentes"
+	echo -e ${blue}"   fuentes online."${end}
+	echo -e ${bblue}"2. Recon-ng"
+	echo -e ${blue}"   Framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos"
+	echo -e ${blue}"   para recopilar información de forma eficiente."${end}
+	echo -e ${bblue}"9. Firefox - Extensiones"${end}
+	echo -e ${bblue}"0. Volver a menú principal"${end}
+	read -p "Opción: " herramientas_osint
 
 	case "$herramientas_osint" in
 
-		1) gnome-terminal --window -- bash;;
-		2) 
-		   mostrar_banner
-		   mostrar_menu_principal;;
+		1) 
+		# Verificar si theHarvester está instalado
+		if ! command -v theHarvester &> /dev/null; then
+	        echo -e "${byellow}theHarvest no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
+	        read instalar
+	        if [ "$instalar" = "s" ]; then
+	            instalar_theHarvester
+	        else
+	            return
+	        fi
+		fi
+                gnome-terminal -- /bin/bash -c "theHarvester -h; exec /bin/bash"
+                mostrar_banner
+                listar_herramientas_osint
+		;;
+		2)
+		# Verificar si Recong-ng está instalado
+		if ! command -v recon-ng &> /dev/null; then
+	        echo -e "${byellow}recon-ng no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
+	        read instalar
+	        if [ "$instalar" = "s" ]; then
+	            instalar_recon-ng
+	        else
+	            return
+	        fi
+		fi
+                gnome-terminal -- /bin/bash -c "recon-ng; exec /bin/bash"
+                mostrar_banner
+                listar_herramientas_osint;;
 		3) ;;
-		*) 
-		   mostrar_banner
+		9)
+		firefox -new-tab "about:addons"
+                mostrar_banner
+                listar_herramientas_osin ;;
+		0) 
+		mostrar_banner
+		mostrar_menu_principal;;
+		
+		*)  mostrar_banner
 	           echo -e "${red}Opción inválida.${end}"
 	           listar_herramientas_osint;;
 	esac
 
 }
 
+# Función para mostrar el menú de configuración de OdyssINT
 function listar_configurar_odyssint()
 {
         echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
@@ -135,8 +187,8 @@ function listar_configurar_odyssint()
         echo "4. Instalar o actualizar herramientas complementarias"
         echo "5. Instalar o actualizar extensiones firefox"
         echo "6. Instalar o actualizar marcadores en firefox" 
-        echo "7. Volver a menú principal" 
-	read configurar_odyssint
+        echo "0. Volver a menú principal" 
+	read -p "Opción: " configurar_odyssint
 
 	case "$configurar_odyssint" in
 
@@ -158,13 +210,13 @@ function listar_configurar_odyssint()
 		6) 
                    mostrar_banner 
 		   instalar_marcadores_firefox;;
-		7) 
+		0) 
 		   mostrar_banner
 		   mostrar_menu_principal;;
 		*) 
 		   mostrar_banner
 		   echo -e "${red}Opción inválida.${end}"
-		listar_configurar_odyssint;;       
+		   listar_configurar_odyssint;;       
 	esac
 
 }
@@ -181,7 +233,7 @@ function actualizar_sistema_y_requerimientos() {
     log_file="$HOME/odyssint/logs_script/$(date +'%Y-%m-%d-%H-%M')-actualizacion.log"
     
     # Lista de aplicaciones a instalar
-    aplicaciones=("git" "python3" "python3-pip" "firefox" "OTRA")
+    aplicaciones=("git" "python3" "OTRA" "python3-pip" "firefox" "OTRA")
     
     echo -e "Se va a actualizar el sistema e instalar las siguientes aplicaciones:"
     for app in "${aplicaciones[@]}"; do
@@ -220,10 +272,14 @@ function actualizar_sistema_y_requerimientos() {
             read -n 1 -s -r
         fi
     done
+    echo -e "${yellow}Instalación finalizada. Presiona cualquier tecla para continuar...${end}"
+    read -n 1 -s -r
+    mostrar_banner
+    mostrar_menu_principal
     
 }
 
-# Función para actualizar el script desde GitHub y volver a ejecutar el script
+# Función para actualizar el script desde GitHub y volver a ejecutarlo
 function actualizar_y_ejecutar_script() {
 
         echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
@@ -231,8 +287,8 @@ function actualizar_y_ejecutar_script() {
         echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
 
-    # URL del archivo en GitHub
-    github_url="https://raw.githubusercontent.com/javi-ag/OdyssINT/main/OdyssINT"
+   # URL del archivo en GitHub
+   github_url="https://raw.githubusercontent.com/javi-ag/OdyssINT/main/OdyssINT"
 
    # Nombre del archivo
    script_name="OdyssINT"
@@ -280,7 +336,18 @@ function instalar_herramientas_osint() {
         echo "Creando directorio $HOME/odyssint..."
         mkdir -p $HOME/odyssint
     fi
+
+    #Funciones de instalación de herramientas OSINT
+    instalar_theHarvester
+    instalar_recong-ng
     
+    read -p "$(echo -e "${green}Instalación finalizada, pulsa cualquier tecla para continuar${end}") " confirmacion
+    mostrar_banner
+    mostrar_menu_principal
+}
+
+# Función para instalar theHarvester
+function instalar_theHarvester() {
     # Descarga e instala TheHarvester desde GitHub
     if [ ! -d "$HOME/odyssint/theHarvester" ]; then
         echo echo "Descargando TheHarvester desde GitHub..."
@@ -297,8 +364,10 @@ function instalar_herramientas_osint() {
     else
     echo -e "${green}TheHarvester ya está instalado.${end}" 	    
     fi
-    
-    # Descarga e instala Recong-ng desde GitHub
+}    
+
+# Función para instalar Recon-ng
+function instalar_recon-ng() {
     if [ ! -d "$HOME/odyssint/recon-ng" ]; then
         echo echo "Descargando TheHarvester desde GitHub..."
 	git clone https://github.com/lanmaster53/recon-ng.git $HOME/odyssint/recon-ng
@@ -311,31 +380,6 @@ function instalar_herramientas_osint() {
         echo -e "${green}Recong-ng instalado correctamente.${end}"
     else
     echo -e "${green}Recong-ng ya está instalado.${end}" 	    
-    fi
-    
-    read -p "$(echo -e "${green}Instalación finalizada, pulsa cualquier tecla para continuar${end}") " confirmacion
-    mostrar_banner
-    mostrar_menu_principal
-}
-
-# Función para mostrar el listado de herramientas OSINT
-function listar_herramientas_osint() {
-    echo "Listado de herramientas OSINT instaladas:"
-    # Coloca aquí el listado de herramientas OSINT instaladas
-    echo "Seleccione una herramienta para ver su ayuda:"
-    # Coloca aquí el código para mostrar la ayuda de la herramienta seleccionada
-}
-
-# Función para salir del script
-function salir_del_script() {
-    echo -e "${byellow}¿Estás seguro de que quieres salir del script? Presiona 'S/s' para confirmar.${end}"
-    read -n1 -s tecla
-    if [[ $tecla == "S" || $tecla == "s" ]]; then
-        echo "¡Hasta pronto!"
-        exit
-    else
-        mostrar_banner
-	mostrar_menu_principal
     fi
 }
 
