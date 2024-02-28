@@ -67,7 +67,7 @@ warning="\e[5;31m\033[1m"
 #Función para mostrar el banner inicial.
 function mostrar_banner() {
 	clear
-	echo -e ${purple}
+	echo -e ${bred}
 	echo -e "        ███████        █████                            █████ ██████   █████ ███████████    "
 	echo -e "      ███░░░░░███     ░░███                            ░░███ ░░██████ ░░███ ░█░░░███░░░█    "
 	echo -e "     ███     ░░███  ███████  █████ ████  █████   █████  ░███  ░███░███ ░███ ░   ░███  ░     "
