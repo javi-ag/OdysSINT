@@ -85,7 +85,7 @@ function mostrar_banner() {
 	echo -e "  \t\t\t  ${bgreen}Master Ciberseguridad 12ª Edición "${end}
 	echo -e "  \t\t\t  Autor: ${bblue}Javier Aguilar"${end}
 	echo -e "  \t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
-	echo -e "  \t\t\t  Versión ${blue}1.0"${end}1
+	echo -e "  \t\t\t  Versión ${blue}1.0"${end}
 	echo -e "  \t\t\t  Última modificación: ${blue}15-03-2024"${end}
 	if [ "$(id -u)" == "0" ]; then
 	echo -e "  \t\t\t  ROOT: [${bgreen}${tick}${end}]"
@@ -479,8 +479,8 @@ function actualizar_sistema_y_requerimientos() {
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e ${ogreen}"                         Configurar OdyssINT > Sistema y requerimientos                     "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e "\n"
-
+	echo -e 
+	
 	echo -e "Se va a actualizar el sistema e instalar las siguientes aplicaciones requeridas:"
 	for app in "${requerimientos[@]}"; do
 		echo -e "-${blue}$app"${end}
@@ -528,13 +528,29 @@ function actualizar_y_ejecutar_script() {
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e ${ogreen}"                         Configurar OdyssINT > Script                                       "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e "\n"
-
+	echo -e 
+	
 	# URL del archivo en GitHub
 	github_url="https://raw.githubusercontent.com/javi-ag/OdyssINT/main/OdyssINT"
 
 	# Nombre del archivo
 	script_name="OdyssINT"
+	
+        echo -e "Se va a actualizar el script desde el repositorio $github_url a la versión" 
+
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${red}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end}
+	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
+	read -n 1 -s tecla_confirmacion
+	if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
+		echo -e ${bpurple}"Actualizando script:"${end} | tee -a "$log"
+	else
+		mostrar_banner
+		echo -e ${byellow}"Volviendo al menú principal..."${end}
+		listar_configurar_odyssint
+	fi
+
+
 
 	wget -O "$script_name" "$github_url"
 	chmod +x "$script_name"
@@ -551,8 +567,7 @@ function instalar_herramientas_osint() {
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e ${ogreen}"                         Configurar OdyssINT > Herramientas OSINT                           "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e "\n"
-
+	echo -e
 	# Lista de aplicaciones a instalar
 	aplicacionesOSINT=("theHarvester" "recon-ng" "Spiderfoot" "Maltego")
 
@@ -560,6 +575,8 @@ function instalar_herramientas_osint() {
 	for app in "${aplicacionesOSINT[@]}"; do
 		echo -e "- ${blue}$app"${end}
 	done
+	echo -e
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e ${red}"IMPORTANTE: Se tiene que haber ejecutado el primer paso para su correcta instalación."${end}
 	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
 	read -n 1 -s tecla_confirmacion
