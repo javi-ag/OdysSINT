@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Colores
+# Colores
 green="\e[0;32m\033[1m"
 red="\e[0;31m\033[1m"
 blue="\e[0;34m\033[1m"
@@ -9,15 +9,57 @@ purple="\e[1;35m\033[1m"
 cyan="\e[0;36m\033[1m"
 white="\e[0;37m\033[1m"
 black="\e[0;30m\033[1m"
+
 # Bold High Intensity
-bblack='\033[1;90m'
-bred='\033[1;91m'
 bgreen='\033[1;92m'
-byellow='\033[1;93m'
+bred='\033[1;91m'
 bblue='\033[1;94m'
+byellow='\033[1;93m'
 bpurple='\033[1;95m'
 bcyan='\033[1;96m'
 bwhite='\033[1;97m'
+bblack='\033[1;90m'
+
+# Subrayados
+ugreen='\033[4;32m'
+ured='\033[4;31m'
+ublue='\033[4;34m'
+uyellow='\033[4;33m'
+upurple='\033[4;35m'
+ucyan='\033[4;36m'
+uwhite='\033[4;37m'
+ublack='\033[4;30m'
+
+# High Intensity
+igreen='\033[0;92m'       
+ired='\033[0;91m'         
+iblue='\033[0;94m'        
+iyellow='\033[0;93m'      
+ipurple='\033[0;95m'      
+icyan='\033[0;96m'        
+iwhite='\033[0;97m'       
+iblack='\033[0;90m'
+
+# Background
+Bgreen='\033[42m'   
+Bred='\033[41m'         
+Bblue='\033[44m'            
+Byellow='\033[43m'      
+Bpurple='\033[45m'      
+Bcyan='\033[46m'        
+Bwhite='\033[47m'   
+Bblack='\033[40m'       
+
+# High Intensity backgrounds
+ogreen='\033[0;102m'   
+ored='\033[0;101m'  
+oblue='\033[0;104m'    
+oyellow='\033[0;103m'  
+opurple='\033[0;105m'  
+ocyan='\033[0;106m'    
+owhite='\033[0;107m'
+oblack='\033[0;100m'   
+
 #Especiales
 end="\033[0m\e[0m"
 warning="\e[5;31m\033[1m"
@@ -38,38 +80,60 @@ function mostrar_banner() {
 	echo -e "                             ░░██████                                                       "
 	echo -e "                              ░░░░░░                                                        "
 	echo -e
-	echo -e "  \t\t   Script de instalación y uso de herramientas OSINT${end}"
+	echo -e "  \t\t   Script de instalación y uso de herramientas OSINT"${end}
 	echo -e "  \t"
-	echo -e "  \t\t\t  ${bgreen}Master Ciberseguridad 12ª Edición ${end}"
-	echo -e "  \t\t\t  Autor: ${bblue}Javier Aguilar${end}"
+	echo -e "  \t\t\t  ${bgreen}Master Ciberseguridad 12ª Edición "${end}
+	echo -e "  \t\t\t  Autor: ${bblue}Javier Aguilar"${end}
 	echo -e "  \t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
-	echo -e "  \t\t\t  Versión ${blue}1.0${end}"
-	echo -e "  \t\t\t  Última modificación: ${blue}15-03-2024${end}"
-	echo
-
-	echo -e "Colores:     ${green}green,${red}red,${blue}blue,${yellow}yellow,${purple}purple,${cyan}cyan,${white}white,${black}black${end}"
-	echo -e "Colores BHI: ${bgreen}green,${bred}red,${bblue}blue,${byellow}yellow,${bpurple}purple,${bcyan}cyan,${bwhite}white,${bblack}black${end}"
-	echo -e "Especiales: ${warning}alerta${end}"
+	echo -e "  \t\t\t  Versión ${blue}1.0"${end}1
+	echo -e "  \t\t\t  Última modificación: ${blue}15-03-2024"${end}
+	if [ "$(id -u)" == "0" ]; then
+	echo -e "  \t\t\t  ROOT: [${bgreen}${tick}${end}]"
+	else
+	echo -e "  \t\t\t  ROOT: [${bred}${cross}${end}]"
+        fi
+	echo -e
+	echo -e "Colores:"
+	echo -e "Normal ${green}green,${red}red,${blue}blue,${yellow}yellow,${purple}purple,${cyan}cyan,${white}white,${black}black"${end}
+	echo -e "bcolor ${bgreen}green,${bred}red,${bblue}blue,${byellow}yellow,${bpurple}purple,${bcyan}cyan,${bwhite}white,${bblack}black"${end}
+	echo -e "ucolor ${ugreen}green,${ured}red,${ublue}blue,${uyellow}yellow,${upurple}purple,${ucyan}cyan,${uwhite}white,${ublack}black"${end}
+	echo -e "icolor ${igreen}green,${ired}red,${iblue}blue,${iyellow}yellow,${ipurple}purple,${icyan}cyan,${iwhite}white,${iblack}black"${end}
+	echo -e "Bcolor ${Bgreen}green,${Bred}red,${Bblue}blue,${Byellow}yellow,${Bpurple}purple,${Bcyan}cyan,${Bwhite}white,${Bblack}black"${end}
+	echo -e "ocolor ${ogreen}green,${ored}red,${oblue}blue,${oyellow}yellow,${opurple}purple,${ocyan}cyan,${owhite}white,${oblack}black"${end}
+	echo -e "Especiales: ${warning}alerta"${end}
 }
 
 #Directorio de trabajo de OdyssINT
 declare odyssinthome=$HOME/odyssint
+# Comprobar si la carpeta $odyssinthome existe, si no la crea
+if [ ! -d "$odyssinthome" ]; then
+	echo -e ${bpurple}"Creando directorio $odyssinthome..." | tee -a "$log"
+	mkdir -p $odyssinthome 2>&1
+	mkdir -p $odyssinthome/logs/ 2>&1	
+fi
+
+# Archivo de registro
+log="$odyssinthome/logs/$(date +'%Y-%m-%d-%H-%M')-OdyssINT.log"
 
 #Requerimientos OdyssINT
-declare requerimientos=("git" "python3" "python3-pip" "python3-virtualenv" "firefox" "openjdk-17-jdk")
+declare requerimientos=("git" "python3" "python3-pip" "python3-virtualenv" "nodejs" "firefox" "openjdk-17-jdk" "curl" "wget")
+tick=✔
+cross=✘
 
 # Función para mostrar el menú principal
 function mostrar_menu_principal() {
 
 	echo -e ${bpurple}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bpurple}"                                    Menú principal                                          "${end}
+	echo -e ${opurple}"                                    Menú principal                                          "${end}
 	echo -e ${bpurple}"--------------------------------------------------------------------------------------------"${end}
-	echo -e "\n"
-	echo -e "Seleccione una opción:"
-	echo -e ${bblue}"1. Listar herramientas OSINT"${end}
+	echo -e 
+	echo -e ${bblue}"1. Herramientas OSINT"${end}
 	echo -e ${bgreen}"2. Configurar OdyssINT"${end}
-	echo -e ${byellow}"0. Salir del script"${end}
-	read -p "Opción: " menu_principal
+	echo -e 
+	echo -e ${byellow}"s. Salir del script"${end}
+	echo -e 
+	echo -e ${bpurple}"--------------------------------------------------------------------------------------------"${end}
+	read -p "Selecciona una opción: " menu_principal
 
 	case $menu_principal in
 	1)
@@ -80,12 +144,19 @@ function mostrar_menu_principal() {
 		mostrar_banner
 		listar_configurar_odyssint
 		;;
-	0)
+	s)
 		salir_del_script
+		mostrar_banner
+		mostrar_menu_principal
+		;;
+	S)
+		salir_del_script
+		mostrar_banner
+		mostrar_menu_principal
 		;;
 	*)
+		read -p "$(echo -e "${bred}Opción inválida, pulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
-		echo -e "${red}Opción inválida.${end}"
 		mostrar_menu_principal
 		;;
 	esac
@@ -94,14 +165,11 @@ function mostrar_menu_principal() {
 
 # Función para salir del script
 function salir_del_script() {
-	echo -e "${byellow}¿Estás seguro de que quieres salir del script? Presiona 'S/s' para confirmar.${end}"
+	echo -e ${byellow}"¿Estás seguro de que quieres salir del script? Presiona 'S/s' para confirmar."${end}
 	read -n1 -s tecla
 	if [[ $tecla == "S" || $tecla == "s" ]]; then
 		echo "¡Hasta pronto!"
 		exit
-	else
-		mostrar_banner
-		mostrar_menu_principal
 	fi
 }
 
@@ -117,31 +185,47 @@ function ctrl_c() {
 function listar_herramientas_osint() {
 
 	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bblue}"                                    Listado herramientas OSINT                              "${end}
+	echo -e ${oblue}"                                    Listado herramientas OSINT                              "${end}
 	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e "\n"
-	echo "Seleccione una opción:"
-	echo -e ${bblue}"1. The Harvester"
-	echo -e ${blue}"   Extrae información de correos electrónicos, nombres de usuario y subdominios de diferentes"
-	echo -e ${blue}"   fuentes online."${end}
-	echo -e ${bblue}"2. Recon-ng"
-	echo -e ${blue}"   Framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos"
-	echo -e ${blue}"   para recopilar información de forma eficiente."${end}
-	echo -e ${bblue}"3. Spiderfoot"
-	echo -e ${blue}"   Herramienta de recopilación de información online. Escanea IPs, dominios "
-	echo -e ${blue}"   y nombres de usuario para encontrar información relevante.."${end}
-	echo -e ${bblue}"4. Maltego"
-	echo -e ${blue}"   Herramienta que recopila y analiza datos de fuentes abiertas para la realización de investigaciones"${end}
-	echo -e ${bblue}"9. Firefox - Extensiones"${end}
-	echo -e ${byellow}"0. Volver a menú principal"${end}
-	read -p "Opción: " herramientas_osint
-
+	echo -e 
+	echo -e ${bblue} "RECOLECCIÓN DE INFORMACIÓN Y RECONOCIMIENTO"${end}
+	echo -e ${bblue} "1. The Harvester"
+	echo -e ${blue} "   Recopila información de correos electrónicos, nombres de usuario y subdominios de diferentes"
+	echo -e ${blue} "   fuentes online."${end}
+	echo -e ${bblue} "2. Recon-ng"
+	echo -e ${blue} "   Framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos"
+	echo -e ${blue} "   para recopilar información de forma eficiente."${end}
+	echo -e 
+	echo -e ${bcyan} "ANÁLISIS DE RED"${end}
+	echo -e ${bcyan} "3. Spiderfoot"
+	echo -e ${cyan} "   Herramienta de recopilación de información online. Escanea IPs, dominios "
+	echo -e ${cyan} "   y nombres de usuario para encontrar información relevante.."${end}
+	echo -e ${bcyan} "4. Maltego"
+	echo -e ${cyan} "   Herramienta que recopila y analiza datos de fuentes abiertas para la realización de investigaciones"${end}
+	echo -e ${bcyan} "5. ArchiveBox"
+	echo -e ${cyan} "   Potente solución local de archivado de internet que recopila, guarda webs para su visualizacion sin conexión"${end}
+	echo -e ${bcyan} "6. NExfil"
+	echo -e ${cyan} "   Busca nombres de usaurios en más de 350 webs en pocos segundos"${end}
+	echo -e ${bcyan} "7. osint-suite-tools"
+	echo -e ${cyan} "   Descripción"${end}
+	echo -e ${bcyan} "8. Zotero"
+	echo -e ${cyan} "   Descripción"${end}
+	echo -e ${cyan} "9. Firefox - Extensiones"${end}
+	echo -e
+	echo -e ${byellow} "0. Volver a menú principal"${end}
+	echo -e ${byellow} "s. Salir del script"${end}
+	echo -e 
+	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
+	echo -e 
+	read -p  "Secciona una opción: " herramientas_osint
+	echo -e 
 	case "$herramientas_osint" in
 
 	1) #theHarvester
 		# Verificar si theHarvester está instalado
-		if ! command -v $odyssinthome/theHarvester/theHarvester.py &>/dev/null; then
-			echo -e "${byellow}theHarvester no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
+		if ! command -v $odyssinthome/theharvester/theHarvester.py &>/dev/null; then
+			echo -e ${byellow}"theHarvester no está instalado. ¿Desea instalarlo ahora? (s/n)"${end}
+			echo -e ${bred}"IMPORTANTE: solicitará root si los requerimientos no están instalados"${end}
 			read instalar
 			if [ "$instalar" = "s" ]; then
 				comprobar_requerimientos
@@ -151,21 +235,33 @@ function listar_herramientas_osint() {
 				listar_herramientas_osint
 			fi
 		fi
-		#Compruebo donde se ha instalado la activación del entorno virtual
-		if [ ! -d "$odyssinthome/theHarvester/venv/local" ]; then
-			gnome-terminal -- /bin/bash -c "source $odyssinthome/theHarvester/venv/bin/activate && $odyssinthome/theHarvester/theHarvester.py -h; exec /bin/bash"
-			mostrar_banner
-			listar_herramientas_osint
+		#Compruebo donde se ha instalado la activación del entorno virtual e inicializo aplicación
+		if [ ! -d "$odyssinthome/theharvester/venv/local" ]; then
+			venv_path=venv/bin
+			else
+			venv_path=venv/local/bin
 		fi
-		gnome-terminal -- /bin/bash -c "source $odyssinthome/theHarvester/venv/local/bin/activate && $odyssinthome/theHarvester/theHarvester.py -h; exec /bin/bash"
+		gnome-terminal -- $SHELL -c "source $odyssinthome/theharvester/$venv_path/activate &&
+		cd $odyssinthome/theharvester/ && $odyssinthome/theharvester/theHarvester.py &&
+		echo
+		echo
+		echo ---------------------------------------
+		echo ------- OdyssINT - theHarvester -------
+		echo ---------------------------------------
+		echo  MODO CLI: ./theHarvester.py 
+		echo  AYUDA:    ./theHarvester.py -h
+		echo ---------------------------------------; exec $SHELL"
+		read -p "$(echo -e "${byellow}theHarvester iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
+
 		;;
 
 	2) #recon-ng
 		# Verificar si Recon-ng está instalado
 		if ! command -v $odyssinthome/recon-ng/recon-ng &>/dev/null; then
-			echo -e "${byellow}recon-ng no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
+			echo -e ${byellow}"recon-ng no está instalado. ¿Desea instalarlo ahora? (s/n)"${end}
+			echo -e ${bred}"IMPORTANTE: solicitará root si los requerimientos no están instalados"${end}
 			read instalar
 			if [ "$instalar" = "s" ]; then
 				comprobar_requerimientos
@@ -175,13 +271,24 @@ function listar_herramientas_osint() {
 				listar_herramientas_osint
 			fi
 		fi
-		#Compruebo donde se ha instalado la activación del entorno virtual
-		if [ ! -d "$odyssinthome/recon-ng/venv/local" ]; then
-			gnome-terminal -- /bin/bash -c "source $odyssinthome/recon-ng/venv/bin/activate && $odyssinthome/recon-ng/recon-ng -h; exec /bin/bash"
-			mostrar_banner
-			listar_herramientas_osint
+		#Compruebo donde se ha instalado la activación del entorno virtual e inicializo aplicación
+		if [ ! -d "$odyssinthome/theharvester/venv/local" ]; then
+			venv_path=venv/bin
+			else
+			venv_path=venv/local/bin
 		fi
-		gnome-terminal -- /bin/bash -c "source $odyssinthome/recon-ng/venv/local/bin/activate && $odyssinthome/recon-ng/recon-ng -h; exec /bin/bash"
+		gnome-terminal -- $SHELL -c "source $odyssinthome/recon-ng/$venv_path/activate &&
+		cd $odyssinthome/recon-ng/ && $odyssinthome/recon-ng/recon-ng -h &&
+		echo 
+		echo
+		echo ----------------------------- 
+		echo ---- OdyssINT - recon-ng ----
+		echo -----------------------------
+		echo  MODO CLI: ./recon-ng 
+		echo  MODO WEB: ./recon-web
+		echo  AYUDA:    ./recon-web -h
+		echo -----------------------------; exec $SHELL"
+		read -p "$(echo -e "${byellow}Recon-ng iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
 		;;
@@ -189,7 +296,8 @@ function listar_herramientas_osint() {
 	3) #Spiderfoot
 		# Verificar si Spiderfoot está instalado
 		if ! command -v $odyssinthome/spiderfoot/sfcli.py &>/dev/null; then
-			echo -e "${byellow}Spiderfoot no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
+			echo -e ${byellow}"Spiderfoot no está instalado. ¿Desea instalarlo ahora? (s/n)"${end}
+			echo -e ${bred}"IMPORTANTE: solicitará root si los requerimientos no están instalados"${end}
 			read instalar
 			if [ "$instalar" = "s" ]; then
 				comprobar_requerimientos
@@ -199,20 +307,25 @@ function listar_herramientas_osint() {
 				listar_herramientas_osint
 			fi
 		fi
-		#Compruebo donde se ha instalado la activación del entorno virtual
+		#Compruebo donde se ha instalado la activación del entorno virtual e inicializo aplicación
 		if [ ! -d "$odyssinthome/spiderfoot/venv/local" ]; then
-			gnome-terminal -- /bin/bash -c "source $odyssinthome/spiderfoot/venv/bin/activate && python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec /bin/bash"
+			gnome-terminal -- /bin/bash -c "source $odyssinthome/spiderfoot/venv/bin/activate &&
+			python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec /bin/bash"
+			read -p "$(echo -e "${byellow}Spiderfoot iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
 			mostrar_banner
 			listar_herramientas_osint
 		fi
-		gnome-terminal -- /bin/bash -c "source $odyssinthome/spiderfoot/venv/local/bin/activate && python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec /bin/bash"
+		gnome-terminal -- /bin/bash -c "source $odyssinthome/spiderfoot/venv/local/bin/activate &&
+		python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec /bin/bash"
+		read -p "$(echo -e "${byellow}Spiderfoot iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
 		;;
 	4) #Maltego
 		# Verificar si Maltego está instalado
 		if ! command -v maltego &>/dev/null; then
-			echo -e "${byellow}Maltego no está instalado. ¿Desea instalarlo ahora? (s/n)${end}"
+			echo -e ${byellow}"Maltego no está instalado. ¿Desea instalarlo ahora? (s/n)"${end}
+			echo -e ${bred}"IMPORTANTE: solicitará root si los requerimientos no están instalados"${end}
 			read instalar
 			if [ "$instalar" = "s" ]; then
 				comprobar_requerimientos
@@ -223,12 +336,43 @@ function listar_herramientas_osint() {
 			fi
 		fi
 		gnome-terminal -- /bin/bash -c "maltego; exec /bin/bash"
+		read -p "$(echo -e "${byellow}Maltego iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
 		;;
+	5) #ArchiveBox
+		# Verificar si ArchiveBox está instalado
+		if [ ! -d "$odyssinthome/archivebox/" ]; then
+			echo -e ${byellow}"ArchiveBox no está instalado. ¿Desea instalarlo ahora? (s/n)"${end}
+			echo -e ${bred}"IMPORTANTE: solicitará root si los requerimientos no están instalados"${end}
+			read instalar
+			if [ "$instalar" = "s" ]; then
+				comprobar_requerimientos
+				instalar_archivebox
+			else
+				mostrar_banner
+				listar_herramientas_osint
+			fi
+		fi
+		#Compruebo donde se ha instalado la activación del entorno virtual e inicializo aplicación
+		if [ ! -d "$odyssinthome/archivebox/venv/local" ]; then
+			gnome-terminal -- /bin/bash -c "source $odyssinthome/archivebox/venv/bin/activate &&
+			cd $odyssinthome/archivebox/data && archivebox server 0.0.0.0:8000; exec /bin/bash"
+			mostrar_banner
+			read -p "$(echo -e "${byellow}ArchiveBox iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
+			mostrar_banner
+			listar_herramientas_osint
+		fi
+		gnome-terminal -- /bin/bash -c "source $odyssinthome/archivebox/venv/local/bin/activate &&
+		cd $odyssinthome/archivebox/data && archivebox server 0.0.0.0:8000; exec /bin/bash"
+		mostrar_banner
+		read -p "$(echo -e "${byellow}ArchiveBox iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		mostrar_banner
+		listar_herramientas_osint		
+		;;		
 	9)
 		# Deshabilitar las advertencias de GTK
-                export GTK_MODULES=
+		export GTK_MODULES=
 		firefox -new-tab "about:addons"
 		mostrar_banner
 		listar_herramientas_osint
@@ -237,10 +381,19 @@ function listar_herramientas_osint() {
 		mostrar_banner
 		mostrar_menu_principal
 		;;
-
-	*)
+	s)
+		salir_del_script
 		mostrar_banner
-		echo -e "${red}Opción inválida.${end}"
+		listar_herramientas_osint
+		;;
+	S)
+		salir_del_script
+		mostrar_banner
+		listar_herramientas_osint
+		;;
+	*)
+		read -p "$(echo -e "${bred}Opción inválida, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		mostrar_banner
 		listar_herramientas_osint
 		;;
 	esac
@@ -250,19 +403,21 @@ function listar_herramientas_osint() {
 # Función para mostrar el menú de configuración de OdyssINT
 function listar_configurar_odyssint() {
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bgreen}"                                    Configurar OdyssINT                                     "${end}
+	echo -e ${ogreen}"                                    Configurar OdyssINT                                     "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e "\n"
-	echo "Seleccione una opción:"
+	echo -e
 	echo -e ${bgreen} "1. Actualizar el sistema e instalar requerimientos de OdyssINT ${bred}(Requiere permiso root)"${end}
 	echo -e ${bgreen} "2. Actualizar script desde GitHub y volver a ejecutar"${end}
-	echo -e ${bgreen} "3. Instalar o actualizar herramientas OSINT"${end}
-	echo -e ${bgreen} "4. Instalar o actualizar herramientas complementarias"${end}
+	echo -e ${bgreen} "3. Instalar o actualizar todas las herramientas OSINT"${end}
+	echo -e ${bgreen} "4. Instalar o actualizar todas las herramientas complementarias"${end}
 	echo -e ${bgreen} "5. Instalar o actualizar extensiones firefox"${end}
 	echo -e ${bgreen} "6. Instalar o actualizar marcadores en firefox" ${end}
 	echo -e ${bred} "7. Desinstalar todo y limpiar instalación de OdyssINT (Requiere permiso root)" ${end}
+	echo -e
 	echo -e ${byellow} "0. Volver a menú principal"${end}
-	read -p "Opción: " configurar_odyssint
+	echo -e ${byellow} "s. Salir del script"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
+	read -p "Selecciona una opción: " configurar_odyssint
 
 	case "$configurar_odyssint" in
 
@@ -298,9 +453,20 @@ function listar_configurar_odyssint() {
 		mostrar_banner
 		mostrar_menu_principal
 		;;
-	*)
+	s)
+		salir_del_script
 		mostrar_banner
-		echo -e "${red}Opción inválida.${end}"
+		listar_configurar_odyssint
+		;;
+	S)
+		salir_del_script
+		mostrar_banner
+		listar_configurar_odyssint
+		;;
+	*)
+
+		read -p "$(echo -e "${bred}Opción inválida, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		mostrar_banner
 		listar_configurar_odyssint
 		;;
 	esac
@@ -310,68 +476,58 @@ function listar_configurar_odyssint() {
 # Función para actualizar el sistema e instalar requerimientos
 function actualizar_sistema_y_requerimientos() {
 
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bblue}"                         Configurar OdyssINT > Sistema y requerimientos                     "${end}
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${ogreen}"                         Configurar OdyssINT > Sistema y requerimientos                     "${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
-
-	# Comprobar si la carpeta $odyssinthome existe
-	if [ ! -d "$odyssinthome" ]; then
-		echo "Creando directorio $odyssinthome..."
-		mkdir -p $odyssinthome
-	fi
-
-	# Archivo de registro específico
-	log_file="$odyssinthome/$(date +'%Y-%m-%d-%H-%M')-actualizacion.log"
 
 	echo -e "Se va a actualizar el sistema e instalar las siguientes aplicaciones requeridas:"
 	for app in "${requerimientos[@]}"; do
-		echo -e "-${blue}$app${end}"
+		echo -e "-${blue}$app"${end}
 	done
-	echo -e "${byellow}Presiona 'S/s' para confirmar y cualquier otra tecla para volver.${end}"
+	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
 	read -n 1 -s tecla_confirmacion
 	if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
-		echo "Procediendo:"
+		echo -e ${bpurple}"Instalando requerimientos..."${end} | tee -a "$log"
 	else
 		mostrar_banner
-		echo -e "${byellow}Volviendo al menú principal...${end}"
-		mostrar_menu_principal
+		listar_configurar_odyssint
 	fi
-	echo "Actualizando el sistema..." | tee -a "$log_file"
-	echo "apt update" >>"$log_file"
-	sudo apt update && sudo apt upgrade -y >>"$log_file" 2>&1
+	echo -e ${bpurple}"Actualizando sistema..."${end} | tee -a "$log"
+	# echo "sudo apt update && sudo apt upgrade -y" >>"$log" 2>&1
+	sudo apt update >>"$log" 2>&1
+	sudo apt upgrade -y >>"$log" 2>&1
 	if [ $? -eq 0 ]; then
-		echo -e "${green}Sistema actualizado correctamente.${end}"
+		echo -e "${bgreen}Sistema actualizado correctamente."${end}
 	else
-		echo -e "${red}Error al actualizar el sistema.${end}"
+		echo -e ${bred}"Error al actualizar el sistema."${end}
 	fi
 
 	# Instalar cada aplicación y verificar la instalación
 	for app in "${requerimientos[@]}"; do
 		echo
-		echo -e "Instalando ${blue}$app...${end}" | tee -a "$log_file"
-		echo "apt-get install -y $app" >>"$log_file" 2>&1
-		sudo apt-get install -y $app >>"$log_file" 2>&1
+		echo -e "Instalando ${blue}$app..."${end}
+		echo "apt-get install -y $app" >>"$log" 2>&1
+		sudo apt-get install -y $app >>"$log" 2>&1
 		if [ $? -eq 0 ]; then
-			echo -e "${green}$app instalado correctamente.${end}" | tee -a "$log_file"
+			echo -e "${bgreen}$app instalado correctamente."${end}
 		else
-			echo -e "${red}Error al instalar $app. Presiona cualquier tecla para continuar...${end}" | tee -a "$log_file"
+			echo -e ${bred}"Error al instalar $app. Presiona cualquier tecla para continuar..."${end}
 			read -n 1 -s -r
 		fi
 	done
-	echo -e "${yellow}Instalación finalizada. Presiona cualquier tecla para continuar...${end}"
-	read -n 1 -s -r
+	read -p "$(echo -e "${byellow}Instalación finalizada, pulsa cualquier tecla para continuar"${end}) " confirmacion
 	mostrar_banner
-	mostrar_menu_principal
+	listar_configurar_odyssint
 
 }
 
 # Función para actualizar el script desde GitHub y volver a ejecutarlo
 function actualizar_y_ejecutar_script() {
 
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bblue}"                         Configurar OdyssINT > Script                                       "${end}
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${ogreen}"                         Configurar OdyssINT > Script                                       "${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
 
 	# URL del archivo en GitHub
@@ -382,8 +538,9 @@ function actualizar_y_ejecutar_script() {
 
 	wget -O "$script_name" "$github_url"
 	chmod +x "$script_name"
-	echo -e "${byellow}Script actualizado, se va a volver a ejecutar${end}"
-	sleep 5
+
+	echo -e ${byellow}"Script actualizado a la versión $(grep -oP 'Versión \${blue}\K[0-9]+\.[0-9]+(?=\${end})' "$script_name")"${end}
+	read -p "$(echo -e "${bgreen}Actualización de script finalizada, pulsa cualquier tecla para volver a ejecutar script"${end}) " confirmacion
 	./"$script_name"
 
 }
@@ -391,36 +548,26 @@ function actualizar_y_ejecutar_script() {
 # Función para instalar herramientas OSINT
 function instalar_herramientas_osint() {
 
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bblue}"                         Configurar OdyssINT > Herramientas OSINT                           "${end}
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${ogreen}"                         Configurar OdyssINT > Herramientas OSINT                           "${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
-
-	# Comprobar si la carpeta $odyssinthome existe
-	if [ ! -d "$odyssinthome" ]; then
-		echo "Creando directorio $odyssinthome..."
-		mkdir -p $odyssinthome
-	fi
-
-	# Archivo de registro específico
-	log_file="$odyssinthome/$(date +'%Y-%m-%d-%H-%M')-instalacion_osint.log"
 
 	# Lista de aplicaciones a instalar
 	aplicacionesOSINT=("theHarvester" "recon-ng" "Spiderfoot" "Maltego")
 
-	echo -e "Se va instalar las siguientes aplicaciones OSINT:"
+	echo -e ${byellow}"Se va instalar las siguientes aplicaciones OSINT:"${end}
 	for app in "${aplicacionesOSINT[@]}"; do
-		echo -e "- ${blue}$app${end}"
+		echo -e "- ${blue}$app"${end}
 	done
-	echo -e "${red}IMPORTANTE: Se tiene que haber ejecutado el primer paso para su correcta instalación.${end}"
-	echo -e "${byellow}Presiona 'S/s' para confirmar y cualquier otra tecla para volver.${end}"
+	echo -e ${red}"IMPORTANTE: Se tiene que haber ejecutado el primer paso para su correcta instalación."${end}
+	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
 	read -n 1 -s tecla_confirmacion
 	if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
-		echo "Instalando:"
-		echo
+		echo -e ${bpurple}"Iniciando instalación:"${end} | tee -a "$log"
 	else
 		mostrar_banner
-		echo -e "${byellow}Volviendo al menú principal...${end}"
+		echo -e ${byellow}"Volviendo al menú principal..."${end}
 		mostrar_menu_principal
 	fi
 
@@ -429,8 +576,10 @@ function instalar_herramientas_osint() {
 	instalar_recon-ng
 	instalar_spiderfoot
 	instalar_maltego
+	instalar_archivebox
+	
 
-	read -p "$(echo -e "${green}Instalación finalizada, pulsa cualquier tecla para continuar${end}") " confirmacion
+	read -p "$(echo -e "${byellow}Instalación finalizada, pulsa cualquier tecla para continuar"${end}) " confirmacion
 	mostrar_banner
 	mostrar_menu_principal
 }
@@ -438,10 +587,11 @@ function instalar_herramientas_osint() {
 # Función para comprobar e instalar aplicaciones si no están instaladas
 function comprobar_requerimientos() {
 
-	echo -e "${byellow}Comprobando requerimientos...${end}"
+	echo -e "${bpurple}Comprobando requerimientos..."${end} | tee -a "$log"
 	for app in "${requerimientos[@]}"; do
 		if ! command -v "$app" &>/dev/null; then
-			sudo apt-get install -y "$app" # Asumiendo que se está usando apt como gestor de paquetes
+			echo "sudo apt-get install -y "$app"" >>"$log" 2>&1
+			sudo apt-get install -y "$app" >>"$log" 2>&1
 		fi
 	done
 }
@@ -449,24 +599,25 @@ function comprobar_requerimientos() {
 # Función para instalar theHarvester
 function instalar_theHarvester() {
 	# Descarga e instala TheHarvester desde GitHub
-	if ! command -v $odyssinthome/theHarvester/theHarvester.py &>/dev/null; then
-		echo "Descargando TheHarvester desde GitHub..."
-		git clone https://github.com/laramies/theHarvester.git $odyssinthome/theHarvester
+	if ! command -v $odyssinthome/theharvester/theHarvester.py &>/dev/null; then
+		echo -e ${bpurple}"Descargando theHarvester desde GitHub..."${end} | tee -a "$log"
+		git clone https://github.com/laramies/theHarvester.git $odyssinthome/theharvester >>"$log" 2>&1
 		#Montar entorno virtual
-		virtualenv -p /usr/bin/python3 $odyssinthome/theHarvester/venv
-		if [ ! -d "$odyssinthome/theHarvester/venv/local" ]; then
-			source $odyssinthome/theHarvester/venv/bin/activate
+		echo -e ${bpurple}"Montando entorno virtual..."${end} | tee -a "$log"
+		virtualenv -p /usr/bin/python3 $odyssinthome/theharvester/venv >>"$log" 2>&1
+		if [ ! -d "$odyssinthome/theharvester/venv/local" ]; then
+			source $odyssinthome/theharvester/venv/bin/activate >>"$log" 2>&1
 		fi
-		source $odyssinthome/theHarvester/venv/local/bin/activate
+		source $odyssinthome/theharvester/venv/local/bin/activate >>"$log" 2>&1
 		# Cambiar al directorio de TheHarvester
-		cd $odyssinthome/theHarvester
+		cd $odyssinthome/theharvester
 		# Instalar TheHarvester
-		echo "Instalando TheHarvester..."
-		python3 -m pip install -r requirements/dev.txt
-		python3 -m pip install -r requirements/base.txt
-		echo -e "${green}TheHarvester instalado correctamente.${end}"
+		echo -e ${bpurple}"Instalando theHarvester..."${end} | tee -a "$log"
+		python3 -m pip install -r requirements/dev.txt >>"$log" 2>&1
+		python3 -m pip install -r requirements/base.txt >>"$log" 2>&1
+		echo -e ${green}"theHarvester instalado correctamente."${end} | tee -a "$log"
 	else
-		echo -e "${green}TheHarvester ya está instalado.${end}"
+		echo -e ${green}"theHarvester ya está instalado."${end} | tee -a "$log"
 	fi
 }
 
@@ -474,22 +625,23 @@ function instalar_theHarvester() {
 function instalar_recon-ng() {
 	# Descarga e instala Recon-ng desde GitHub
 	if ! command -v $odyssinthome/recon-ng/recon-ng &>/dev/null; then
-		echo "${bcyan}Descargando Recon-ng desde GitHub...${end}"
-		git clone https://github.com/lanmaster53/recon-ng.git $odyssinthome/recon-ng
+		echo -e ${bpurple}"Descargando Recon-ng desde GitHub..."${end} | tee -a "$log"
+		git clone https://github.com/lanmaster53/recon-ng.git $odyssinthome/recon-ng >>"$log" 2>&1
 		#Montar entorno virtual
-		virtualenv -p /usr/bin/python3 $odyssinthome/recon-ng/venv
+		echo -e ${bpurple}"Montando entorno virtual..."${end} | tee -a "$log"
+		virtualenv -p /usr/bin/python3 $odyssinthome/recon-ng/venv >>"$log" 2>&1
 		if [ ! -d "$odyssinthome/recon-ng/venv/local" ]; then
-			source $odyssinthome/recon-ng/venv/bin/activate
+			source $odyssinthome/recon-ng/venv/bin/activate >>"$log" 2>&1
 		fi
-		source $odyssinthome/recon-ng/venv/local/bin/activate
+		source $odyssinthome/recon-ng/venv/local/bin/activate >>"$log" 2>&1
 		# Cambiar al directorio de Recon-ng
 		cd $odyssinthome/recon-ng
 		# Instalar Recon-ng
-		echo "${bcyan}Instalando Recon-ng...${end}"
-		python3 -m pip install -r REQUIREMENTS
-		echo -e "${green}Recon-ng instalado correctamente.${end}"
+		echo -e ${bpurple}"Instalando Recon-ng..."${end} | tee -a "$log"
+		python3 -m pip install -r REQUIREMENTS >>"$log" 2>&1
+		echo -e ${green}"Recon-ng instalado correctamente."${end} | tee -a "$log"
 	else
-		echo -e "${green}Recon-ng ya está instalado.${end}"
+		echo -e ${green}"Recon-ng ya está instalado."${end} | tee -a "$log"
 	fi
 }
 
@@ -497,22 +649,23 @@ function instalar_recon-ng() {
 function instalar_spiderfoot() {
 	# Descarga e instala Spiderfoot desde GitHub
 	if ! command -v $odyssinthome/spiderfoot/sfcli.py &>/dev/null; then
-		echo "Descargando spiderfoot desde GitHub..."
-		git clone https://github.com/smicallef/spiderfoot.git $odyssinthome/spiderfoot
+		echo -e ${bpurple}"Descargando spiderfoot desde GitHub..."${end} | tee -a "$log"
+		git clone https://github.com/smicallef/spiderfoot.git $odyssinthome/spiderfoot >>"$log" 2>&1
 		#Montar entorno virtual
-		virtualenv -p /usr/bin/python3 $odyssinthome/spiderfoot/venv
+		echo -e ${bpurple}"Montando entorno virtual..."${end} | tee -a "$log"
+		virtualenv -p /usr/bin/python3 $odyssinthome/spiderfoot/venv >>"$log" 2>&1
 		if [ ! -d "$odyssinthome/spiderfoot/venv/local" ]; then
-			source $odyssinthome/spiderfoot/venv/bin/activate
+			source $odyssinthome/spiderfoot/venv/bin/activate >>"$log" 2>&1
 		fi
-		source $odyssinthome/spiderfoot/venv/local/bin/activate
+		source $odyssinthome/spiderfoot/venv/local/bin/activate >>"$log" 2>&1
 		# Cambiar al directorio de Spiderfoot
 		cd $odyssinthome/spiderfoot
 		# Instalar Spiderfoot
-		echo "Instalando Spiderfoot..."
-		pip3 install -r requirements.txt
-		echo -e "${green}Spiderfoot instalado correctamente.${end}"
+		echo -e ${bpurple}"Instalando Spiderfoot..."${end} | tee -a "$log"
+		pip3 install -r requirements.txt >>"$log" 2>&1
+		echo -e ${green}"Spiderfoot instalado correctamente."${end} | tee -a "$log"
 	else
-		echo -e "${green}Spiderfoot ya está instalado.${end}"
+		echo -e ${green}"Spiderfoot ya está instalado."${end} | tee -a "$log"
 	fi
 }
 
@@ -520,53 +673,82 @@ function instalar_spiderfoot() {
 function instalar_maltego() {
 	if ! command -v maltego &>/dev/null; then
 		# Descarga e instala Maltego
-		echo "Descargando Maltego..."
-		wget --directory-prefix=$odyssinthome/maltego https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.6.0.deb
-		#sudo apt install openjdk-17-jdk
+		echo -e ${bpurple}"Descargando Maltego..."${end} | tee -a "$log"
+		wget --directory-prefix=$odyssinthome/maltego https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.6.0.deb >>"$log" 2>&1
 		# Cambiar al directorio de Spiderfoot
 		cd $odyssinthome/maltego
 		# Instalar Maltego
-		echo "Instalando Maltego..."
-		sudo dpkg -i Maltego.v4.6.0.deb
-		sudo apt install -f
-		echo -e "${green}Maltego instalado correctamente.${end}"
+		echo -e ${bpurple}"Instalando Maltego..."${end} | tee -a "$log"
+		sudo dpkg -i Maltego.v4.6.0.deb >>"$log" 2>&1
+		sudo apt install -f >>"$log" 2>&1
+		echo -e ${green}"Maltego instalado correctamente."${end} | tee -a "$log"
 	else
-		echo -e "${green}Maltego ya está instalado.${end}"
+		echo -e ${green}"Maltego ya está instalado."${end} | tee -a "$log"
+	fi
+}
+
+# Función para instalar ArchiveBox
+function instalar_archivebox() {
+	# Instala ArchiveBox
+	if [ ! -d "$odyssinthome/archivebox/" ]; then
+		mkdir -p $odyssinthome/archivebox/
+		#Montar entorno virtual
+		echo -e ${bpurple}"Montando entorno virtual..."${end} | tee -a "$log"
+		virtualenv -p /usr/bin/python3 $odyssinthome/archivebox/venv >>"$log" 2>&1
+		if [ ! -d "$odyssinthome/archivebox/venv/local" ]; then
+			source $odyssinthome/archivebox/venv/bin/activate >>"$log" 2>&1
+		fi
+		source $odyssinthome/archivebox/venv/local/bin/activate >>"$log" 2>&1
+		# Cambiar al directorio de ArchiveBox
+		cd $odyssinthome/archivebox
+		mkdir -p data && cd $odyssinthome/archivebox/data
+		# Instalar ArchiveBox
+		echo -e ${bpurple}"Instalando Archivebox..."${end} | tee -a "$log"
+		pip3 install --upgrade archivebox yt-dlp playwright >>"$log" 2>&1
+		playwright install --with-deps chromium >>"$log" 2>&1
+		echo -e ${bpurple}"Inicializando Archivebox..."${end} | tee -a "$log"
+		echo -e ${bred}"IMPORTANTE: No olvidar usuario y contraseña, necesario para administrar entorno..."${end} | tee -a "$log"
+		archivebox init --setup | tee -a "$log"
+		echo -e ${green}"ArchiveBox instalado correctamente."${end} | tee -a "$log"
+	else
+		echo -e ${green}"ArchiveBox ya está instalado."${end} | tee -a "$log"
 	fi
 }
 
 # Función para instalar extensiones en Firefox
 function instalar_extensiones_firefox() {
 
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bblue}"                         Configurar OdyssINT > Extensiones                                  "${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${ogreen}"                         Configurar OdyssINT > Extensiones                                  "${end}
 	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
 
 	# Verificar si Firefox está instalado
 	if ! command -v firefox &>/dev/null; then
-		echo -e "${red}Firefox no está instalado. Por favor, ejecuta el primer paso del menú para instalarlo.${end}"
+		echo -e ${red}"Firefox no está instalado. Por favor, ejecuta el primer paso del menú para instalarlo."${end}
 		return
 	fi
 
-	# URL de donde se recogerán las extensiones
+	# URL OdyssINT de donde se recogerán las extensiones
 	url="https://addons.mozilla.org/es/firefox/collections/18254528/OdyssINT/"
+	zotero_url="https://www.zotero.org/download/connector/dl?browser=firefox"
 
 	# Obtener los números de ID de la URL y el nombre de cada extensión
 	ids=($(curl -s "$url" | grep -o 'ID="[0-9]*"' | sed 's/ID=//' | tr -d '"'))
 	names=($(curl -s "$url" | grep -o 'NAME="[^"]*"' | sed 's/NAME="//' | sed 's/"$//' | sed 's/ /_/g')) # Reemplaza espacios por guiones bajos
 
 	# Mostrar los nombres de las extensiones y solicitar confirmación
-	echo -e "${byellow}Se van a instalar las siguientes extensiones:${end}"
+	echo -e ${byellow}"Se van a instalar las siguientes extensiones:"${end}
 	for name in "${names[@]}"; do
-		echo -e "${blue}- ${name//_/ }${end}" # Reemplaza guiones bajos por espacios
+		echo -e ${blue}"- ${name//_/ }"${end} # Reemplaza guiones bajos por espacios
 	done
-	echo -e "${red}IMPORTANTE: A continuación se abrirá una pestaña de Firefox por cada extensión."
-	echo -e "${red}            Acepta la instalación en cada pestaña incluyendo su uso en ventanas privadas.${end}"
-	read -p "$(echo -e "${byellow}¿Desea continuar con la instalación? (S/n):${end}") " confirmacion
+	echo -e ${blue}"- Zotero"${end}
+	echo -e ${red}"IMPORTANTE: A continuación se abrirá una pestaña de Firefox por cada extensión."${end}
+	echo -e ${red}"            Acepta la instalación en cada pestaña incluyendo su uso en ventanas privadas."${end}
+	read -p "$(echo -e ${byellow}"¿Desea continuar con la instalación? (S/n):"${end}) " confirmacion
 	if [[ $confirmacion != "S" && $confirmacion != "s" ]]; then
 		mostrar_banner
-		echo -e "${byellow}Volviendo al menú...${end}"
+		echo -e ${byellow}"Volviendo al menú..."${end}
 		listar_configurar_odyssint
 		return
 	fi
@@ -583,47 +765,48 @@ function instalar_extensiones_firefox() {
 	for i in "${!ids[@]}"; do
 		id="${ids[$i]}"
 		name="${names[$i]}"
-
+		echo -e ${bpurple}"Descargando extensión $name..."${end}
 		# Descargar el archivo .xpi
 		download_url="https://addons.mozilla.org/firefox/downloads/file/$id/addon-$id-latest.xpi"
-		curl -s -o "$extensions_dir/$name-addon-$id-latest.xpi" "$download_url"
+		curl -s -o "$extensions_dir/$name-addon-$id-latest.xpi" "$download_url" >>"$log" 2>&1
 	done
-
+	echo -e ${bpurple}"Descargando extensión Zotero..."${end}
+	wget "https://www.zotero.org/download/connector/dl?browser=firefox" -O $extensions_dir/zotero_connector.xpi  >>"$log" 2>&1
 	# Instalar todas las extensiones desde el directorio de extensiones
-	echo -e "${green}Instalando todas las extensiones...${end}"
-	firefox "$extensions_dir"/*.xpi
+	echo -e ${bpurple}"Instalando todas las extensiones..."${end}
+	firefox "$extensions_dir"/*.xpi >>"$log" 2>&1
 
 	# Preguntar si desea eliminar los archivos descargados
-	read -p "$(echo -e "${byellow}¿Desea eliminar los archivos descargados? (S/n):${end}") " borrar_confirmacion
+	read -p "$(echo -e ${byellow}"¿Desea eliminar los archivos descargados? (S/n):"${end}) " borrar_confirmacion
 	if [[ $borrar_confirmacion == "S" || $borrar_confirmacion == "s" ]]; then
-		rm -rf "$extensions_dir"
+		rm -rf "$extensions_dir" >>"$log" 2>&1
 	fi
 	mostrar_banner
-	echo -e "${green}Instalación de extensiones completada.${end}"
+	echo -e "${green}Instalación de extensiones completada."${end}
 	listar_configurar_odyssint
 }
 
 # Función para instalar marcadores
 function instalar_marcadores_firefox() {
 
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bblue}"                         Configurar OdyssINT > Marcadores                                   "${end}
-	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
+	echo -e ${ogreen}"                         Configurar OdyssINT > Marcadores                                   "${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
 
 	# Verificar si Firefox está instalado
 	if ! command -v firefox &>/dev/null; then
-		echo -e "${red}Firefox no está instalado. Por favor, ejecuta el primer paso del menú para instalarlo.${end}"
+		echo -e ${red}"Firefox no está instalado. Por favor, ejecuta el primer paso del menú para instalarlo."${end}
 		return
 	fi
 
 	# Solicita que tienes que tener instaladas las extensiones previamente
 	echo "Para sincronizar los marcadores vamos a configurar la extensión 'BookmarkHub - sync bookmarks' en Firefox."
-	echo -e "${red}IMPORTANTE: Los marcadores existentes se borrarán para incluir los nuevos.${end}"
-	read -p "$(echo -e "${byellow}¿Has ejecutado el paso de instalación de extensiones? (S/n):${end}") " confirmacion
+	echo -e ${red}"IMPORTANTE: Los marcadores existentes se borrarán para incluir los nuevos."${end}
+	read -p "$(echo -e ${byellow}"¿Has ejecutado el paso de instalación de extensiones? (S/n):"${end}) " confirmacion
 	if [[ $confirmacion != "S" && $confirmacion != "s" ]]; then
 		mostrar_banner
-		echo -e "${red}Instala la extensión 'BookmarkHub ' de Firefox en el paso anterior para sincronizar los marcadores.${end}"
+		echo -e ${red}"Instala la extensión 'BookmarkHub ' de Firefox en el paso anterior para sincronizar los marcadores."${end}
 		listar_configurar_odyssint
 	fi
 	echo -e
@@ -636,23 +819,22 @@ function instalar_marcadores_firefox() {
 	echo -e "   el icono es un símbolo de un marcador de páginas blanco con un fondo gris."
 	echo -e "6. Ejecuta ${end}${red}\"Download Bookmarks\"${end}${cyan} y espera a que la extensión"
 	echo -e "   te confirme que ha podido sincronizar todos los marcadores a través de un pop-up."
-	echo -e "7. Cierra el navegador.${end}"
+	echo -e "7. Cierra el navegador."${end}
 
 	# Deshabilitar las advertencias de GTK
 	export GTK_MODULES=
 
-	# Esperar 5 segundos
-	sleep 5
+	read -p "$(echo -e "${byellow}Se va a abrir la ventana plugins de firefox, sigue los pasos indicados y pulsa cualquier tecla para continuar"${end}) " confirmacion
 	firefox -new-tab "about:addons"
 
-	read -p "$(echo -e "${byellow}¿Has configurado y sincronizado los marcadores? (S/n):${end}") " confirmacion
+	read -p "$(echo -e ${byellow}"¿Has configurado y sincronizado los marcadores? (S/n):"${end}) " confirmacion
 	if [[ $confirmacion != "S" && $confirmacion != "s" ]]; then
 		mostrar_banner
-		echo -e "${byellow}Vuelve a intentarlo...${end}"
+		echo -e ${byellow}"Vuelve a intentarlo..."${end}
 		instalar_marcadores_firefox
 	fi
 	mostrar_banner
-	echo -e "${green}Instalación de marcadores completada.${end}"
+	echo -e "${green}Instalación de marcadores completada."${end}
 	listar_configurar_odyssint
 
 }
@@ -661,29 +843,31 @@ function instalar_marcadores_firefox() {
 function desinstalar_odyssint() {
 
 	echo -e ${bred}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${bred}"                         Configurar OdyssINT > Desinstalar OdyssINT                         "${end}
+	echo -e ${ored}"                         Configurar OdyssINT > Desinstalar OdyssINT                         "${end}
 	echo -e ${bred}"--------------------------------------------------------------------------------------------"${end}
 	echo -e "\n"
 
-	echo -e ${bred}"Se van a desinstalar las siguientes aplicaciones:"
+	echo -e ${byellow}"¿Eliminar las siguientes aplicaciones requeridas instaladas?  (S/n):"${end} | tee -a "$log"
 	for app in "${requerimientos[@]}"; do
-		echo -e "- $app"
+		echo -e ${bred}"- $app"${end}
 	done
-	echo -e "${bred}Además, se eliminará la carpeta $odyssinthome."${end}
-	echo -e "${byellow}Presiona 'S/s' para confirmar y cualquier otra tecla para volver.${end}"
-	read -n 1 -s tecla_confirmacion
-	if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
-		rm -rf $odyssinthome
-		sudo apt-get purge $requerimientos
-		mostrar_banner
-		echo -e "${byellow}Aplicaciones desinstaladas y carpeta de Odyssint eliminada...${end}"
-		mostrar_menu_principal
+	read -n 1 -s confirmacion
+	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+		sudo apt-get purge $requerimientos >>"$log" 2>&1
+		echo -e ${bgreen}"Aplicaciones desinstaladas y carpeta de Odyssint eliminada..."${end} | tee -a "$log"
+	fi
+	echo -e ${byellow}"¿Eliminar la carpeta $odyssinthome? (S/n):"${end}
+	read -n 1 -s confirmacion
+	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+		rm -rf $odyssinthome >>"$log"
+		echo -e ${bpurple}"Carpeta eliminada..."${end}
 	else
 		mostrar_banner
-		echo -e "${byellow}Volviendo al menú principal...${end}"
-		mostrar_menu_principal
+		echo -e ${byellow}"Volviendo..."${end}
+		listar_configurar_odyssint
 	fi
-
+	echo -e ${bpurple}"Saliendo del script..."${end}
+	exit
 }
 
 #Inicio Script
