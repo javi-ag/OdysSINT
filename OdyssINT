@@ -85,7 +85,7 @@ function mostrar_banner() {
 	echo -e "  \t\t\t  ${bgreen}Master Ciberseguridad 12ª Edición "${end}
 	echo -e "  \t\t\t  Autor: ${bblue}Javier Aguilar"${end}
 	echo -e "  \t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
-	echo -e "  \t\t\t  Versión ${blue}1.0"${end}
+	echo -e "  \t\t\t  Versión ${blue}$script_version"${end}
 	echo -e "  \t\t\t  Última modificación: ${blue}15-03-2024"${end}
 	if [ "$(id -u)" == "0" ]; then
 	echo -e "  \t\t\t  ROOT: [${bgreen}${tick}${end}]"
@@ -103,22 +103,20 @@ function mostrar_banner() {
 	echo -e "Especiales: ${warning}alerta"${end}
 }
 
+
+
+# Variables
+# Requerimientos OdyssINT
+declare requerimientos=("git" "python3" "python3-pip" "python3-virtualenv" "nodejs" "firefox" "openjdk-17-jdk" "curl" "wget")
+declare	odyssint_github_url="https://raw.githubusercontent.com/javi-ag/OdyssINT/main/OdyssINT"
+declare script_version=1.0
 #Directorio de trabajo de OdyssINT
 declare odyssinthome=$HOME/odyssint
-# Comprobar si la carpeta $odyssinthome existe, si no la crea
-if [ ! -d "$odyssinthome" ]; then
-	echo -e ${bpurple}"Creando directorio $odyssinthome..." | tee -a "$log"
-	mkdir -p $odyssinthome 2>&1
-	mkdir -p $odyssinthome/logs/ 2>&1	
-fi
-
+declare tick=✔
+declare cross=✘
 # Archivo de registro
-log="$odyssinthome/logs/$(date +'%Y-%m-%d-%H-%M')-OdyssINT.log"
+declare log="$odyssinthome/logs/$(date +'%Y-%m-%d-%H-%M')-OdyssINT.log"
 
-#Requerimientos OdyssINT
-declare requerimientos=("git" "python3" "python3-pip" "python3-virtualenv" "nodejs" "firefox" "openjdk-17-jdk" "curl" "wget")
-tick=✔
-cross=✘
 
 # Función para mostrar el menú principal
 function mostrar_menu_principal() {
@@ -179,6 +177,15 @@ function ctrl_c() {
 	salir_del_script
 	tput cnorm
 	exit 0
+}
+
+# Comprobar si la carpeta $odyssinthome existe, si no la crea
+function comprobar_directorio() {
+if [ ! -d "$odyssinthome" ]; then
+	echo -e ${bpurple}"Creando directorio $odyssinthome..." | tee -a "$log"
+	mkdir -p $odyssinthome 2>&1
+	mkdir -p $odyssinthome/logs/ 2>&1	
+fi
 }
 
 # Función para mostrar el menú de herramientas OSINT
@@ -522,6 +529,37 @@ function actualizar_sistema_y_requerimientos() {
 
 }
 
+# Función para comprobar si el script está actualizado
+function comprobar_version() {
+
+    # Intentar leer el archivo desde GitHub
+    script_content=$(curl -sSfL "$odyssint_github_url")
+
+    # Verificar si se pudo leer el archivo
+    if [ -z "$script_content" ]; then
+        echo "Error: No se pudo leer el archivo desde GitHub."
+        return 1
+    fi
+
+    # Obtener la versión del script desde el contenido obtenido
+    script_version=$(echo "$script_content" | grep '^declare script_version=' | cut -d '=' -f 2 | tr -d '"')
+
+    # Verificar si se encontró la versión del script
+    if [ -z "$script_version" ]; then
+        echo "Error: No se encontró la versión del script en el archivo."
+        return 1
+    fi
+
+    # Comparar versiones
+    if [[ "$script_version" == "1.0" ]]; then
+        echo "El script está actualizado (versión $script_version)."
+    elif [[ "$script_version" < "1.0" ]]; then
+        echo "Hay una actualización disponible para el script (versión $script_version)."
+    else
+        echo "La versión del script en GitHub es más nueva que la versión actual."
+    fi
+    read -p "$(echo -e "${byellow}Comprobación finalizada, pulsa cualquier tecla para continuar"${end}) " confirmacion
+}
 # Función para actualizar el script desde GitHub y volver a ejecutarlo
 function actualizar_y_ejecutar_script() {
 
@@ -550,10 +588,8 @@ function actualizar_y_ejecutar_script() {
 		listar_configurar_odyssint
 	fi
 
-
-
-	wget -O "$script_name" "$github_url"
-	chmod +x "$script_name"
+	wget -O "$script_name" "$github_url" >>"$log" 2>&1
+	chmod +x "$script_name" >>"$log" 2>&1
 
 	echo -e ${byellow}"Script actualizado a la versión $(grep -oP 'Versión \${blue}\K[0-9]+\.[0-9]+(?=\${end})' "$script_name")"${end}
 	read -p "$(echo -e "${bgreen}Actualización de script finalizada, pulsa cualquier tecla para volver a ejecutar script"${end}) " confirmacion
@@ -889,5 +925,7 @@ function desinstalar_odyssint() {
 
 #Inicio Script
 trap ctrl_c INT
+comprobar_directorio
+comprobar_version
 mostrar_banner
 mostrar_menu_principal
