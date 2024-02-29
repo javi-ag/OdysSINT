@@ -85,22 +85,23 @@ function mostrar_banner() {
 	echo -e "  \t\t\t  ${bgreen}Master Ciberseguridad 12ª Edición "${end}
 	echo -e "  \t\t\t  Autor: ${bblue}Javier Aguilar"${end}
 	echo -e "  \t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
-	echo -e "  \t\t\t  Versión ${blue}$script_version"${end}
+	echo -e "  \t\t\t  Versión ${blue}$script_version${end}${warning} $script_version_update"${end}
 	echo -e "  \t\t\t  Última modificación: ${blue}15-03-2024"${end}
 	if [ "$(id -u)" == "0" ]; then
+	# Comprueba si eres Root
 	echo -e "  \t\t\t  ROOT: [${bgreen}${tick}${end}]"
 	else
 	echo -e "  \t\t\t  ROOT: [${bred}${cross}${end}]"
         fi
 	echo -e
-	echo -e "Colores:"
-	echo -e "Normal ${green}green,${red}red,${blue}blue,${yellow}yellow,${purple}purple,${cyan}cyan,${white}white,${black}black"${end}
-	echo -e "bcolor ${bgreen}green,${bred}red,${bblue}blue,${byellow}yellow,${bpurple}purple,${bcyan}cyan,${bwhite}white,${bblack}black"${end}
-	echo -e "ucolor ${ugreen}green,${ured}red,${ublue}blue,${uyellow}yellow,${upurple}purple,${ucyan}cyan,${uwhite}white,${ublack}black"${end}
-	echo -e "icolor ${igreen}green,${ired}red,${iblue}blue,${iyellow}yellow,${ipurple}purple,${icyan}cyan,${iwhite}white,${iblack}black"${end}
-	echo -e "Bcolor ${Bgreen}green,${Bred}red,${Bblue}blue,${Byellow}yellow,${Bpurple}purple,${Bcyan}cyan,${Bwhite}white,${Bblack}black"${end}
-	echo -e "ocolor ${ogreen}green,${ored}red,${oblue}blue,${oyellow}yellow,${opurple}purple,${ocyan}cyan,${owhite}white,${oblack}black"${end}
-	echo -e "Especiales: ${warning}alerta"${end}
+	#echo -e "Colores:"
+	#echo -e "Normal ${green}green,${red}red,${blue}blue,${yellow}yellow,${purple}purple,${cyan}cyan,${white}white,${black}black"${end}
+	#echo -e "bcolor ${bgreen}green,${bred}red,${bblue}blue,${byellow}yellow,${bpurple}purple,${bcyan}cyan,${bwhite}white,${bblack}black"${end}
+	#echo -e "ucolor ${ugreen}green,${ured}red,${ublue}blue,${uyellow}yellow,${upurple}purple,${ucyan}cyan,${uwhite}white,${ublack}black"${end}
+	#echo -e "icolor ${igreen}green,${ired}red,${iblue}blue,${iyellow}yellow,${ipurple}purple,${icyan}cyan,${iwhite}white,${iblack}black"${end}
+	#echo -e "Bcolor ${Bgreen}green,${Bred}red,${Bblue}blue,${Byellow}yellow,${Bpurple}purple,${Bcyan}cyan,${Bwhite}white,${Bblack}black"${end}
+	#echo -e "ocolor ${ogreen}green,${ored}red,${oblue}blue,${oyellow}yellow,${opurple}purple,${ocyan}cyan,${owhite}white,${oblack}black"${end}
+	#echo -e "Especiales: ${warning}alerta"${end}
 }
 
 
@@ -537,28 +538,36 @@ function comprobar_version() {
 
     # Verificar si se pudo leer el archivo
     if [ -z "$script_content" ]; then
-        echo "Error: No se pudo leer el archivo desde GitHub."
+        mostrar_banner
+	read -p "$(echo -e "${bred}ERROR: No se ha podido verificar el repositorio de OdyssINT. \nComprueba tu conexión a internet y vuelve a lanzar el script. ${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
+        declare -g script_version_update="(Comprobar conexión a Internet)"
         return 1
     fi
 
     # Obtener la versión del script desde el contenido obtenido
-    script_version=$(echo "$script_content" | grep '^declare script_version=' | cut -d '=' -f 2 | tr -d '"')
-
+    script_version_github=$(echo "$script_content" | grep '^declare script_version=' | cut -d '=' -f 2 | tr -d '"')
+		
     # Verificar si se encontró la versión del script
     if [ -z "$script_version" ]; then
-        echo "Error: No se encontró la versión del script en el archivo."
+        mostrar_banner
+	read -p "$(echo -e "${bred}ERROR: No se ha podido verificar la versión del script de OdyssINT.${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
+        declare -g script_version_update="(Error script repositorio)"
         return 1
     fi
 
     # Comparar versiones
-    if [[ "$script_version" == "1.0" ]]; then
-        echo "El script está actualizado (versión $script_version)."
-    elif [[ "$script_version" < "1.0" ]]; then
-        echo "Hay una actualización disponible para el script (versión $script_version)."
+    if [[ "$script_version" == "$script_version_github" ]]; then
+        mostrar_banner
+        declare -g script_version_update=${end}${bgreen}"(Script actualizado)"${end}
+    elif [[ "$script_version" < "$script_version_github" ]]; then
+	mostrar_banner
+	read -p "$(echo -e "${bgreen}Actualización de OdyssINT disponible ($script_version_github), actualiza script desde el menú de configuración. ${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
+        declare -g script_version_update=${bgreen}"(Actualización $script_version_github disponible)"${end}
     else
-        echo "La versión del script en GitHub es más nueva que la versión actual."
+       	mostrar_banner
+	read -p "$(echo -e "${bred}ERROR: Versión de script incorrecta ($script_version). Versión oficial de OdyssINT ($script_version_github).\nActualiza script desde el menú de configuración. ${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
+        declare -g script_version_update="(Versión de script incorrecta)"
     fi
-    read -p "$(echo -e "${byellow}Comprobación finalizada, pulsa cualquier tecla para continuar"${end}) " confirmacion
 }
 # Función para actualizar el script desde GitHub y volver a ejecutarlo
 function actualizar_y_ejecutar_script() {
