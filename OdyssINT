@@ -123,7 +123,7 @@ declare log="$odyssinthome/logs/$(date +'%Y-%m-%d-%H-%M')-OdyssINT.log"
 function mostrar_menu_principal() {
 
 	echo -e ${bpurple}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${opurple}"                                    Menú principal                                          "${end}
+	echo -e ${opurple}"                                    MENÚ PRINCIPAL                                          "${end}
 	echo -e ${bpurple}"--------------------------------------------------------------------------------------------"${end}
 	echo -e 
 	echo -e ${bblue}"1. Herramientas OSINT"${end}
@@ -193,7 +193,7 @@ fi
 function listar_herramientas_osint() {
 
 	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${oblue}"                                    Listado herramientas OSINT                              "${end}
+	echo -e ${oblue}"                                    HERRAMIENTAS OSITN                                      "${end}
 	echo -e ${bblue}"--------------------------------------------------------------------------------------------"${end}
 	echo -e 
 	echo -e ${bblue} "RECOLECCIÓN DE INFORMACIÓN Y RECONOCIMIENTO"${end}
@@ -411,7 +411,7 @@ function listar_herramientas_osint() {
 # Función para mostrar el menú de configuración de OdyssINT
 function listar_configurar_odyssint() {
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${ogreen}"                                    Configurar OdyssINT                                     "${end}
+	echo -e ${ogreen}"                                 CONFIGURACIÓN OdyssINT                                     "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e
 	echo -e ${bgreen} "1. Actualizar el sistema e instalar requerimientos de OdyssINT ${bred}(Requiere permiso root)"${end}
@@ -485,7 +485,7 @@ function listar_configurar_odyssint() {
 function actualizar_sistema_y_requerimientos() {
 
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${ogreen}"                         Configurar OdyssINT > Sistema y requerimientos                     "${end}
+	echo -e ${ogreen}"                      CONFIGURACIÓN OdyssINT > Sistema y requerimientos                     "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e 
 	
@@ -534,10 +534,10 @@ function actualizar_sistema_y_requerimientos() {
 function comprobar_version() {
 
     # Intentar leer el archivo desde GitHub
-    script_content=$(curl -sSfL "$odyssint_github_url")
+    script_odyssint=$(curl -sSfL "$odyssint_github_url")
 
     # Verificar si se pudo leer el archivo
-    if [ -z "$script_content" ]; then
+    if [ -z "$script_odyssint" ]; then
         mostrar_banner
 	read -p "$(echo -e "${bred}ERROR: No se ha podido verificar el repositorio de OdyssINT. \nComprueba tu conexión a internet y vuelve a lanzar el script. ${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
         declare -g script_version_update="(Comprobar conexión a Internet)"
@@ -545,7 +545,7 @@ function comprobar_version() {
     fi
 
     # Obtener la versión del script desde el contenido obtenido
-    script_version_github=$(echo "$script_content" | grep '^declare script_version=' | cut -d '=' -f 2 | tr -d '"')
+    script_version_github=$(echo "$script_odyssint" | grep '^declare script_version=' | cut -d '=' -f 2 | tr -d '"')
 		
     # Verificar si se encontró la versión del script
     if [ -z "$script_version" ]; then
@@ -573,7 +573,7 @@ function comprobar_version() {
 function actualizar_y_ejecutar_script() {
 
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${ogreen}"                         Configurar OdyssINT > Script                                       "${end}
+	echo -e ${ogreen}"                      CONFIGURACIÓN OdyssINT > ACTUALIZAR SCRIPT                            "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e 
 	
@@ -583,17 +583,17 @@ function actualizar_y_ejecutar_script() {
 	# Nombre del archivo
 	script_name="OdyssINT"
 	
-        echo -e "Se va a actualizar el script desde el repositorio $github_url a la versión" 
-
+        echo -e ${bgreen}"Se va a actualizar el script desde la versión $script_version_github a la versión $script_version_github"${end}
+        echo -e ${bgreen}"Para comprobar los cambios visitar https://github.com/javi-ag/OdyssINT"${end}
+       	echo -e ${bred}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end}
+	echo -e 
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${red}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end}
 	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
 	read -n 1 -s tecla_confirmacion
 	if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
 		echo -e ${bpurple}"Actualizando script:"${end} | tee -a "$log"
 	else
 		mostrar_banner
-		echo -e ${byellow}"Volviendo al menú principal..."${end}
 		listar_configurar_odyssint
 	fi
 
