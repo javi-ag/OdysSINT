@@ -66,8 +66,11 @@ warning="\e[5;31m\033[1m"
 
 #Función para mostrar el banner inicial.
 function mostrar_banner() {
+	# Limpia la pantalla
 	clear
-	echo -e ${bred}
+	color=$(color_random)
+	echo -e "${bred}"
+	#echo -e "${color}"
 	echo -e "        ███████        █████                            █████ ██████   █████ ███████████    "
 	echo -e "      ███░░░░░███     ░░███                            ░░███ ░░██████ ░░███ ░█░░░███░░░█    "
 	echo -e "     ███     ░░███  ███████  █████ ████  █████   █████  ░███  ░███░███ ░███ ░   ░███  ░     "
@@ -85,10 +88,11 @@ function mostrar_banner() {
 	echo -e "  \t\t\t  ${bgreen}Master Ciberseguridad 12ª Edición "${end}
 	echo -e "  \t\t\t  Autor: ${bblue}Javier Aguilar"${end}
 	echo -e "  \t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
+	# Muestra la versión actual del script y si hay actualizaciones o errores.
 	echo -e "  \t\t\t  Versión ${blue}$script_version${end}${warning} $script_version_update"${end}
 	echo -e "  \t\t\t  Última modificación: ${blue}15-03-2024"${end}
-	if [ "$(id -u)" == "0" ]; then
 	# Comprueba si eres Root
+	if [ "$(id -u)" == "0" ]; then
 	echo -e "  \t\t\t  ROOT: [${bgreen}${tick}${end}]"
 	else
 	echo -e "  \t\t\t  ROOT: [${bred}${cross}${end}]"
@@ -180,12 +184,22 @@ function ctrl_c() {
 	exit 0
 }
 
+# Función para seleccionar un color aleatorio
+function color_random() {
+    # Seleccionar un color aleatorio
+    # Colores disponibles
+    colores=("bred" "bgreen" "bblue" "bcyan" "byellow" "bwhite" "bblack")
+    random_color="${colores[RANDOM % ${#colores[@]}]}"
+    echo -e "${!random_color}"
+}
+
 # Comprobar si la carpeta $odyssinthome existe, si no la crea
 function comprobar_directorio() {
 if [ ! -d "$odyssinthome" ]; then
-	echo -e ${bpurple}"Creando directorio $odyssinthome..." | tee -a "$log"
-	mkdir -p $odyssinthome 2>&1
-	mkdir -p $odyssinthome/logs/ 2>&1	
+	mkdir -p $odyssinthome
+	mkdir -p $odyssinthome/logs/
+	mostrar_banner
+	read -p "$(echo -e "${bgreen}Se ha creado el directorio de trabajo en $odyssinthome.\n${byellow}Pulsa cualquier tecla para continuar"${end}) " confirmacion
 fi
 }
 
@@ -256,10 +270,10 @@ function listar_herramientas_osint() {
 		echo ---------------------------------------
 		echo ------- OdyssINT - theHarvester -------
 		echo ---------------------------------------
-		echo  MODO CLI: ./theHarvester.py 
-		echo  AYUDA:    ./theHarvester.py -h
+		echo      MODO CLI: ./theHarvester.py 
+		echo      AYUDA:    ./theHarvester.py -h
 		echo ---------------------------------------; exec $SHELL"
-		read -p "$(echo -e "${byellow}theHarvester iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		read -p "$(echo -e "${bgreen}theHarvester iniciado en una nueva ventana.${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
 
@@ -296,7 +310,7 @@ function listar_herramientas_osint() {
 		echo  MODO WEB: ./recon-web
 		echo  AYUDA:    ./recon-web -h
 		echo -----------------------------; exec $SHELL"
-		read -p "$(echo -e "${byellow}Recon-ng iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		read -p "$(echo -e "${bgreen}Recon-ng iniciado en una nueva ventana.${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
 		;;
@@ -317,15 +331,13 @@ function listar_herramientas_osint() {
 		fi
 		#Compruebo donde se ha instalado la activación del entorno virtual e inicializo aplicación
 		if [ ! -d "$odyssinthome/spiderfoot/venv/local" ]; then
-			gnome-terminal -- /bin/bash -c "source $odyssinthome/spiderfoot/venv/bin/activate &&
-			python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec /bin/bash"
-			read -p "$(echo -e "${byellow}Spiderfoot iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
-			mostrar_banner
-			listar_herramientas_osint
+			venv_path=venv/bin
+			else
+			venv_path=venv/local/bin
 		fi
-		gnome-terminal -- /bin/bash -c "source $odyssinthome/spiderfoot/venv/local/bin/activate &&
-		python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec /bin/bash"
-		read -p "$(echo -e "${byellow}Spiderfoot iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		gnome-terminal -- $SHELL -c "source $odyssinthome/spiderfoot/$venv_path/activate &&
+		python3 $odyssinthome/spiderfoot/sf.py -l 127.0.0.1:5001; exec $SHELL"
+		read -p "$(echo -e "${bgreen}Spiderfoot iniciado en una nueva ventana.${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
 		;;
@@ -343,8 +355,8 @@ function listar_herramientas_osint() {
 				listar_herramientas_osint
 			fi
 		fi
-		gnome-terminal -- /bin/bash -c "maltego; exec /bin/bash"
-		read -p "$(echo -e "${byellow}Maltego iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		gnome-terminal -- $SHELL -c "maltego; exec $SHELL"
+		read -p "$(echo -e "${bgreen}Maltego iniciado en una nueva ventana.${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint
 		;;
@@ -364,17 +376,13 @@ function listar_herramientas_osint() {
 		fi
 		#Compruebo donde se ha instalado la activación del entorno virtual e inicializo aplicación
 		if [ ! -d "$odyssinthome/archivebox/venv/local" ]; then
-			gnome-terminal -- /bin/bash -c "source $odyssinthome/archivebox/venv/bin/activate &&
-			cd $odyssinthome/archivebox/data && archivebox server 0.0.0.0:8000; exec /bin/bash"
-			mostrar_banner
-			read -p "$(echo -e "${byellow}ArchiveBox iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
-			mostrar_banner
-			listar_herramientas_osint
+			venv_path=venv/bin
+			else
+			venv_path=venv/local/bin
 		fi
-		gnome-terminal -- /bin/bash -c "source $odyssinthome/archivebox/venv/local/bin/activate &&
+		gnome-terminal -- /bin/bash -c "source $odyssinthome/archivebox/$venv_path/activate &&
 		cd $odyssinthome/archivebox/data && archivebox server 0.0.0.0:8000; exec /bin/bash"
-		mostrar_banner
-		read -p "$(echo -e "${byellow}ArchiveBox iniciado en una nueva ventana, pulsa cualquier tecla para continuar"${end}) " confirmacion
+		read -p "$(echo -e "${bgreen}ArchiveBox iniciado en una nueva ventana.${byellow}\nPulsa cualquier tecla para continuar"${end}) " confirmacion
 		mostrar_banner
 		listar_herramientas_osint		
 		;;		
@@ -414,13 +422,13 @@ function listar_configurar_odyssint() {
 	echo -e ${ogreen}"                                 CONFIGURACIÓN OdyssINT                                     "${end}
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e ${bgreen} "1. Actualizar el sistema e instalar requerimientos de OdyssINT ${bred}(Requiere permiso root)"${end}
+	echo -e ${bgreen} "1. Actualizar el sistema e instalar requerimientos de OdyssINT"${end}
 	echo -e ${bgreen} "2. Actualizar script desde GitHub y volver a ejecutar"${end}
 	echo -e ${bgreen} "3. Instalar o actualizar todas las herramientas OSINT"${end}
 	echo -e ${bgreen} "4. Instalar o actualizar todas las herramientas complementarias"${end}
 	echo -e ${bgreen} "5. Instalar o actualizar extensiones firefox"${end}
 	echo -e ${bgreen} "6. Instalar o actualizar marcadores en firefox" ${end}
-	echo -e ${bred} "7. Desinstalar todo y limpiar instalación de OdyssINT (Requiere permiso root)" ${end}
+	echo -e ${bred} "7. Desinstalar todo y limpiar instalación de OdyssINT" ${end}
 	echo -e
 	echo -e ${byellow} "0. Volver a menú principal"${end}
 	echo -e ${byellow} "s. Salir del script"${end}
@@ -493,6 +501,8 @@ function actualizar_sistema_y_requerimientos() {
 	for app in "${requerimientos[@]}"; do
 		echo -e "-${blue}$app"${end}
 	done
+	echo -e ${red}"IMPORTANTE: Se solicitará permisos de root."${end}
+	echo -e 
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
 	read -n 1 -s tecla_confirmacion
@@ -502,10 +512,11 @@ function actualizar_sistema_y_requerimientos() {
 		mostrar_banner
 		listar_configurar_odyssint
 	fi
-	echo -e ${bpurple}"Actualizando sistema..."${end} | tee -a "$log"
-	# echo "sudo apt update && sudo apt upgrade -y" >>"$log" 2>&1
+
 	sudo apt update >>"$log" 2>&1
-	sudo apt upgrade -y >>"$log" 2>&1
+	echo -e ${bpurple}"Actualizando repositorios..."${end} | tee -a "$log"
+	#sudo apt upgrade -y >>"$log" 2>&1
+	#echo -e ${bpurple}"Actualizando sistema..."${end} | tee -a "$log"
 	if [ $? -eq 0 ]; then
 		echo -e "${bgreen}Sistema actualizado correctamente."${end}
 	else
@@ -528,7 +539,6 @@ function actualizar_sistema_y_requerimientos() {
 	read -p "$(echo -e "${byellow}Instalación finalizada, pulsa cualquier tecla para continuar"${end}) " confirmacion
 	mostrar_banner
 	listar_configurar_odyssint
-
 }
 
 # Función para comprobar si el script está actualizado
@@ -589,14 +599,14 @@ function actualizar_y_ejecutar_script() {
 	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
 	read -n 1 -s tecla_confirmacion
 	if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
-		echo -e ${bpurple}"Actualizando script:"${end} | tee -a "$log"
+		echo -e ${bpurple}"Actualizando script..."${end} | tee -a "$log"
 	else
 		mostrar_banner
 		listar_configurar_odyssint
 	fi
 	wget -O "$script_name" "$odyssint_github_url" >>"$log" 2>&1
 	chmod +x "$script_name" >>"$log" 2>&1
-	echo -e ${byellow}"Script actualizado a la versión $script_version_github"${end}
+	echo -e ${bgreen}"Script actualizado a la versión $script_version_github"${end}
 	read -p "$(echo -e "${bgreen}Actualización de script finalizada, pulsa cualquier tecla para volver a ejecutar script"${end}) " confirmacion
 	./"$script_name"
 
@@ -610,15 +620,15 @@ function instalar_herramientas_osint() {
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
 	echo -e
 	# Lista de aplicaciones a instalar
-	aplicacionesOSINT=("theHarvester" "recon-ng" "Spiderfoot" "Maltego")
+	aplicacionesOSINT=("theHarvester" "recon-ng" "Spiderfoot" "Maltego" "ArchiveBox")
 
 	echo -e ${byellow}"Se va instalar las siguientes aplicaciones OSINT:"${end}
 	for app in "${aplicacionesOSINT[@]}"; do
 		echo -e "- ${blue}$app"${end}
 	done
+	echo -e ${red}"IMPORTANTE: Se tiene que haber ejecutado el primer paso para su correcta instalación."${end}
 	echo -e
 	echo -e ${bgreen}"--------------------------------------------------------------------------------------------"${end}
-	echo -e ${red}"IMPORTANTE: Se tiene que haber ejecutado el primer paso para su correcta instalación."${end}
 	echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver."${end}
 	read -n 1 -s tecla_confirmacion
 	if [[ $tecla_confirmacion == "S" || $tecla_confirmacion == "s" ]]; then
@@ -740,6 +750,7 @@ function instalar_maltego() {
 		sudo dpkg -i Maltego.v4.6.0.deb >>"$log" 2>&1
 		sudo apt install -f >>"$log" 2>&1
 		echo -e ${green}"Maltego instalado correctamente."${end} | tee -a "$log"
+		rm -rf Maltego.v4.6.0.deb >>"$log" 2>&1		
 	else
 		echo -e ${green}"Maltego ya está instalado."${end} | tee -a "$log"
 	fi
@@ -930,7 +941,10 @@ function desinstalar_odyssint() {
 
 #Inicio Script
 trap ctrl_c INT
+# Comprueba que el directorio de trabajo existe
 comprobar_directorio
+# Comprueba la versión del script
 comprobar_version
+# Muestra el menú principal
 mostrar_banner
 mostrar_menu_principal
