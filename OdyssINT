@@ -1130,4 +1130,5 @@ comprobar_directorio
 # Comprueba la versión del script
 comprobar_version
 # Muestra el menú principal
+mostrar_banner
 mostrar_menu_principal
