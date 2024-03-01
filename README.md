@@ -1,6 +1,6 @@
 # OdySSINT
 
-[![version-1.0](https://img.shields.io/badge/version-1.3-green)](https://github.com/Datalux/Osintgram/releases/tag/1.3)
+[![version-1.0](https://img.shields.io/badge/version-1.0-green)](https://github.com/Datalux/Osintgram/releases/tag/1.0)
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
 [![Shell](https://img.shields.io/badge/language-shell-red)](https://img.shields.io/badge/language-shell-red)
 
