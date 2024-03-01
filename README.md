@@ -1,4 +1,4 @@
-# OdySSINT
+# OdyssINT
 
 [![version-1.0](https://img.shields.io/badge/version-1.0-green)](https://github.com/javi-ag/OdyssINT/releases/tag/pre-release)
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://github.com/javi-ag/OdyssINT/tree/main?tab=CC0-1.0-1-ov-file#)
