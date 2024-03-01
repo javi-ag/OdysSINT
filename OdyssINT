@@ -695,10 +695,10 @@ function actualizar_y_ejecutar_script() {
 	fi
 	wget -O "$script_name" "$odyssint_github_url" 2>&1 | log
 	chmod +x "$script_name" 2>&1 | log
-	echo -e ${bgreen}"Script actualizado a la versión $script_version_github"${end}
-	read -p "$(echo -e "${bgreen}Actualización de script finalizada, pulsa cualquier tecla para volver a ejecutar script"${end}) " confirmacion
+	echo -e ${bgreen}"Script actualizado a la versión $script_version_github"${end} | tee -a >(log) 2>&1
+	echo -e ${byellow}"Pulsa cualquier tecla para volver a ejecutar script"${end}
+	read -n 1 -r
 	./"$script_name"
-
 }
 
 # Función para instalar todas las herramientas OSINT
