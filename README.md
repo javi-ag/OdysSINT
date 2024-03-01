@@ -1,7 +1,7 @@
 # OdySSINT
 
-[![version-1.0](https://img.shields.io/badge/version-1.0-green)](https://github.com/Datalux/Osintgram/releases/tag/1.0)
-[![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
+[![version-1.0](https://img.shields.io/badge/version-1.0-green)]([https://github.com/Datalux/Osintgram/releases/tag/1.0](https://github.com/javi-ag/OdyssINT/releases/tag/pre-release))
+[![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)]([https://img.shields.io/badge/license-GPLv3-blue](https://github.com/javi-ag/OdyssINT/tree/main?tab=CC0-1.0-1-ov-file#))
 [![Shell](https://img.shields.io/badge/language-shell-red)](https://img.shields.io/badge/language-shell-red)
 
 
