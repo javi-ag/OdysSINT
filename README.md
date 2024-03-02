@@ -1,4 +1,4 @@
-# OdyssINT
+# OdyssINT 
 
 [![version-1.0](https://img.shields.io/badge/version-1.0-green)](https://github.com/javi-ag/OdyssINT/releases/tag/pre-release)
 [![CC0-1.0.1](https://img.shields.io/badge/license-cc0-blue)](https://github.com/javi-ag/OdyssINT/tree/main?tab=CC0-1.0-1-ov-file#)
@@ -9,13 +9,22 @@
 
 OdyssINT es un conjunto de herramientas instaladas en una máquina virtual Linux Ubuntu 22.04.03 aunque su uso no se limita a esta máquina.
 
-# Herramientas OSINT
+# Herramientas OSINT :diving_mask:
+* [Maltego](https://www.maltego.com/): Recopila y visualiza información de diversas fuentes en una representación gráfica, facilitando el análisis de relaciones y patrones en datos para investigaciones de inteligencia y seguridad.
+* [Recong-ng](https://github.com/lanmaster53/recon-ng): Framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente.
 
-# Extensiones
 
-# Marcadores
 
-# Descarga
+# Extensiones :jigsaw:		
+
+# Marcadores :globe_with_meridians:	
+
+# Descarga :arrow_down:
+
+# Instalación :gear:	
   
-# Demostración
+# Demostración :compass:		
 
+# Contacto :incoming_envelope:	
+Para cualquier sugeriencia o duda:
+odyssint@protonmail.com
