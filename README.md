@@ -6,6 +6,14 @@
 
 ![1200px-WATERHOUSE_-_Ulises_y_las_Sirenas_(National_Gallery_of_Victoria,_Melbourne,_1891 _Óleo_sobre_lienzo,_100 6_x_202_cm)](https://github.com/javi-ag/OdyssINT/assets/153739397/b28f54ea-95cf-4b0f-a452-8afa41628b55)
 
+OdyssINT es un completo script de instalación y uso de herramientas que pretende ayudar en la ardua tarea de investigación con OSINT.
+# Caracteristicas OdyssINT
+- Compatible con cualquier distribución con base Debian.
+- Menú intiutivo de uso.
+- Instalación automática desatendida.
+- Actualizable.
+- Marcadores y extensiones compatibles con cualquier sistema operativo.
+
 
 OdyssINT es un conjunto de herramientas instaladas en una máquina virtual Linux Ubuntu 22.04.03 aunque su uso no se limita a esta máquina.
 
@@ -18,6 +26,8 @@ OdyssINT es un conjunto de herramientas instaladas en una máquina virtual Linux
 # Extensiones :jigsaw:		
 
 # Marcadores :globe_with_meridians:	
+
+- **ANÁLISIS DOMINIO / URL:** Dominios Raíz IANA 
 
 # Descarga :arrow_down:
 
