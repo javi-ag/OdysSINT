@@ -10,8 +10,9 @@ OdyssINT es un completo script de instalación y uso de herramientas que pretend
 # Caracteristicas OdyssINT
 - Compatible con cualquier distribución con base Debian.
 - Menú intiutivo de uso.
+- Instalación componente a componente o de toda la solución.
 - Instalación automática desatendida.
-- Actualizable.
+- Script actualizable.
 - Marcadores y extensiones compatibles con cualquier sistema operativo.
 
 
