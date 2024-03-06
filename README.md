@@ -33,19 +33,40 @@ OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux
 # Marcadores :globe_with_meridians:	
 
 - **ANÁLISIS DOMINIO / URL:** Dominios Raíz IANA 
-
-# Descarga :arrow_down:
-
-
-# Instalación :gear:	
-OdysSINT está disponible en dos versiones:
-- Script configurable en cualquier distribución basada en Debian (probado en Debian 12, Ubuntu 22.04.03)
-  Al descargarlo, asegurarnos de que tiene permisos de ejecución
-  ```chmod +x OdysSINT.sh```
-- OVA Ubuntu preconfigurada con Script
-  
+ 
 # Demostración :compass:		
+
+INCLUIR GIF
 
 # Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
 odyssint@protonmail.com
+
+# Instalación :gear:	
+La versión 1 de OdysSINT está disponible en dos versiones:
+- Script configurable en cualquier distribución basada en Debian (probado en Debian 12, Ubuntu 22.04.03)
+  Al descargarlo, asegurarnos de que tiene permisos de ejecución
+  ```chmod +x OdysSINT.sh```
+- OVA preconfigurada con Script funcional en Virtual Box / VMWare Player / etc
+
+# Descargas :arrow_down:
+- OVA:
+  Enlace a repositorio: https://URL.com
+  **Decryption key**: pfsMdmfPZIn9NQQreDsNaA
+  **SHA256sum**: 60BFD883FDDE934994B58A8B03B2169C922921056767CF3D1012A0603EA026D3
+  **Formato**: Ova (VirtualBox)
+  **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
+- Script: desde el propio repositorio
+
+> [!IMPORTANT]
+> Recomiendo la personalización inmediata de la contraseña por una robusta siguiendo las siguientes sugerencias:
+>    - No almacenar las contraseñas en texto plano.
+>    - Una longitud de entre 6 y 10 caracteres.
+>    - Que contenga al menos un carácter en mayúsculas y un carácter numérico.
+>    - No emplear nombres o fechas personales o de familiares
+>    - No emplear contraseñas comunes como 123456 o asdfghjk
+>    - Cambiar la contraseña cada 3 meses.
+   
+> [!WARNING]
+> Recuerda que todas las actividades enmarcadas en el proceso de investigación deben estar dentro del marco legal y jurudico vigente en la localidad donde estes. Es muy importante que
+> conozcas bien este marco juridico para que no incurras en un delito informatico sin saberlo.
