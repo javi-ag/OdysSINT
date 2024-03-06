@@ -40,6 +40,8 @@ OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux
 # Instalación :gear:	
 OdysSINT está disponible en dos versiones:
 - Script configurable en cualquier distribución basada en Debian (probado en Debian 12, Ubuntu 22.04.03)
+  Al descargarlo, asegurarnos de que tiene permisos de ejecución
+  ```chmod +x OdysSINT.sh```
 - OVA Ubuntu preconfigurada con Script
   
 # Demostración :compass:		
