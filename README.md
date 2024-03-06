@@ -27,7 +27,6 @@ OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux
 * [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 350 webs en pocos segundos (CLI).
 * [Photon](https://github.com/s0md3v/Photon): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI). 
 
-
 # Extensiones :jigsaw:		
 
 # Marcadores :globe_with_meridians:	
@@ -38,16 +37,17 @@ OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux
 
 INCLUIR GIF
 
-# Contacto :incoming_envelope:	
-Para cualquier sugeriencia o duda:
-odyssint@protonmail.com
-
 # Instalación :gear:	
-La versión 1 de OdysSINT está disponible en dos versiones:
-- Script configurable en cualquier distribución basada en Debian (probado en Debian 12, Ubuntu 22.04.03)
-  Al descargarlo, asegurarnos de que tiene permisos de ejecución
-  ```chmod +x OdysSINT.sh```
-- OVA preconfigurada con Script funcional en Virtual Box / VMWare Player / etc
+La versión 1 de OdysSINT está disponible en dos formatos:
+- Script configurable: compatible con cualquier distribución basada en Debian (probado en Debian 12, Ubuntu 22.04.03)
+  Al descargarlo, asegurarnos de que tiene permisos de ejecución:
+```bash
+git clone https://github.com/javi-ag/OdysSINT.git
+cd OdysSINT
+chmod +x OdysSINT.sh
+./OdysSINT.sh
+```
+- OVA preconfigurada en Virtual Box / VMWare Player / etc
 
 # Descargas :arrow_down:
 - OVA:
@@ -57,6 +57,10 @@ La versión 1 de OdysSINT está disponible en dos versiones:
   **Formato**: Ova (VirtualBox)
   **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
 - Script: desde el propio repositorio
+
+# Uso :computer:	
+
+PONER CAPTURAS Y USO DE AYUDA
 
 > [!IMPORTANT]
 > Recomiendo la personalización inmediata de la contraseña por una robusta siguiendo las siguientes sugerencias:
@@ -70,3 +74,7 @@ La versión 1 de OdysSINT está disponible en dos versiones:
 > [!WARNING]
 > Recuerda que todas las actividades enmarcadas en el proceso de investigación deben estar dentro del marco legal y jurudico vigente en la localidad donde estes. Es muy importante que
 > conozcas bien este marco juridico para que no incurras en un delito informatico sin saberlo.
+>
+> # Contacto :incoming_envelope:	
+Para cualquier sugeriencia o duda:
+odyssint@protonmail.com
