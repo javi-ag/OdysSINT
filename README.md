@@ -25,8 +25,8 @@ OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux
 * [Spiderfoot](https://github.com/lanmaster53/recon-ng): herramienta de recopilación de información online. Escanea IPs, dominios y nombres de usuario para encontrar información relevante (Web).
 * [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox): archivado local de páginas webs para su visualización offline (Web\Add-on).
 * [Zotero](https://www.zotero.org/): gestor de referencias para investigaciones que permite organizar y compartir citas (App\Add-on).
-* [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 350 webs en pocos segundos (CLI.)
-* [Photon](): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos 
+* [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 350 webs en pocos segundos (CLI).
+* [Photon](https://github.com/s0md3v/Photon): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI). 
 
 
 # Extensiones :jigsaw:		
