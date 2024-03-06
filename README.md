@@ -74,7 +74,7 @@ PONER CAPTURAS Y USO DE AYUDA
 > [!WARNING]
 > Recuerda que todas las actividades enmarcadas en el proceso de investigación deben estar dentro del marco legal y jurudico vigente en la localidad donde estes. Es muy importante que
 > conozcas bien este marco juridico para que no incurras en un delito informatico sin saberlo.
->
-> # Contacto :incoming_envelope:	
+
+# Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
 odyssint@protonmail.com
