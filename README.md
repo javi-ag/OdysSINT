@@ -6,15 +6,14 @@
 
 ![1200px-WATERHOUSE_-_Ulises_y_las_Sirenas_(National_Gallery_of_Victoria,_Melbourne,_1891 _Óleo_sobre_lienzo,_100 6_x_202_cm)](https://github.com/javi-ag/OdysSINT/assets/153739397/b28f54ea-95cf-4b0f-a452-8afa41628b55)
 
-OdysSINT es un completo script de instalación y uso de herramientas que pretende ayudar en la ardua tarea de investigación con OSINT.
+OdysSINT es un completo script de instalación y uso de herramientas que pretende ayudar en la ardua tarea de preparar un entorno adecuado para la investigación OSINT.
 # Caracteristicas OdysSINT
 - Compatible con cualquier distribución con base Debian.
 - Menú intiutivo de uso.
 - Instalación componente a componente o de toda la solución.
 - Instalación automática desatendida.
-- Script actualizable.
-- Marcadores y extensiones compatibles con cualquier sistema operativo.
-
+- Notificación de actualizaciones y posibilidad de actualizaar desde el propio script.
+- Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox.
 
 OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux Ubuntu 22.04.03 aunque su uso no se limita a esta máquina.
 
@@ -37,10 +36,14 @@ OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux
 
 # Descarga :arrow_down:
 
+
 # Instalación :gear:	
+OdysSINT está disponible en dos versiones:
+- Script configurable en cualquier distribución basada en Debian (probado en Debian 12, Ubuntu 22.04.03)
+- OVA Ubuntu preconfigurada con Script
   
 # Demostración :compass:		
 
 # Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
-OdysSINT@protonmail.com
+odyssint@protonmail.com
