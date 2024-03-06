@@ -18,10 +18,15 @@ OdysSINT es un completo script de instalación y uso de herramientas que pretend
 
 OdysSINT es un conjunto de herramientas instaladas en una máquina virtual Linux Ubuntu 22.04.03 aunque su uso no se limita a esta máquina.
 
-# Herramientas OSINT :diving_mask:
-* [Maltego](https://www.maltego.com/): Recopila y visualiza información de diversas fuentes en una representación gráfica, facilitando el análisis de relaciones y patrones en datos para investigaciones de inteligencia y seguridad.
-* [Recong-ng](https://github.com/lanmaster53/recon-ng): Framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente.
-
+# Herramientas OSINT :diving_mask: 
+* [theHarvester](https://github.com/laramies/theHarvester): obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
+* [Maltego](https://www.maltego.com/): extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
+* [Recon-ng](https://github.com/lanmaster53/recon-ng): framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente (CLI\Web).
+* [Spiderfoot](https://github.com/lanmaster53/recon-ng): herramienta de recopilación de información online. Escanea IPs, dominios y nombres de usuario para encontrar información relevante (Web).
+* [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox): archivado local de páginas webs para su visualización offline (Web\Add-on).
+* [Zotero](https://www.zotero.org/): gestor de referencias para investigaciones que permite organizar y compartir citas (App\Add-on).
+* [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 350 webs en pocos segundos (CLI.)
+* [Photon](): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos 
 
 
 # Extensiones :jigsaw:		
