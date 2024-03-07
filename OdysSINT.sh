@@ -82,7 +82,6 @@ declare odyssinthome=$HOME/odyssint
 #Nombre fichero script
 declare nombre_script=$(basename "$0")
 # Nombre del archivo de log
-#declare logfile="$odyssinthome/logs/$(date +'%Y-%m-%d-%H-%M')-OdysSINT.log"
 declare logfile="$odyssinthome/logs/$(date +'%Y-%m-%d')-OdysSINT.log"
 
 ###### FUNCIONES ######
@@ -91,28 +90,26 @@ declare logfile="$odyssinthome/logs/$(date +'%Y-%m-%d')-OdysSINT.log"
 function mostrar_banner() {
 	# Limpia la pantalla
 	clear
-	echo -e ${bred}"                                                                                      "
-	echo -e "           ███████        █████                     █████████  █████ ██████   █████ ███████████   "
-	echo -e "         ███░░░░░███     ░░███                     ███░░░░░███░░███ ░░██████ ░░███ ░█░░░███░░░█   "
-	echo -e "        ███     ░░███  ███████  █████ ████  █████ ░███    ░░░  ░███  ░███░███ ░███ ░   ░███  ░    "
-	echo -e "       ░███      ░███ ███░░███ ░░███ ░███  ███░░  ░░█████████  ░███  ░███░░███░███     ░███       "
-	echo -e "       ░███      ░███░███ ░███  ░███ ░███ ░░█████  ░░░░░░░░███ ░███  ░███ ░░██████     ░███       "
-	echo -e "       ░░███     ███ ░███ ░███  ░███ ░███  ░░░░███ ███    ░███ ░███  ░███  ░░█████     ░███       "
-	echo -e "        ░░░███████░  ░░████████ ░░███████  ██████ ░░█████████  █████ █████  ░░█████    █████      "
-	echo -e "          ░░░░░░░     ░░░░░░░░   ░░░░░███ ░░░░░░   ░░░░░░░░░  ░░░░░ ░░░░░    ░░░░░    ░░░░░       "
-	echo -e "                                 ███ ░███                                                         "
-	echo -e "                                ░░██████                                                          "
-	echo -e "                                 ░░░░░░                                                           "
-	echo -e
-	echo -e "  \t\t\t    Script de instalación y uso de herramientas OSINT"${end}
-	echo -e "  \t\t"
-	echo -e "  \t\t\t\t  ${bgreen}Master Ciberseguridad 12ª Edición "${end}
-	echo -e "  \t\t\t\t  Autor: ${bblue}Javier Aguilar"${end}
-	echo -e "  \t\t\t\t  Tutor: ${cyan}Juanjo Salvador"${end}
-	echo -e "  \t\t\t\t  Correo: ${byellow}odyssint@protonmail.com"${end}
+	echo -e ${bblack}"                                                                      "
+	echo -e "       ██████      ████                  ██████  ████ ████   ████ ██████████ "
+	echo -e "      ██░░░░██    ░░██                  ██░░░░██░░██ ░░████ ░░██ ░█░░░██░░░█ "
+	echo -e "     ██    ░░██  █████  ████ ███  ████ ░██   ░░  ░██  ░██░██ ░██ ░   ░██  ░  "
+	echo -e "    ░██     ░██ ██░░██ ░░██ ░██  ██░░  ░░██████  ░██  ░██░░██░██     ░██     "
+	echo -e "    ░██     ░██░██ ░██  ░██ ░██ ░░████  ░░░░░░██ ░██  ░██ ░░████     ░██     "
+	echo -e "    ░░██    ██ ░██ ░██  ░██ ░██  ░░░███ ██   ░██ ░██  ░██  ░░███     ░██     "
+	echo -e "     ░░██████░ ░░██████ ░░█████  █████ ░░██████  ████ ████  ░░███    ████    "
+	echo -e "      ░░░░░░    ░░░░░░   ░░░░██ ░░░░░   ░░░░░░  ░░░░ ░░░░░  ░░░░    ░░░░     "
+	echo -e "                         ██ ░██                                              "
+	echo -e "                        ░░████                                               "
+	echo -e "                          ░░░                                                "	
+	echo -e "  \t    Script de instalación y uso de herramientas OSINT"${end}
+	echo -e "  \t\t  ${bgreen}Master Ciberseguridad 12ª Edición "${end}
+	echo -e "  \t\t  Autor: ${bblue}Javier Aguilar"${end}
+	echo -e "  \t\t  Tutor: ${cyan}Juanjo Salvador"${end}
+	echo -e "  \t\t  Correo: ${byellow}odyssint@protonmail.com"${end}
 	# Muestra la versión actual del script y si hay actualizaciones o errores.
-	echo -e "  \t\t\t\t  Versión ${blue}$script_version${end}${warning} $script_version_update"${end}
-	echo -e "  \t\t\t\t  Última modificación: ${blue}15-03-2024"${end}
+	echo -e "  \t\t  Versión ${blue}$script_version${end}${warning} $script_version_update"${end}
+	echo -e "  \t\t  Última modificación: ${blue}15-03-2024"${end}
 	echo -e
 	#echo -e "Colores:"
 	#echo -e "Normal ${green}green,${red}red,${blue}blue,${yellow}yellow,${purple}purple,${cyan}cyan,${white}white,${black}black"${end}
@@ -124,44 +121,20 @@ function mostrar_banner() {
 	#echo -e "Especiales: ${warning}alerta"${end}
 }
 
-###### IDEAS #######
-
-function helpPanel() {
-	echo -e "${cyan}\n[?] Uso: ./ns21Osint.sh${end}"
-	echo -e "\n\t${purple}${end}${yellow} Modo${end}"
-	echo -e "\t\t${red}-a${end} -> Actualizar el sistema e instala requerimientos."
-	echo -e "\t\t${red}-i${end} -> Para instalar las herramientas OSINT"
-	echo -e "\t\t${red}-e${end} -> Para instalar las extensiones Firefox"
-	echo -e "\t\t${red}-m${end} -> Para instalar los marcadores Firefox"
-	echo -e "\t\t${red}-u${end} -> Para actualizar el script"
-	echo -e "\t\t${red}-h${end} -> Mostrar este panel de ayuda"
-	echo -e "\n\t${purple}${end}${yellow} Ejemplo de uso:${end}"
-	echo -e "\n\t${purple}./ns21Osint.sh -i ${end}"
-	echo -e "\n\t\t${yellow} Instala las herramientas OSINT${end}\n"
-	exit 0
-}
-
-# PERSONALIZAR
-# Eliminar juegos gnome
-## apt purge --autoremove gnome-games
-## sudo apt purge iagno lightsoff four-in-a-row gnome-robots pegsolitaire gnome-2048 hitori gnome-klotski gnome-mines gnome-mahjongg gnome-sudoku quadrapassel swell-foop gnome-tetravex gnome-taquin aisleriot gnome-chess five-or-more gnome-nibbles tali ; sudo apt autoremove
-
-###### IDEAS #######
-
 # Función para mostrar el menú principal
 function mostrar_menu_principal() {
 
-	echo -e ${bpurple}"------------------------------------------------------------------------------------------------------"${end}${opurple}
-	echo -e ${bwhite}"                                        MENÚ PRINCIPAL                                                "${end} | tee -a >(log) 2>&1
-	echo -e ${bpurple}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bpurple}"--------------------------------------------------------------------------------"${end}${opurple}
+	echo -e ${bwhite}"                                  MENÚ PRINCIPAL                                "${end} | tee -a >(log) 2>&1
+	echo -e ${bpurple}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e ${bblue}" 1. Herramientas OSINT"${end}
-	echo -e ${bpurple}" 2. Marcadores y extensiones Firefox"${end}
-	echo -e ${bcyan}" 3. Herramientas complementarias"${end}
-	echo -e ${bgreen}" 4. Configurar OdysSINT"${end}
+	echo -e ${bblue}" 1) Herramientas OSINT"${end}
+	echo -e ${bpurple}" 2) Marcadores y extensiones Firefox"${end}
+	echo -e ${bcyan}" 3) Herramientas complementarias"${end}
+	echo -e ${bgreen}" 4) Configurar OdysSINT"${end}
 	echo -e
-	echo -e ${byellow}" s. Salir del script"${end}
-	echo -e ${bpurple}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${byellow}" s) Salir del script"${end}
+	echo -e ${bpurple}"--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${bblack}" Selecciona una opción: "${end})" -n 1 -r menu_principal
 	echo -e
 	case $menu_principal in
@@ -169,11 +142,11 @@ function mostrar_menu_principal() {
 		mostrar_banner
 		listar_herramientas_osint
 		;;
-		
+
 	2) #Marcadores y extensiones en Firefox
 		# Verificar si Firefox está instalado
 		if [ ! -d "$HOME/.mozilla/firefox/firefoxprofile.ulysses" ]; then
-		instalar "Perfil_Firefox"
+			instalar "Perfil_Firefox"
 		fi
 		# Deshabilitar las advertencias de GTK
 		export GTK_MODULES=
@@ -193,29 +166,23 @@ function mostrar_menu_principal() {
 		continuar
 		mostrar_menu_principal
 		;;
-		
+
 	3) #Herramientas complementarias
 		mostrar_banner
 		listar_herramientas_complementarias
 		;;
-		
+
 	4) #Configurar OdysSINT
 		mostrar_banner
 		listar_configurar_odyssint
 		;;
-		
-	s)
+
+	S | s)
 		salir_del_script
 		mostrar_banner
 		mostrar_menu_principal
 		;;
-		
-	S)
-		salir_del_script
-		mostrar_banner
-		mostrar_menu_principal
-		;;
-		
+
 	*)
 		echo -e "${bred}Opción inválida"${end}
 		continuar
@@ -227,39 +194,35 @@ function mostrar_menu_principal() {
 
 # Función para mostrar el menú de herramientas OSINT
 function listar_herramientas_osint() {
-
-	echo -e ${bblue}"------------------------------------------------------------------------------------------------------"${end}${oblue}
-	echo -e ${bwhite}"                                         HERRAMIENTAS OSINT                                           "${end} | tee -a >(log) 2>&1
-	echo -e ${bblue}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bblue}"--------------------------------------------------------------------------------"${end}${oblue}
+	echo -e ${bwhite}"                              HERRAMIENTAS OSINT                                "${end} | tee -a >(log) 2>&1
+	echo -e ${bblue}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e ${bblue}"  RECOLECCIÓN DE INFORMACIÓN Y RECONOCIMIENTO"${end}
-	echo -e ${bblue}" 1. The Harvester:${blue} obtiene emails, IPs y subdominios de diferentes fuentes online.(CLI)"${end}
-	echo -e ${bblue}" 2. Recon-ng:${blue} framework de automatización para tareas OSINT que ejecuta diferentes módulos"${end}
-	echo -e ${blue} "    para recopilar información de forma eficiente (CLI/Web)."${end}
-	echo -e ${bblue}" 3. Spiderfoot:${blue} herramienta que automatiza la recolección de información sobre activos"${end}
-	echo -e ${blue} "    en línea desde multiples fuentes, identificando riesgos de seguridad e inteligencia (Web)."${end}
-	echo -e ${bblue}" 4. Maltego:${blue} extrae y analiza datos de múltiples fuentes mediante transformadas representándolos"${end}
-	echo -e ${blue} "    de forma visual y permitiendo encontrar relaciones y patrones (App)."${end}
-	echo -e ${bblue}" 5. Nexfil:${blue}encuentra nombres de usuarios en más de 350 webs en pocos segundos (CLI)."${end}
-	echo -e ${bblue}" 6. Photon:${blue} rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI)."${end}	
-	echo -e
+	echo -e ${bblue}"  RECOLECCIÓN DE INFORMACIÓN Y RECONOCIMIENTO"
+	echo -e ${bblue}" 1) The Harvester:${blue}obtiene emails, IPs y subdominios de diferentes fuentes.(CLI)"
+	echo -e ${bblue}" 2) Recon-ng:${blue}framework de automatización para tareas OSINT que ejecuta "
+	echo -e ${blue}"  diferentes módulos para recopilar información de forma eficiente (CLI/Web)."
+	echo -e ${bblue}" 3) Spiderfoot:${blue}automatiza la recolección de información sobre activos"	
+	echo -e ${blue} " en línea desde multiples fuentes, identificando riesgos e inteligencia (Web)."
+	echo -e ${bblue}" 4) Maltego:${blue}extrae y analiza datos mediante transformadas representándolos"
+	echo -e ${blue} " de forma visual y permitiendo encontrar relaciones y patrones (App)."
+	echo -e ${bblue}" 5) Nexfil:${blue}encuentra nombres de usuarios en más de 350 webs en se1gundos (CLI)."
+	echo -e ${bblue}" 6) Photon:${blue}rastrea rápidamente webs y recopila URLs, archivos y metadatos (CLI)."
 	echo -e ${bcyan}"  OTROS"${end}
-	echo -e ${bcyan}" 7. ArchiveBox:${cyan} archivado local de páginas webs para su visualización offline."${end}
-	echo -e ${cyan} "    Instalar extensión de Firefox desde configuación de OdysSINT (Web/Add-on)."${end}
-	echo -e ${bcyan}" 8. Zotero:${cyan} gestor de referencias para investigaciones que permite organizar y compartir citas"${end}
-	echo -e ${cyan} "    Instalar extensión de Firefox desde configuación de OdysSINT (App/Add-on)."${end}
-		
-	echo -e ${bcyan}" X. osint-suite-tools???"${end}
+	echo -e ${bcyan}" 7) ArchiveBox:${cyan}archivado local de páginas webs para su visualización offline."${end}
+	echo -e ${cyan} "  Instalar extensión de Firefox desde configuación de OdysSINT (Web/Add-on)."${end}
+	echo -e ${bcyan}" 8) Zotero:${cyan}gestor de referencias que ayuda en investigaciones organizando citas"${end}
+	echo -e ${cyan} "  Instalar extensión de Firefox desde configuación de OdysSINT (App/Add-on)."${end}
 	echo -e
-	echo -e ${byellow}" 0. Volver a menú principal"${end}
-	echo -e ${byellow}" s. Salir del script"${end}
-	echo -e ${bblue}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${byellow}" 0) Volver a menú principal"${end}
+	echo -e ${byellow}" s) Salir del script"${end}
+	echo -e ${bblue}"--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${bblack}" Selecciona una opción: "${end})" -n 1 -r herramientas_osint
 	echo -e
 	case "$herramientas_osint" in
 
-	1) #theHarvester: instala la herramienta si no está presente, verifica la conexión a internet, requerimientos y comprueba la correcta isntalación.	
-		if [ ! -f "$odyssinthome/theharvester/theHarvester.py" ]; then 
+	1) #theHarvester: instala la herramienta si no está presente, verifica la conexión a internet, requerimientos y comprueba la correcta isntalación.
+		if [ ! -f "$odyssinthome/theharvester/theHarvester.py" ]; then
 			instalar "theHarvester"
 		fi
 		#Compruebo donde se ha instalado la activación del entorno virtual e inicializo aplicación .Compatibilidad con Debian
@@ -366,7 +329,7 @@ function listar_herramientas_osint() {
 		echo '-----------------------------------'
 		echo '|  MODO CLI: python3 photon.py    |' 
 		echo '|  AYUDA:    python3 photon.py -h |'
-		echo ------------------------------------; exec $SHELL" 
+		echo ------------------------------------; exec $SHELL"
 		echo -e ${bgreen}"Photon iniciado en una nueva ventana."${end} | tee -a >(log) 2>&1
 		continuar
 		listar_herramientas_osint
@@ -399,15 +362,10 @@ function listar_herramientas_osint() {
 		mostrar_banner
 		mostrar_menu_principal
 		;;
-	s)
+	S | s)
 		salir_del_script
 		mostrar_banner
-		listar_herramientas_osint
-		;;
-	S)
-		salir_del_script
-		mostrar_banner
-		listar_herramientas_osint
+		mostrar_menu_principal
 		;;
 	*)
 		echo -e "${bred}Opción inválida"${end}
@@ -421,19 +379,17 @@ function listar_herramientas_osint() {
 # Función para mostrar el menú de herramientas Complementarias
 function listar_herramientas_complementarias() {
 
-	echo -e ${bcyan}  "------------------------------------------------------------------------------------------------------"${end}${ocyan}
-	echo -e ${bwhite} "                                         HERRAMIENTAS COMPLEMENTARIAS                                 "${end} | tee -a >(log) 2>&1
-	echo -e ${bcyan}  "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bcyan} "-------------------------------------------------------------------------------"${end}${ocyan}
+	echo -e ${bwhite}"                          HERRAMIENTAS COMPLEMENTARIAS                          "${end} | tee -a >(log) 2>&1
+	echo -e ${bcyan} "-------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e ${bcyan}  " RECOLECCIÓN DE INFORMACIÓN Y RECONOCIMIENTO"${end}
-	echo -e ${bcyan}  "1. Zenamp"
-	echo -e ${bcyan}  "    Descripción"${end}
-	echo -e ${bcyan}  "2. Tor Browser"
-	echo -e ${bcyan}  "    Descripción"${end}
+	echo -e ${bcyan} " RECOLECCIÓN DE INFORMACIÓN Y RECONOCIMIENTO"${end}
+	echo -e ${bcyan} "1) Zenamp:${cyan}interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades"${end}
+	echo -e ${bcyan} "2) Tor Browser:${cyan}navegador basado en Firefox para acceder a la red Tor."${end}
 	echo -e
-	echo -e ${byellow}" 0. Volver a menú principal"${end}
-	echo -e ${byellow}" s. Salir del script"${end}
-	echo -e ${bblue}  "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${byellow}" 0) Volver a menú principal"${end}
+	echo -e ${byellow}" s) Salir del script"${end}
+	echo -e ${bcyan} "-------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${bblack}" Selecciona una opción: "${end})" -n 1 -r herramientas_complementarias
 	echo -e
 	case "$herramientas_complementarias" in
@@ -464,11 +420,10 @@ function listar_herramientas_complementarias() {
 		mostrar_banner
 		mostrar_menu_principal
 		;;
-	s)
+	S | s)
 		salir_del_script
-		;;
-	S)
-		salir_del_script
+		mostrar_banner
+		mostrar_menu_principal
 		;;
 	*)
 		echo -e "${bred}Opción inválida"${end}
@@ -481,20 +436,20 @@ function listar_herramientas_complementarias() {
 
 # Función para mostrar el menú de configuración de OdysSINT
 function listar_configurar_odyssint() {
-	echo -e ${bgreen} "------------------------------------------------------------------------------------------------------"${end}${ogreen}
-	echo -e ${bwhite} "                                      CONFIGURACIÓN OdysSINT                                          "${end} | tee -a >(log) 2>&1
-	echo -e ${bgreen} "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen} "-------------------------------------------------------------------------------"${end}${ogreen}
+	echo -e ${bwhite} "                         CONFIGURACIÓN OdysSINT                                "${end} | tee -a >(log) 2>&1
+	echo -e ${bgreen} "-------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e ${green}  "1. Actualizar sistema, instalar requerimientos y todas las herramientas OSINT de OdysSINT"${end}
-	echo -e ${bgreen} "2. Configurar Firefox, e instalar extensiones y marcadores de OdysSINT"${end}
-	echo -e ${green}  "3. Instalar o actualizar todas las herramientas complementarias"${end}
-	echo -e ${bgreen} "4. Actualizar script desde GitHub y volver a ejecutar"${end}
-	echo -e ${green}  "5. Abrir logs OdysSINT" ${end}
-	echo -e ${bred}   "6. Desinstalar todo y limpiar instalación de OdysSINT" ${end}
+	echo -e ${green} "1) Actualizar sistema, instalar requerimientos y todas las herramientas OSINT"${end}
+	echo -e ${bgreen}" 2) Configurar extensiones y marcadores de OdysSINT en Firefox"${end}
+	echo -e ${green} "3) Instalar o actualizar todas las herramientas complementarias"${end}
+	echo -e ${bgreen}" 4) Actualizar script desde GitHub y reinicar ejecución"${end}
+	echo -e ${green} "5) Abrir log OdysSINT" ${end}
+	echo -e ${bred}  "6) Desinstalar todo y limpiar datos de OdysSINT" ${end}
 	echo -e
-	echo -e ${byellow}" 0. Volver a menú principal"${end}
-	echo -e ${byellow}" s. Salir del script"${end}
-	echo -e ${bgreen} "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${byellow}" 0)Volver a menú principal"${end}
+	echo -e ${byellow}" s)Salir del script"${end}
+	echo -e ${bgreen} "--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${bblack}" Selecciona una opción: "${end})" -n 1 -r configurar_odyssint
 
 	case "$configurar_odyssint" in
@@ -532,15 +487,10 @@ function listar_configurar_odyssint() {
 		mostrar_banner
 		mostrar_menu_principal
 		;;
-	s)
+	S | s)
 		salir_del_script
 		mostrar_banner
-		listar_configurar_odyssint
-		;;
-	S)
-		salir_del_script
-		mostrar_banner
-		listar_configurar_odyssint
+		mostrar_menu_principal
 		;;
 	*)
 		echo -e
@@ -555,17 +505,17 @@ function listar_configurar_odyssint() {
 # Función para actualizar el sistema e instalar requerimientos
 function actualizar_sistema_y_requerimientos() {
 
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}${ogreen}
-	echo -e ${bwhite}"                           CONFIGURACIÓN OdysSINT > SISTEMA Y REQUERIMIENTOS                          "${end} | tee -a >(log) 2>&1
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}${ogreen}
+	echo -e ${bwhite}"               CONFIGURACIÓN OdysSINT > SISTEMA Y REQUERIMIENTOS                "${end} | tee -a >(log) 2>&1
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e ${byellow}" Se va a actualizar el sistema e instalar las siguientes aplicaciones requeridas:"${end} | tee -a >(log) 2>&1
+	echo -e ${byellow}" Se va a actualizar el sistema e instalar estas aplicaciones requeridas:"${end} | tee -a >(log) 2>&1
 	for app in "${requerimientos[@]}"; do
 		echo -e " - ${blue}$app"${end} | tee -a >(log) 2>&1
 	done
 	echo -e
-	echo -e ${red}   "IMPORTANTE: Se solicitará permisos de root."${end}
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${red} "IMPORTANTE: Se solicitará permisos de root."${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
@@ -574,7 +524,7 @@ function actualizar_sistema_y_requerimientos() {
 		mostrar_banner
 		listar_configurar_odyssint
 	fi
-	
+
 	echo -e ${bpurple}"Resolviendo dependencias..."${end} | tee -a >(log) 2>&1
 	echo "--- COMANDO: apt --fix-broken install" | log
 	sudo apt --fix-broken install -y 2>&1 | log
@@ -620,15 +570,15 @@ function actualizar_sistema_y_requerimientos() {
 # Función para instalar todas las herramientas OSINT
 function instalar_herramientas_osint() {
 
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}${ogreen}
-	echo -e ${bwhite}"                        CONFIGURACIóN OdysSINT > INSTALAR HERRAMIENTAS OSINT                          "${end} | tee -a >(log) 2>&1
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}${ogreen}
+	echo -e ${bwhite}"               CONFIGURACIÓN OdysSINT > INSTALAR HERRAMIENTAS OSINT             "${end} | tee -a >(log) 2>&1
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e ${byellow}" Se va instalar las siguientes aplicaciones OSINT:"${end} | tee -a >(log) 2>&1
-	for app in "${aplicacionesOSINT[@]}"; do 
+	echo -e ${byellow}" Se van a instalar las siguientes aplicaciones OSINT:"${end} | tee -a >(log) 2>&1
+	for app in "${aplicacionesOSINT[@]}"; do
 		echo -e " - ${blue}$app"${end} | tee -a >(log) 2>&1
 	done
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
@@ -671,7 +621,7 @@ function instalar_theharvester() {
 		echo "--- COMANDO: git clone https://github.com/laramies/theHarvester.git $odyssinthome/theharvester" | log
 		git clone https://github.com/laramies/theHarvester.git $odyssinthome/theharvester 2>&1 | log
 		#Montar entorno virtual
-		configurar_virtualenv  "theharvester"
+		configurar_virtualenv "theharvester"
 		# Instalar TheHarvester
 		echo -e ${bpurple}"Instalando theHarvester..."${end} | tee -a >(log) 2>&1
 		echo "--- COMANDO: python3 -m pip install -r requirements/dev.txt" | log
@@ -785,7 +735,7 @@ function instalar_archivebox() {
 		echo "--- COMANDO: playwright install --with-deps chromium" | log
 		playwright install --with-deps chromium 2>&1 | log
 		echo -e ${bpurple}"Inicializando Archivebox..."${end} | tee -a >(log) 2>&1
-		echo -e ${bred}"IMPORTANTE: No olvidar usuario y contraseña, necesario para administrar entorno..."${end} | tee -a >(log) 2>&1
+		echo -e ${bred}"IMPORTANTE: No olvide el usuario y contraseña, necesario para administrar entorno"${end} | tee -a >(log) 2>&1
 		echo "--- COMANDO: archivebox init --setup | tee -a >(log)" | log
 		archivebox init --setup
 		wait $!
@@ -882,9 +832,9 @@ function instalar_nexfil() {
 # Función para instalar las herramientas complementarias
 function instalar_herramientas_complementarias() {
 
-	echo -e ${bgreen} "------------------------------------------------------------------------------------------------------"${end}${ogreen}
-	echo -e ${bwhite} "                     CONFIGURACIóN OdysSINT > INSTALAR HERRAMIENTAS COMPLEMENTARIAS                   "${end} | tee -a >(log) 2>&1
-	echo -e ${bgreen} "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen} "--------------------------------------------------------------------------------"${end}${ogreen}
+	echo -e ${bwhite} "        CONFIGURACIóN OdysSINT > INSTALAR HERRAMIENTAS COMPLEMENTARIAS          "${end} | tee -a >(log) 2>&1
+	echo -e ${bgreen} "--------------------------------------------------------------------------------"${end}
 	echo -e
 	# Lista de aplicaciones complementarias a
 
@@ -893,8 +843,8 @@ function instalar_herramientas_complementarias() {
 		echo -e "- ${blue}$app"${end} | tee -a >(log) 2>&1
 	done
 	echo -e
-	echo -e ${red}    " IMPORTANTE: Se va a solicitar permiso de root."${end}
-	echo -e ${bgreen} "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${red} " IMPORTANTE: Se va a solicitar permiso de root."${end}
+	echo -e ${bgreen} "--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
@@ -988,14 +938,16 @@ function instalar_tor() {
 # Función para configurar Firefox
 function configurar_firefox() {
 
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}${ogreen}
-	echo -e ${bwhite}"                            CONFIGURACIóN OdysSINT > CONFIGURAR FIREFOX                               "${end} | tee -a >(log) 2>&1
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}${ogreen}
+	echo -e ${bwhite}"               CONFIGURACIóN OdysSINT > CONFIGURAR FIREFOX                      "${end} | tee -a >(log) 2>&1
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	
-	echo -e ${byellow}" Se va a configurar un nuevo perfil en firefox con las extensiones y los marcadores de OdysSINT."${end} | tee -a >(log) 2>&1
+
+	echo -e ${byellow}" Se va a configurar un nuevo perfil en firefox con nombre Ulysses"
+	echo -e ${byellow}" que contiene las extensiones y los marcadores OdysSINT."${end} | tee -a >(log) 2>&1
+	echo -e ${byellow}" Tras su instalación lanzar desde el menú principal."${end} | tee -a >(log) 2>&1
 	echo -e
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
@@ -1011,65 +963,65 @@ function configurar_firefox() {
 
 # Función para crear nuevo perfil en Firefox con extensiones y marcadores.
 function instalar_perfil_firefox() {
-    # Verificar si Firefox está instalado
-    if ! command -v firefox &>/dev/null; then
-        comprobar_requerimientos
-    fi
+	# Verificar si Firefox está instalado
+	if ! command -v firefox &>/dev/null; then
+		comprobar_requerimientos
+	fi
 
-    # URL del archivo tar.bz2
-    url="https://github.com/javi-ag/OdysSINT/raw/main/firefoxprofile.ulysses.tar.xz"
+	# URL del archivo tar.bz2
+	url="https://github.com/javi-ag/OdysSINT/raw/main/firefoxprofile.ulysses.tar.xz"
 
-    # Directorio de destino
-    destino="$HOME/.mozilla/firefox/"
+	# Directorio de destino
+	destino="$HOME/.mozilla/firefox/"
 
-    # Descargar el archivo tar.bz2
-    echo -e "${bpurple}Descargando el perfil Firefox del github de OdysSINT...${end}" | tee -a >(log) 2>&1
-    #if wget -q --show-progress -O firefoxprofile.ulysses.tar.xz "$url"; then
-    #    echo -e "${bgreen}Descarga completa.${end}" | tee -a >(log) 2>&1
-    #else
-    #    echo -e "${bred}Error al descargar el archivo.${end}" | tee -a >(log) 2>&1
-    #    return 1
-    #fi
+	# Descargar el archivo tar.bz2
+	echo -e "${bpurple}Descargando el perfil Firefox del github de OdysSINT...${end}" | tee -a >(log) 2>&1
+	#if wget -q --show-progress -O firefoxprofile.ulysses.tar.xz "$url"; then
+	#    echo -e "${bgreen}Descarga completa.${end}" | tee -a >(log) 2>&1
+	#else
+	#    echo -e "${bred}Error al descargar el archivo.${end}" | tee -a >(log) 2>&1
+	#    return 1
+	#fi
 
-    # Extraer el archivo tar.bz2 sobrescribiendo la carpeta si existe
-    echo -e "${bpurple}Extrayendo el archivo...${end}" | tee -a >(log) 2>&1
+	# Extraer el archivo tar.bz2 sobrescribiendo la carpeta si existe
+	echo -e "${bpurple}Extrayendo el archivo...${end}" | tee -a >(log) 2>&1
 	echo "--- COMANDO: tar -xjf $odyssinthome/.mozilla/firefox/firefoxprofile.ulysses.tar.xz -C $destino --overwrite" | log
-    tar -xJf $odyssinthome/firefox/firefoxprofile.ulysses.tar.xz -C "$destino" --overwrite
+	tar -xJf $odyssinthome/firefox/firefoxprofile.ulysses.tar.xz -C "$destino" --overwrite
 	if [ ! -f "$HOME/.mozilla/firefox/firefoxprofile.ulysses.tar.xz" ]; then
-        echo -e "${bgreen}Extracción completa.${end}" | tee -a >(log) 2>&1
-    else
-        echo -e "${bred}Error al extraer el archivo.${end}" | tee -a >(log) 2>&1
-        return 1
-    fi
+		echo -e "${bgreen}Extracción completa.${end}" | tee -a >(log) 2>&1
+	else
+		echo -e "${bred}Error al extraer el archivo.${end}" | tee -a >(log) 2>&1
+		return 1
+	fi
 
-    # Realizar un backup del archivo profiles.ini
-    echo "--- COMANDO: cp $destino/profiles.ini $destino/profiles.ini_backup" | log
+	# Realizar un backup del archivo profiles.ini
+	echo "--- COMANDO: cp $destino/profiles.ini $destino/profiles.ini_backup" | log
 	if cp "$destino/profiles.ini" "$destino/profiles.ini_backup"; then
-        echo -e "${bgreen}Backup profiles.ini realizado.${end}" | tee -a >(log) 2>&1
+		echo -e "${bgreen}Backup profiles.ini realizado.${end}" | tee -a >(log) 2>&1
 		nuevo_perfil="[Profile2]\nName=Ulysses\nIsRelative=1\nPath=firefoxprofile.ulysses\nDefault=1\n"
-		echo -e "$nuevo_perfil" >> "$destino/profiles.ini"
+		echo -e "$nuevo_perfil" >>"$destino/profiles.ini"
 		echo -e "${bgreen}Perfil de firefox agregado.${end}" | tee -a >(log) 2>&1
-    else
-        echo -e "${bred}Error al realizar el backup.${end}" | tee -a >(log) 2>&1
-        return 1
-    fi
-    echo -e "${bpurple}Firefox se ha configurado correctamente.${end}" | tee -a >(log) 2>&1
+	else
+		echo -e "${bred}Error al realizar el backup.${end}" | tee -a >(log) 2>&1
+		return 1
+	fi
+	echo -e "${bpurple}Firefox se ha configurado correctamente.${end}" | tee -a >(log) 2>&1
 	continuar
 }
 
 # Función para actualizar el script desde GitHub y volver a ejecutarlo
 function actualizar_y_ejecutar_script() {
 
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}${ogreen}
-	echo -e ${bwhite}"                           CONFIGURACIÓN OdysSINT > ACTUALIZAR SCRIPT                                 "${end} | tee -a >(log) 2>&1
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}${ogreen}
+	echo -e ${bwhite}"               CONFIGURACIÓN OdysSINT > ACTUALIZAR SCRIPT                       "${end} | tee -a >(log) 2>&1
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	echo -e
 
 	echo -e ${byellow}"Se va a actualizar el script desde la versión $script_version a la versión $script_version_github"${end} | tee -a >(log) 2>&1
 	echo -e ${bgreen}"Para revisar los cambios visitar https://github.com/javi-ag/OdysSINT"${end}
 	echo -e ${bred}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end}
 	echo -e
-	echo -e ${bgreen}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
@@ -1088,18 +1040,18 @@ function actualizar_y_ejecutar_script() {
 # Función eliminar herramientas instaladas y limpiar directorio de OdysSINT
 function desinstalar_odyssint() {
 
-	echo -e ${bred}  "------------------------------------------------------------------------------------------------------"${end}${ored}
-	echo -e ${bwhite}"                           CONFIGURACIÓN OdysSINT > DESINSTALAR OdysSINT                              "${end} | tee -a >(log) 2>&1
-	echo -e ${bred}  "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bred} "-------------------------------------------------------------------------------"${end}${ored}
+	echo -e ${bwhite}"                CONFIGURACIÓN OdysSINT > DESINSTALAR OdysSINT                  "${end} | tee -a >(log) 2>&1
+	echo -e ${bred} "-------------------------------------------------------------------------------"${end}
 	echo -e
-	
+
 	# Borramos aplicaciones requeridas
 	echo -e ${byellow}"Las siguientes aplicaciones requeridas serán desinstaladas:"${end} | tee -a >(log) 2>&1
 	for app in "${requerimientos[@]}"; do
 		echo -e ${bred}" - $app"${end} | tee -a >(log) 2>&1
 	done
 	echo -e
-	echo -e ${bred}"------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bred}"--------------------------------------------------------------------------------"${end}
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para continuar: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
@@ -1113,18 +1065,18 @@ function desinstalar_odyssint() {
 
 	# Borramos aplicaciones complementarias
 	mostrar_banner
-	echo -e ${bred}  "------------------------------------------------------------------------------------------------------"${end}${ored}
-	echo -e ${bwhite}"                           CONFIGURACIÓN OdysSINT > DESINSTALAR OdysSINT                              "${end} | tee -a >(log) 2>&1
-	echo -e ${bred}  "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bred} "-------------------------------------------------------------------------------"${end}${ored}
+	echo -e ${bwhite}"                CONFIGURACIÓN OdysSINT > DESINSTALAR OdysSINT                  "${end} | tee -a >(log) 2>&1
+	echo -e ${bred} "-------------------------------------------------------------------------------"${end}
 	echo -e
-	
+
 	echo -e ${byellow}"¿Eliminar las siguientes aplicaciones complementarias?  (S/n):"${end} | tee -a >(log) 2>&1
 	for app in "${aplicacionesComplementarias[@]}"; do
 		echo -e ${bred}" - $app"${end} | tee -a >(log) 2>&1
 	done
 	echo -e
-	echo -e ${bred}"------------------------------------------------------------------------------------------------------"${end}
-	
+	echo -e ${bred}"--------------------------------------------------------------------------------"${end}
+
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para continuar: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
@@ -1135,29 +1087,29 @@ function desinstalar_odyssint() {
 		done
 		echo -e ${bgreen}"Aplicaciones complementarias desinstaladas"${end} | tee -a >(log) 2>&1
 	fi
-	
+
 	# Borramos aplicaciones OSINT y carpeta de trabajo de OdysSINT
 	mostrar_banner
-	echo -e ${bred}  "------------------------------------------------------------------------------------------------------"${end}${ored}
-	echo -e ${bwhite}"                           CONFIGURACIÓN OdysSINT > DESINSTALAR OdysSINT                              "${end} | tee -a >(log) 2>&1
-	echo -e ${bred}  "------------------------------------------------------------------------------------------------------"${end}
+	echo -e ${bred} "-------------------------------------------------------------------------------"${end}${ored}
+	echo -e ${bwhite}"                CONFIGURACIÓN OdysSINT > DESINSTALAR OdysSINT                  "${end} | tee -a >(log) 2>&1
+	echo -e ${bred} "-------------------------------------------------------------------------------"${end}
 	echo -e
 	echo -e ${byellow}"Se va a eliminar la carpeta de trabajo OdysSINT y las siguientes herramientas OSINT:"${end} | tee -a >(log) 2>&1
 	for app in "${aplicacionesOSINT[@]}"; do
 		echo -e ${bred}"- $app"${end} | tee -a >(log) 2>&1
 	done
 	echo -e
-	echo -e ${bred}"------------------------------------------------------------------------------------------------------"${end}
-	
+	echo -e ${bred}"--------------------------------------------------------------------------------"${end}
+
 	read -p "$(echo -e ${byellow}"Presiona 'S/s' para confirmar y cualquier otra tecla para continuar: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		echo -e ${bpurple}"Desinstalando Maltego..."${end} | tee -a >(log) 2>&1
 		echo "--- COMANDO: apt-get remove -y maltego" | log
-		sudo apt remove -y maltego  2>&1 | log
+		sudo apt remove -y maltego 2>&1 | log
 		echo -e ${bpurple}"Herramientas OSINT eliminadas..."${end}
 		echo "--- COMANDO: rm -rf $odyssinthome" | log
-		rm -rf $odyssinthome  2>&1 | log
+		rm -rf $odyssinthome 2>&1 | log
 		echo -e ${bpurple}"Carpeta eliminada..."${end}
 		rm -rf "$HOME/.mozilla/firefox/firefoxprofile.ulysses"
 		mv "$HOME/.mozilla/firefox/profiles.ini_backup" "$HOME/.mozilla/firefox/profiles.ini"
@@ -1166,7 +1118,9 @@ function desinstalar_odyssint() {
 		mostrar_banner
 		listar_configurar_odyssint
 	fi
-	./"$nombre_script"	
+	# Elimina paquetes innecesarios
+	sudo apt autoremove
+	./"$nombre_script"
 }
 
 ###### FUNCIONES VARIAS ######
@@ -1175,7 +1129,7 @@ function desinstalar_odyssint() {
 function comprobar_directorio() {
 	if [ ! -d "$odyssinthome" ]; then
 		mkdir -p $odyssinthome
-		touch "NO_BORRAR_ESTA_CARPETA"
+		touch "$odyssinthome/NO_BORRAR_ESTA_CARPETA"
 		mkdir -p $odyssinthome/logs/
 		mostrar_banner
 		echo -e ${bgreen}"Se ha creado el directorio de trabajo en $odyssinthome."${end} | tee -a >(log) 2>&1
@@ -1222,53 +1176,52 @@ function continuar() {
 	mostrar_banner
 }
 
-function configurar_virtualenv (){
-		local herramienta="${1,,}"
-		echo -e ${bpurple}"Montando entorno virtual..."${end} | tee -a >(log) 2>&1
-		echo "--- COMANDO: virtualenv -p /usr/bin/python3 $odyssinthome/$herramienta/venv" | log
-		virtualenv -p /usr/bin/python3 $odyssinthome/$herramienta/venv 2>&1 | log
-		# Compruebo en que ubicación ha montado el entorno virtual
-		if [ -d "$odyssinthome/$herramienta/venv/local" ]; then
-			venv_path=/local
-		fi
-		echo "--- COMANDO: source $odyssinthome/$herramienta/venv/bin/activate" | log
-		source $odyssinthome/$herramienta/venv"$venv_path"/bin/activate #NO PASAR A LOG, SI NO FALLA
-		# Cambiar al directorio de la herramienta
-		echo "--- COMANDO: cd $odyssinthome/$herramienta" | log
-		cd $odyssinthome/$herramienta
+function configurar_virtualenv() {
+	local herramienta="${1,,}"
+	echo -e ${bpurple}"Montando entorno virtual..."${end} | tee -a >(log) 2>&1
+	echo "--- COMANDO: virtualenv -p /usr/bin/python3 $odyssinthome/$herramienta/venv" | log
+	virtualenv -p /usr/bin/python3 $odyssinthome/$herramienta/venv 2>&1 | log
+	# Compruebo en que ubicación ha montado el entorno virtual
+	if [ -d "$odyssinthome/$herramienta/venv/local" ]; then
+		venv_path=/local
+	fi
+	echo "--- COMANDO: source $odyssinthome/$herramienta/venv/bin/activate" | log
+	source $odyssinthome/$herramienta/venv"$venv_path"/bin/activate #NO PASAR A LOG, SI NO FALLA
+	# Cambiar al directorio de la herramienta
+	echo "--- COMANDO: cd $odyssinthome/$herramienta" | log
+	cd $odyssinthome/$herramienta
 }
 
-
 #Función para comprobar donde se ha instalado la activación del entorno virtual. Compatibilidad con Debian
-function comprobar_virtualenv (){
-		local herramienta="${1,,}"
-		# Compruebo en que ubicación ha montado el entorno virtual
-		if [ -d "$odyssinthome/$herramienta/venv/local" ]; then
-			venv_path=/local
-		fi
-		echo "--- COMANDO: cd $odyssinthome/$herramienta" | log
-		cd $odyssinthome/$herramienta/venv"$venv_path"/bin
+function comprobar_virtualenv() {
+	local herramienta="${1,,}"
+	# Compruebo en que ubicación ha montado el entorno virtual
+	if [ -d "$odyssinthome/$herramienta/venv/local" ]; then
+		venv_path=/local
+	fi
+	echo "--- COMANDO: cd $odyssinthome/$herramienta" | log
+	cd $odyssinthome/$herramienta/venv"$venv_path"/bin
 }
 
 # Funcion que comprueba e instala la herramienta
-function instalar (){
-		local herramienta="${1//_/ }"
-		local herramienta_min="${1,,}"
-			echo -e ${byellow}"$herramienta no está instalado. ¿Desea instalarlo ahora? (s/n)."${end} | tee -a >(log) 2>&1
-			read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán permisos root si los requerimientos no están instalados"${end})" -n 1 -r confirmacion
-			echo -e
-			if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
-				verificar_conexion_internet
-				comprobar_requerimientos
-				instalar_"$herramienta_min"
-				if [ $? -eq 1 ]; then
-					mostrar_banner
-					mostrar_menu_principal
-				fi
-			else
-				mostrar_banner
-				mostrar_menu_principal	
-			fi
+function instalar() {
+	local herramienta="${1//_/ }"
+	local herramienta_min="${1,,}"
+	echo -e ${byellow}"$herramienta no está instalado. ¿Desea instalarlo ahora? (s/n)."${end} | tee -a >(log) 2>&1
+	read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán root si los requerimientos no están instalados"${end})" -n 1 -r confirmacion
+	echo -e
+	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+		verificar_conexion_internet
+		comprobar_requerimientos
+		instalar_"$herramienta_min"
+		if [ $? -eq 1 ]; then
+			mostrar_banner
+			mostrar_menu_principal
+		fi
+	else
+		mostrar_banner
+		mostrar_menu_principal
+	fi
 }
 
 # Función para comprobar si el script está actualizado
@@ -1339,7 +1292,7 @@ function verificar_conexion_internet() {
 		echo -e "${warning}\t\t\t\tMAXIMIZAR VENTANA PARA MEJOR EXPERIENCIA"${end}
 		mostrar_menu_principal
 	else
-	comprobar_version
+		comprobar_version
 	fi
 
 }
