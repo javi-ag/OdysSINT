@@ -25,7 +25,9 @@ OdysSINT es un script de instalación y uso de herramientas que pretende ayudar 
 * [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox): archivado local de páginas webs para su visualización offline (Web\Add-on).
 * [Zotero](https://www.zotero.org/): gestor de referencias para investigaciones que permite organizar y compartir citas (App\Add-on).
 * [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 350 webs en pocos segundos (CLI).
-* [Photon](https://github.com/s0md3v/Photon): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI). 
+* [Photon](https://github.com/s0md3v/Photon): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI).
+* [Geo-recon](https://github.com/radioactivetobi/geo-recon/tree/master):Geolocalización de IPs a través de diferentes bases de datos públicas (CLI).
+
 
 # Extensiones :jigsaw:		
 
