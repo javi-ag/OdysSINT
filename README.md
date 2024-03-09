@@ -1,13 +1,8 @@
-# OdysSINT 
-
-[![version-1.0](https://img.shields.io/badge/version-1.0-green)](https://github.com/javi-ag/OdysSINT/releases/tag/pre-release)
-[![CC0-1.0.1](https://img.shields.io/badge/license-cc0-blue)](https://github.com/javi-ag/OdysSINT/tree/main?tab=CC0-1.0-1-ov-file#)
-[![Shell](https://img.shields.io/badge/language-shell-red)](https://img.shields.io/badge/language-shell-red)
-
+# OdysSINT [![version-1.0](https://img.shields.io/badge/version-1.0-green)](https://github.com/javi-ag/OdysSINT/releases/tag/pre-release) [![CC0-1.0.1](https://img.shields.io/badge/license-cc0-blue)](https://github.com/javi-ag/OdysSINT/tree/main?tab=CC0-1.0-1-ov-file#) [![Shell](https://img.shields.io/badge/language-shell-red)](https://img.shields.io/badge/language-shell-red)
 ![1200px-WATERHOUSE_-_Ulises_y_las_Sirenas_(National_Gallery_of_Victoria,_Melbourne,_1891 _Óleo_sobre_lienzo,_100 6_x_202_cm)](https://github.com/javi-ag/OdysSINT/assets/153739397/b28f54ea-95cf-4b0f-a452-8afa41628b55)
 
 OdysSINT es un script de instalación y uso de herramientas que pretende ayudar en la ardua tarea de preparar un entorno adecuado para la investigación OSINT.
-# Caracteristicas OdysSINT
+# Caracteristicas OdysSINT :white_check_mark:
 - Completo listado de herramientas, extensiones y marcadores.
 - Descripción intuitiva de cada elemento.
 - Compatible con cualquier distribución con base Debian.
@@ -76,6 +71,23 @@ PONER CAPTURAS Y USO DE AYUDA
 > [!WARNING]
 > Recuerda que todas las actividades enmarcadas en el proceso de investigación deben estar dentro del marco legal y jurudico vigente en la localidad donde estes. Es muy importante que
 > conozcas bien este marco juridico para que no incurras en un delito informatico sin saberlo.
+
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
 
 # Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
