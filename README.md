@@ -4,16 +4,16 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 
 
 ## :sailboat: ¿Qué es OdysSINT? 
-OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como objetivo ayudar en la ardua tarea de preparar un entorno adecuado para la realización de investigaciones. Su nombre viene del juego de palabras Odyssey + OSINT para reflejar así la dificultad de la exploración en las vastas aguas de información en fuentes abiertas.
+OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como objetivo ayudar en la ardua tarea de preparar un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT. Esto es debido a la necesidad de reflejar, como la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas.
 
 ## :white_check_mark: Caracteristicas OdysSINT  
 - Completo listado de herramientas, extensiones y marcadores.
 - Descripción intuitiva de cada elemento.
-- Compatible con cualquier distribución con base Debian.
+- Heramientas instalables compatibles con cualquier distribución con base Debian.
 - Menú intiutivo de uso.
 - Instalación componente a componente o de toda la solución.
 - Instalación automática desatendida.
-- Notificación de actualizaciones y posibilidad de actualizaar desde el propio script.
+- Notificación de actualizaciones y posibilidad de actualizar desde el propio script.
 - Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox.
 
 ## :diving_mask: Herramientas OSINT  
