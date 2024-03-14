@@ -4,7 +4,7 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 
 
 ## :sailboat: ¿Qué es OdysSINT? 
-OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como objetivo ayudar en la ardua tarea de preparar un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT. Esto es debido a la necesidad de reflejar, como la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas.
+OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como objetivo ayudar en la ardua tarea de preparar un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT,  esto es debido a la necesidad de reflejar, como en la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas hasta alcanzar nuestro objetivo como investigadores. La solución además dispone de un perfil de Firefox denominado Ulysses con todos los marcadores y extensiones y configuración especial que permite ser configurado también en Windows en unos pocos pasos.
 
 ## :white_check_mark: Caracteristicas OdysSINT  
 - Completo listado de herramientas, extensiones y marcadores.
@@ -18,34 +18,53 @@ OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como
 
 ## :diving_mask: Herramientas OSINT  
 * [theHarvester](https://github.com/laramies/theHarvester): obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
-* [Maltego](https://www.maltego.com/): extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
 * [Recon-ng](https://github.com/lanmaster53/recon-ng): framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente (CLI\Web).
-* [Spiderfoot](https://github.com/lanmaster53/recon-ng): herramienta de recopilación de información online. Escanea IPs, dominios y nombres de usuario para encontrar información relevante (Web).
-* [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox): archivado local de páginas webs para su visualización offline (Web\Add-on).
-* [Zotero](https://www.zotero.org/): gestor de referencias para investigaciones que permite organizar y compartir citas (App\Add-on).
-* [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 350 webs en pocos segundos (CLI).
+* [Spiderfoot](https://github.com/lanmaster53/recon-ng): automatiza la recolección de información sobre activos en línea desde multiples fuentes, identificando riesgos e inteligencia (Web).
+* [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 300 webs en pocos segundos (CLI).
 * [Photon](https://github.com/s0md3v/Photon): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI).
 * [Geo-recon](https://github.com/radioactivetobi/geo-recon/tree/master):Geolocalización de IPs a través de diferentes bases de datos públicas (CLI).
+* [Maltego](https://www.maltego.com/): extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
+* [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox): archivado local de páginas webs para su visualización offline (Web\Add-on).
+* [Zotero](https://www.zotero.org): gestor de referencias para la organización en las investigaciones (App\Add-on).
+
+## :anchor:	Herramientas Complementarias  
+
+* [Zenamp](https://nmap.org/zenmap): interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
+* [Tor Browser](https://www.torproject.org): para navegar anonimamente con el perfil Ulysses por la red Tor (App).
+* [OnionShare](https://onionshare.org): comparte archivos de forma segura y anónima mediante la red Tor (CLI).
+* [KeePassXC](https://keepassxc.org): almacena datos y contraseñas de forma segura (APP).
+* [Notepadqq](https://notepadqq.com):potente editor de texto parecido a Notepad++ (APP).
+* [Dia](http://live.gnome.org/Dia):editor de diagramas ideal para generar relaciones en investigaciones.
+* [VLC](http://www.videolan.org):visualizador y conversor de videos.
+* [Audacity](https://www.audacityteam.org):escucha y edita audios.
+* [Flameshot](https://flameshot.org):realiza capturas de pantalla y las edita de forma simple.
 
 ## :globe_with_meridians: Marcadores 
 - **ANÁLISIS DOMINIO / URL:** Dominios Raíz IANA 
 ## :jigsaw: Extensiones
  
-## :compass: Demostración 		
+## :package: Instalación 
+OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
+
+- **OVA preconfigurada**: contiene todas las herramientas OSINT, herramientas complementarias, y el perfil Ulysses para Firefox y Tor con las extensiones y marcadores. Para quien no quiere complicarse, en pocos minutos de descarga se improrta en Virtual Box o en VMWare Player y a disfrutar!!!
+ 
+- **Script configurable**: instala todos las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12 y Ubuntu 22.04.03), la mejor opción si disponemos de un un sistema basado en Debian y no queremos realizar una descarga de gran tamaño. Al descargarlo hay que asegurarse de que el script tiene permisos de ejecución:
+  ```bash
+  git clone https://github.com/javi-ag/OdysSINT.git
+  cd OdysSINT
+  chmod +x OdysSINT.sh
+  ./OdysSINT.sh
+  ```
+  GIF 
+- **Perfil Ulysses para Windows**: contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
+  - Descargamos el fichero Ulysses_Windows.zip
+  - En el explorador de archivos pegaremos en la barra de direcciones %APPDATA%/Mozilla/Firefox/ y copiaremos ahí el fichero anterior, extrayendo su contenido y sobrescribiendo su contenido.
+    
+> [!CAUTION]
+> Este último paso elimina el acceso al perfil existente de Firefox, por lo que si lo quieres recuperar en un futuro cambia el nombre a los ficheros existentes y devuelvelos a su estado anterior para su recuperación.
 
 INCLUIR GIF
 
-## :package: Instalación
-La versión 1 de OdysSINT está disponible en dos formatos:
-- Script configurable: compatible con cualquier distribución basada en Debian (probado en Debian 12, Ubuntu 22.04.03)
-  Al descargarlo, asegurarnos de que tiene permisos de ejecución:
-```bash
-git clone https://github.com/javi-ag/OdysSINT.git
-cd OdysSINT
-chmod +x OdysSINT.sh
-./OdysSINT.sh
-```
-- OVA preconfigurada en Virtual Box / VMWare Player / etc
 
 ## :gear: Configuración
 
