@@ -33,11 +33,11 @@ OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como
 * [Tor Browser](https://www.torproject.org): para navegar anonimamente con el perfil Ulysses por la red Tor (App).
 * [OnionShare](https://onionshare.org): comparte archivos de forma segura y anónima mediante la red Tor (CLI).
 * [KeePassXC](https://keepassxc.org): almacena datos y contraseñas de forma segura (APP).
-* [Notepadqq](https://notepadqq.com):potente editor de texto parecido a Notepad++ (APP).
-* [Dia](http://live.gnome.org/Dia):editor de diagramas ideal para generar relaciones en investigaciones.
-* [VLC](http://www.videolan.org):visualizador y conversor de videos.
-* [Audacity](https://www.audacityteam.org):escucha y edita audios.
-* [Flameshot](https://flameshot.org):realiza capturas de pantalla y las edita de forma simple.
+* [Notepadqq](https://notepadqq.com): potente editor de texto parecido a Notepad++ (APP).
+* [Dia](http://live.gnome.org/Dia): editor de diagramas ideal para generar relaciones en investigaciones.
+* [VLC](http://www.videolan.org): visualizador y conversor de videos.
+* [Audacity](https://www.audacityteam.org): escucha y edita audios.
+* [Flameshot](https://flameshot.org): realiza capturas de pantalla y las edita de forma simple.
 
 ## :globe_with_meridians: Marcadores 
 - **ANÁLISIS DOMINIO / URL:** Dominios Raíz IANA 
