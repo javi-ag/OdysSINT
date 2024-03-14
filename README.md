@@ -22,7 +22,7 @@ OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como
 * [Spiderfoot](https://github.com/lanmaster53/recon-ng): automatiza la recolección de información sobre activos en línea desde multiples fuentes, identificando riesgos e inteligencia (Web).
 * [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 300 webs en pocos segundos (CLI).
 * [Photon](https://github.com/s0md3v/Photon): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI).
-* [Geo-recon](https://github.com/radioactivetobi/geo-recon/tree/master):Geolocalización de IPs a través de diferentes bases de datos públicas (CLI).
+* [Geo-recon](https://github.com/radioactivetobi/geo-recon/tree/master): geolocalización de IPs a través de diferentes bases de datos públicas (CLI).
 * [Maltego](https://www.maltego.com/): extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
 * [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox): archivado local de páginas webs para su visualización offline (Web\Add-on).
 * [Zotero](https://www.zotero.org): gestor de referencias para la organización en las investigaciones (App\Add-on).
@@ -31,13 +31,14 @@ OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como
 
 * [Zenamp](https://nmap.org/zenmap): interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
 * [Tor Browser](https://www.torproject.org): para navegar anonimamente con el perfil Ulysses por la red Tor (App).
+* [Terminator](https://gnome-terminator.org): gestor de terminales Torificado por Torsocks (CLI).
 * [OnionShare](https://onionshare.org): comparte archivos de forma segura y anónima mediante la red Tor (CLI).
 * [KeePassXC](https://keepassxc.org): almacena datos y contraseñas de forma segura (APP).
 * [Notepadqq](https://notepadqq.com): potente editor de texto parecido a Notepad++ (APP).
-* [Dia](http://live.gnome.org/Dia): editor de diagramas ideal para generar relaciones en investigaciones.
-* [VLC](http://www.videolan.org): visualizador y conversor de videos.
-* [Audacity](https://www.audacityteam.org): escucha y edita audios.
-* [Flameshot](https://flameshot.org): realiza capturas de pantalla y las edita de forma simple.
+* [Dia](http://live.gnome.org/Dia): editor de diagramas ideal para generar relaciones en investigaciones (App).
+* [VLC](http://www.videolan.org): visualizador y conversor de videos (App).
+* [Audacity](https://www.audacityteam.org): escucha y edita audios (App).
+* [Flameshot](https://flameshot.org): realiza capturas de pantalla y las edita de forma simple (App).
 
 ## :globe_with_meridians: Marcadores 
 - **ANÁLISIS DOMINIO / URL:** Dominios Raíz IANA 
