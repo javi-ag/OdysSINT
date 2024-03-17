@@ -41,7 +41,7 @@ Herramientas adicionales instaladas también con el script:
 * [Flameshot:](https://flameshot.org) realiza capturas de pantalla y las edita de forma simple (App).
 
 ## :globe_with_meridians: Marcadores 
-Todos los marcadores pueden ser instalados con la extensión [BookmarkHub](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT), y están agrupados en las siguentes carpetas:
+Los marcadores están agrupados en las siguentes carpetas:
 - **OdysSINT:** URLs relacionadas con el proyecto.
 - **ANÁLISIS DOMINIO / URL:** enlaces para análisis de dominios y su contenido.
 - **ANÁLISIS INMÁGENES:** herramientas para el estudio de imágenes.
@@ -56,9 +56,11 @@ Todos los marcadores pueden ser instalados con la extensión [BookmarkHub](https
 - **RRSS:** enlaces para análisis de redes sociales.
 - **SEGUIMIENTO:** herramientas para monitorización y seguimiento de objetivos. 
 - **TELÉFONO / SMS:** marcadores relacionados con la comunicación.
+
+El listado completo de marcadores se puede encontrar en [Listado de herramientas](https://github.com/javi-ag/OdysSINT/blob/main/Listado%20herramientas.xlsx).
  
 ## :jigsaw: Extensiones
-Todas las extensiones están recogidas en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT):
+Las extensiones so están recogidas en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT):
  * [ArchiveBox Exporter:](https://github.com/ArchiveBox/archivebox-browser-extension) extensión ligada a la herramienta ArchiveBox, agiliza la captura de direcciones añadiendo automatismos.
  * [BookmarkHub:](https://github.com/dudor/BookmarkHub) permite la instalación y actualización de los marcadores seleccionados en la solución sin necesidad de instalar el perfil Ulysses, para ello seguir los pasos del apartado de la extensión dentro de la URL de addons de Ulysses, compatible con Chrome, Firefox Edge, Opera y cualquier navegador basado en Chromium.
  * [Distill Web Monitor:](https://distill.io) permite configurar monitorizaciones en cambios de partes o webs completas.
@@ -87,67 +89,33 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
   chmod +x OdysSINT.sh
   ./OdysSINT.sh
   ```
-  GIF 
 - **Perfil Ulysses para Windows**: contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
   - Descargamos e instalamos [Firefox para Windows](https://download.mozilla.org/?product=firefox-stub&os=win&lang=es-ES).
   - Descargamos [firefoxprofile.ulysses.zip](https://github.com/javi-ag/OdysSINT/raw/main/firefoxprofile.ulysses.zip).
   - Descargamos [pasos.Ulysses.Windows.zip](https://github.com/javi-ag/OdysSINT/raw/main/pasos.Ulysses.Windows.zip), extraemos y seguimos los pasos que indican los accesos directos.
- > [!WARNING]
- > Este último paso elimina el acceso al perfil existente de Firefox, por lo que crea un backup de los ficheros a sobrescribir y si lo quieres recuperar devuelvelos a su estado anterior para su recuperación.
-- **Addons Firefox**:
-- **Marcadores Ulysses**:
-INCLUIR GIF
 
+- **Addons Firefox**: se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
+- **Marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT), 
+
+ > [!WARNING]
+ > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará perfil de Firefox y se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
 
 ## :gear: Configuración
 
 ## :arrow_down: Descargas 
 ### OVA:
-  Enlace a repositorio: https://URL.com
-  **Decryption key**: pfsMdmfPZIn9NQQreDsNaA
-  **SHA256sum**: 60BFD883FDDE934994B58A8B03B2169C922921056767CF3D1012A0603EA026D3
-  **Formato**: Ova (VirtualBox)
-  **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
-### Script:
-Desde el propio repositorio
+- Enlace a repositorio: https://URL.com
+- **Decryption key**: pfsMdmfPZIn9NQQreDsNaA
+- **SHA256sum**: XXXXX
+- **Formato**: Ova (VirtualBox)
+- **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
 
-## :computer: Uso 	
+## :computer: Uso
 
 ## :open_book: FAQ
+
 
 ## Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
 odyssint@protonmail.com
-
-PONER CAPTURAS Y USO DE AYUDA
-
-> [!IMPORTANT]
-> Recomiendo la personalización inmediata de la contraseña por una robusta siguiendo las siguientes sugerencias:
->    - No almacenar las contraseñas en texto plano.
->    - Una longitud de entre 6 y 10 caracteres.
->    - Que contenga al menos un carácter en mayúsculas y un carácter numérico.
->    - No emplear nombres o fechas personales o de familiares
->    - No emplear contraseñas comunes como 123456 o asdfghjk
->    - Cambiar la contraseña cada 3 meses.
-   
-> [!WARNING]
-> Recuerda que todas las actividades enmarcadas en el proceso de investigación deben estar dentro del marco legal y jurudico vigente en la localidad donde estes. Es muy importante que
-> conozcas bien este marco juridico para que no incurras en un delito informatico sin saberlo.
-
-
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
-
-> [!TIP]
-> Helpful advice for doing things better or more easily.
-
-> [!IMPORTANT]
-> Key information users need to know to achieve their goal.
-
-> [!WARNING]
-> Este proyecto no incluye ninguna solución VPN pero recomienda el uso de una, incluso corriendo por encima de la red TOR, para mayor privacidad.
-
-> [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
-
 
