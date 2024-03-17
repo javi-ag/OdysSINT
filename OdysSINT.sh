@@ -1513,7 +1513,8 @@ function comprobar_version() {
 		mostrar_banner
 		echo -e ${bred}"ERROR: Versión de script incorrecta ($script_version)."${end} | tee -a >(log) 2>&1
 		echo -e ${bred}"Versión actual de OdysSINT ($script_version_github)."${end} | tee -a >(log) 2>&1
-		echo -e ${bred}"Descarga de nuevo el script del repositorio $odyssint_script_url"${end} 
+		echo -e ${bred}"Descarga de nuevo el script del repositorio"${end}
+		echo -e ${bred}"$odyssint_script_url"${end} 
 		continuar
 	fi
 }
