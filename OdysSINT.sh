@@ -1508,7 +1508,7 @@ function comprobar_version() {
 		# Obtener el hash del script de GitHub
 		echo github_script_hash=$(echo "$script_odyssint" | sha256sum | cut -d ' ' -f 1) | log
 		# Comparar versiones y hashes
-		if [[ "$local_script_hash" != "$github_script_hash" ]]; then
+		if [[ "$local_script_hash" == "$github_script_hash" ]]; then
 			echo "----------------------------- COMPROBACIÓN DE HASH CORRECTA ----------------------" | log
 		else
 			echo -e ${bred}"El hash del script local y el de Github no coinciden, vuelve a descargarlo"${end} | tee -a >(log) 2>&1
