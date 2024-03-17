@@ -49,7 +49,7 @@ declare odyssint_github_url="https://github.com/javi-ag/OdyssINT"
 declare odyssint_script_url="https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh"
 declare odyssint_firefox_url="https://github.com/javi-ag/OdysSINT/raw/main/firefoxprofile.ulysses.zip"
 # Versión de script
-declare script_version=1.1
+declare script_version=1.0
 #Directorio de trabajo de OdysSINT
 declare odyssinthome=$HOME/odyssint
 #Nombre fichero script
