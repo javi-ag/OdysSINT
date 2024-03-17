@@ -80,7 +80,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 
 - **OVA preconfigurada**: contiene todas las herramientas OSINT, herramientas complementarias, y el perfil Ulysses para Firefox y Tor con las extensiones y marcadores. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
  
-- **Script configurable**: instala todas las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño. Al clonar el repositorio hay que asegurarse de que el script tiene permisos de ejecución:
+- **Script configurable**: instala todas las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño. Al clonar el repositorio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
   git clone https://github.com/javi-ag/OdysSINT.git
   cd OdysSINT
@@ -89,13 +89,13 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
   ```
   GIF 
 - **Perfil Ulysses para Windows**: contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
-  - Descargamos el fichero Ulysses_Windows.zip
-  - En el explorador de archivos pegaremos en la barra de direcciones %APPDATA%/Mozilla/Firefox/ y moveremos ahí el fichero anterior, extrayendo su contenido y sobrescribiendo los ficheros existentes.
+  - Descargamos e instalamos [Firefox para Windows](https://download.mozilla.org/?product=firefox-stub&os=win&lang=es-ES).
+  - Descargamos [firefoxprofile.ulysses.zip](https://github.com/javi-ag/OdysSINT/raw/main/firefoxprofile.ulysses.zip).
+  - Descargamos [pasos.Ulysses.Windows.zip](https://github.com/javi-ag/OdysSINT/raw/main/pasos.Ulysses.Windows.zip), extraemos y seguimos los pasos que indican los accesos directos.
+ > [!WARNING]
+ > Este último paso elimina el acceso al perfil existente de Firefox, por lo que crea un backup de los ficheros a sobrescribir y si lo quieres recuperar devuelvelos a su estado anterior para su recuperación.
 - **Addons Firefox**:
 - **Marcadores Ulysses**:
-> [!WARNING]
-> Este último paso elimina el acceso al perfil existente de Firefox, por lo que si lo quieres recuperar en un futuro cambia el nombre a los ficheros existentes y devuelvelos a su estado anterior para su recuperación.
-
 INCLUIR GIF
 
 
