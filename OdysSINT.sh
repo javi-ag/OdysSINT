@@ -1497,24 +1497,10 @@ function comprobar_version() {
 
 	# Comparar versiones
 
-	# Si son iguales verifico que el script no haya sido modificado.
+	# Verifico si son iguales.
 	if [[ "$script_version" == "$script_version_github" ]]; then
 		declare -g script_version_update="* "${bgreen}"Script en última versión"${end}
 		echo "------------- COMPROBACIÓN DE VERSIÓN CORRECTA - SCRIPT ACTUALIZADO  -------------" | log
-
-		# Obtener el hash del script local
-		echo local_script_hash=$(sha256sum "$0" | cut -d ' ' -f 1) | log
-
-		# Obtener el hash del script de GitHub
-		echo github_script_hash=$(echo "$script_odyssint" | sha256sum | cut -d ' ' -f 1) | log
-		# Comparar versiones y hashes
-		if [[ "$local_script_hash" == "$github_script_hash" ]]; then
-			echo "----------------------------- COMPROBACIÓN DE HASH CORRECTA ----------------------" | log
-		else
-			echo -e ${bred}"El hash del script local y el de Github no coinciden, vuelve a descargarlo"${end} | tee -a >(log) 2>&1
-			declare -g script_version_update=${warning}"* Hash de script erroneo"${end}
-			continuar
-		fi
 		mostrar_banner
 	elif [[ "$script_version" < "$script_version_github" ]]; then
 		declare -g script_version_update=${bgreen}"* Actualización $script_version_github disponible"${end}
