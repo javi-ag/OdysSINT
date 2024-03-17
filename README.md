@@ -4,46 +4,46 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 
 
 ## :sailboat: ¿Qué es OdysSINT? 
-OdysSINT es un script de instalación y uso de herramientas OSINT que tiene como objetivo ayudar en la preparación de un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT, esto es debido a la necesidad de reflejar, como en la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas hasta poder alcanzar nuestro objetivo. La solución además dispone de un perfil de Firefox denominado Ulysses con todos los marcadores, extensiones y configuraciones especiales que permite ser configurado también en Windows en unos pocos pasos.
+**OdysSINT** es un script de instalación y uso de herramientas OSINT en bash para entornos Debian y una serie de procedimientos que tienen como objetivo ayudar en la preparación de un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT, esta unión viene de la necesidad de reflejar, como en la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas a las que tenemos acceso hoy en día para poder alcanzar nuestro objetivo en una investigación. La solución además dispone de un perfil de Firefox denominado **Ulysses** con un conjunto de marcadores, extensiones y configuraciones especiales que permite ser configurado también, con unos pocos pasos, en otros sistemas como Windows e incluso en otros navegadores.
 
 ## :white_check_mark: Caracteristicas OdysSINT  
-- Completo listado de herramientas, extensiones y marcadores.
+- Completo listado de herramientas OSTIN, aplicaciones complementarias, extensiones y marcadores.
 - Descripción intuitiva de cada elemento.
-- Heramientas instalables compatibles con cualquier distribución con base Debian.
-- Menú intiutivo de uso.
-- Instalación componente a componente o de toda la solución.
-- Instalación automática desatendida.
-- Notificación de actualizaciones y posibilidad de actualizar desde el propio script.
-- Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox.
+- Heramientas compatibles con cualquier distribución con base Debian.
+- Menú intiutivo de uso sencillo.
+- Instalación componente a componente o de toda la solución de modo desatendido.
+- Notificación de nuevas versiones y posibilidad de actualizar desde el propio script.
+- Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox versión mayor de la 118.
 
 ## :diving_mask: Herramientas OSINT  
-* [theHarvester](https://github.com/laramies/theHarvester): obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
-* [Recon-ng](https://github.com/lanmaster53/recon-ng): framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente (CLI\Web).
-* [Spiderfoot](https://github.com/lanmaster53/recon-ng): automatiza la recolección de información sobre activos en línea desde multiples fuentes, identificando riesgos e inteligencia (Web).
-* [NExfil](https://github.com/thewhiteh4t/nexfil): encuentra nombres de usuarios en más de 300 webs en pocos segundos (CLI).
-* [Photon](https://github.com/s0md3v/Photon): rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI).
-* [Geo-recon](https://github.com/radioactivetobi/geo-recon/tree/master): geolocalización de IPs a través de diferentes bases de datos públicas (CLI).
-* [Maltego](https://www.maltego.com/): extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
-* [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox): archivado local de páginas webs para su visualización offline (Web\Add-on).
-* [Zotero](https://www.zotero.org): gestor de referencias para la organización en las investigaciones (App\Add-on).
+* [theHarvester:](https://github.com/laramies/theHarvester) obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
+* [Recon-ng:](https://github.com/lanmaster53/recon-ng) framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente (CLI\Web).
+* [Spiderfoot:](https://github.com/lanmaster53/recon-ng) automatiza la recolección de información sobre activos en línea desde multiples fuentes, identificando riesgos e inteligencia (Web).
+* [NExfil:](https://github.com/thewhiteh4t/nexfil) encuentra nombres de usuarios en más de 300 webs en pocos segundos (CLI).
+* [Photon:](https://github.com/s0md3v/Photon) rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI).
+* [Geo-recon:](https://github.com/radioactivetobi/geo-recon/tree/master) geolocalización de IPs a través de diferentes bases de datos públicas (CLI).
+* [Maltego:](https://www.maltego.com/) extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
+* [ArchiveBox:](https://github.com/ArchiveBox/ArchiveBox) archivado local de páginas webs para su visualización offline (Web\Add-on).
+* [Zotero:](https://www.zotero.org) gestor de referencias para la organización en las investigaciones (App\Add-on).
 
 ## :anchor:	Herramientas Complementarias  
 
-* [Zenamp](https://nmap.org/zenmap): interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
-* [Tor Browser](https://www.torproject.org): para navegar anonimamente con el perfil Ulysses por la red Tor (App).
-* [Terminator](https://gnome-terminator.org): gestor de terminales Torificado por Torsocks (CLI).
-* [OnionShare](https://onionshare.org): comparte archivos de forma segura y anónima mediante la red Tor (CLI).
-* [KeePassXC](https://keepassxc.org): almacena datos y contraseñas de forma segura (APP).
-* [Notepadqq](https://notepadqq.com): potente editor de texto parecido a Notepad++ (APP).
-* [Dia](http://live.gnome.org/Dia): editor de diagramas ideal para generar relaciones en investigaciones (App).
-* [VLC](http://www.videolan.org): visualizador y conversor de videos (App).
-* [Audacity](https://www.audacityteam.org): escucha y edita audios (App).
-* [Flameshot](https://flameshot.org): realiza capturas de pantalla y las edita de forma simple (App).
+* [Zenamp:](https://nmap.org/zenmap) interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
+* [Tor Browser:](https://www.torproject.org) para navegar anonimamente con el perfil Ulysses por la red Tor (App).
+* [Terminator:](https://gnome-terminator.org) gestor de terminales Torificado por Torsocks (CLI).
+* [OnionShare:](https://onionshare.org) comparte archivos de forma segura y anónima mediante la red Tor (CLI).
+* [KeePassXC:](https://keepassxc.org) almacena datos y contraseñas de forma segura (APP).
+* [Notepadqq:](https://notepadqq.com) potente editor de texto parecido a Notepad++ (APP).
+* [Dia:](http://live.gnome.org/Dia) editor de diagramas ideal para generar relaciones en investigaciones (App).
+* [VLC:](http://www.videolan.org) visualizador y conversor de videos (App).
+* [Audacity:](https://www.audacityteam.org) escucha y edita audios (App).
+* [Flameshot:](https://flameshot.org) realiza capturas de pantalla y las edita de forma simple (App).
 
 ## :globe_with_meridians: Marcadores 
 - **ANÁLISIS DOMINIO / URL:** Dominios Raíz IANA 
 ## :jigsaw: Extensiones
- 
+ * [ArchiveBox Exporter:](https://github.com/ArchiveBox/archivebox-browser-extension) extensión ligada a la herramienta ArchiveBox, agiliza la captura de direcciones añadiendo automatismos.
+ * [BookmarkHub:](https://github.com/dudor/BookmarkHub) permite la instalación y actualización de los marcadores seleccionados en la solución sin necesidad de instalar el perfil Ulysses, seguir los pasos del apartado de la extensión dentro de la [URL de addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT/) para ello, compatible con Chrome, Firefox Edge, Opera y cualquier navegador basado en Chromium.
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
 
@@ -61,7 +61,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
   - Descargamos el fichero Ulysses_Windows.zip
   - En el explorador de archivos pegaremos en la barra de direcciones %APPDATA%/Mozilla/Firefox/ y moveremos ahí el fichero anterior, extrayendo su contenido y sobrescribiendo los ficheros existentes.
     
-> [!CAUTION]
+> [!WARNING]
 > Este último paso elimina el acceso al perfil existente de Firefox, por lo que si lo quieres recuperar en un futuro cambia el nombre a los ficheros existentes y devuelvelos a su estado anterior para su recuperación.
 
 INCLUIR GIF
@@ -113,7 +113,7 @@ PONER CAPTURAS Y USO DE AYUDA
 > Key information users need to know to achieve their goal.
 
 > [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
+> Este proyecto no incluye ninguna solución VPN pero recomienda el uso de una, incluso corriendo por encima de la red TOR, para mayor privacidad.
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
