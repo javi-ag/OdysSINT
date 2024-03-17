@@ -15,7 +15,8 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 - Notificación de nuevas versiones y posibilidad de actualizar desde el propio script.
 - Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox versión mayor de la 118.
 
-## :diving_mask: Herramientas OSINT  
+## :diving_mask: Herramientas OSINT
+Herramientas OSINT instaladas por script:
 * [theHarvester:](https://github.com/laramies/theHarvester) obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
 * [Recon-ng:](https://github.com/lanmaster53/recon-ng) framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente (CLI\Web).
 * [Spiderfoot:](https://github.com/lanmaster53/recon-ng) automatiza la recolección de información sobre activos en línea desde multiples fuentes, identificando riesgos e inteligencia (Web).
@@ -26,10 +27,10 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 * [ArchiveBox:](https://github.com/ArchiveBox/ArchiveBox) archivado local de páginas webs para su visualización offline (Web\Add-on).
 * [Zotero:](https://www.zotero.org) gestor de referencias para la organización en las investigaciones (App\Add-on).
 
-## :anchor:	Herramientas Complementarias  
-
+## :anchor:	Herramientas Complementarias
+Herramientas adicionales instaladas también con el script:
 * [Zenamp:](https://nmap.org/zenmap) interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
-* [Tor Browser:](https://www.torproject.org) para navegar anonimamente con el perfil Ulysses por la red Tor (App).
+* [Tor Browser:](https://www.torproject.org) para navegar anonimamente, con el perfil Ulysses por la red Tor (App).
 * [Terminator:](https://gnome-terminator.org) gestor de terminales Torificado por Torsocks (CLI).
 * [OnionShare:](https://onionshare.org) comparte archivos de forma segura y anónima mediante la red Tor (CLI).
 * [KeePassXC:](https://keepassxc.org) almacena datos y contraseñas de forma segura (APP).
@@ -40,10 +41,26 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 * [Flameshot:](https://flameshot.org) realiza capturas de pantalla y las edita de forma simple (App).
 
 ## :globe_with_meridians: Marcadores 
-- **ANÁLISIS DOMINIO / URL:** Dominios Raíz IANA 
+Todos los marcadores pueden ser instalados con la extensión [BookmarkHub](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT), y están agrupados en las siguentes carpetas:
+- **OdysSINT:** URLs relacionadas con el proyecto.
+- **ANÁLISIS DOMINIO / URL:** enlaces para análisis de dominios y su contenido.
+- **ANÁLISIS INMÁGENES:** herramientas para el estudio de imágenes.
+- **ANÁLISIS IP /DNS:** marcadores para análisis de servicios y vulnerabilidades de IPs.
+- **ARCHIVADO:** direcciones para captura de sitios webs.
+- **BUSCADORES:** enlaces de principales buscadores y herramientas relacionadas.
+- **CORREO:** herramientas relacionadas con el uso y análisis de emails.
+- **HERRAMIENTAS:** enlaces varios relacionados con OSINT.
+- **HERRAMIENTAS LOCALES:** direcciones relacionadas con las herramientas OSINT instaladas con el script.
+- **IDENTIDAD:** URLs para identificar o generar perfiles de personas.
+- **MAPAS & GEOLOCALIZACIÓN:** marcadores relacionados con mapas y ubicaciones de objetivos.
+- **RRSS:** enlaces para análisis de redes sociales.
+- **SEGUIMIENTO:** herramientas para monitorización y seguimiento de objetivos. 
+- **TELÉFONO / SMS:** marcadores relacionados con la comunicación.
+ 
 ## :jigsaw: Extensiones
+Todas las extensiones están recogidas en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT):
  * [ArchiveBox Exporter:](https://github.com/ArchiveBox/archivebox-browser-extension) extensión ligada a la herramienta ArchiveBox, agiliza la captura de direcciones añadiendo automatismos.
- * [BookmarkHub:](https://github.com/dudor/BookmarkHub) permite la instalación y actualización de los marcadores seleccionados en la solución sin necesidad de instalar el perfil Ulysses, seguir los pasos del apartado de la extensión dentro de la [URL de addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT/) para ello, compatible con Chrome, Firefox Edge, Opera y cualquier navegador basado en Chromium.
+ * [BookmarkHub:](https://github.com/dudor/BookmarkHub) permite la instalación y actualización de los marcadores seleccionados en la solución sin necesidad de instalar el perfil Ulysses, para ello seguir los pasos del apartado de la extensión dentro de la URL de addons de Ulysses, compatible con Chrome, Firefox Edge, Opera y cualquier navegador basado en Chromium.
  * [Distill Web Monitor:](https://distill.io) permite configurar monitorizaciones en cambios de partes o webs completas.
  * [DuckDuckGo Privacy Essentials:](https://duckduckgo.com/app) elimina cookies de rastreo, añade privacidad a las búsquedas con bloqueadores de enlaces de rastreo, cifrado automático, protección de email, bloqueo de cookies de rastreo, de huella digital y activa GPC.
  * [Flagfox:](https://flagfox.wordpress.com) muestra la bandera del país correspondiente a la ubicación de la página web que se está visitando y y ofrece numerosas herramientas.
@@ -52,8 +69,11 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
  * [Shodan:](https://www.shodan.io) indica información sobre la IP de la dirección web visualizada como puertos abiertos, ubicación, propietario, tecnologías usadas, vulnerabilidades otros servicios.
  * [Sidebery:](https://github.com/mbnuqw/sidebery) visualiza los marcadores como un árbol de carpetas en la barra lateral. Incluye un buscador que permite encontrar de forma rápida los marcadores teniendo en cuenta las definiciones de cada uno, ejemplo: podemos buscar barco, IP, avión y nos aparecerán listados los relacionados.
  * [SingleFile:](https://github.com/gildas-lormeau/SingleFile) añade un guardado completo de una o varias páginas en formato HTML o PDF.
- * [User-Agent Switcher and Manager](https://add0n.com/useragent-switcher.html) cambia el user-agent a cualquier sistema operativo o navegador.
- * [WayBackMachine:](https://github.com/internetarchive/wayback-machine-webextension) SEGUIR POR AQUÍ 
+ * [User-Agent Switcher and Manager](https://add0n.com/useragent-switcher.html) cambia el "user-agent" a cualquier sistema operativo o navegador.
+ * [WayBackMachine:](https://github.com/internetarchive/wayback-machine-webextension) visualización y archivado de webs en WayBackMacnine a petición.
+ * [Web Archives:](https://github.com/dessant/web-archives#readme) facilita la búsqueda de capturas y cacheado de direcciones con un solo click.
+ * [WebScrapBook:](https://github.com/danny0838/webscrapbook) captura páginas en HTML con un solo click.
+ * [Zotero](https://www.zotero.org) extensión asociada a la aplicación Zotero, permite añadir referencias a las investigaciones desde el propio navegador.
 
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
