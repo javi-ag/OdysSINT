@@ -44,6 +44,17 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 ## :jigsaw: Extensiones
  * [ArchiveBox Exporter:](https://github.com/ArchiveBox/archivebox-browser-extension) extensión ligada a la herramienta ArchiveBox, agiliza la captura de direcciones añadiendo automatismos.
  * [BookmarkHub:](https://github.com/dudor/BookmarkHub) permite la instalación y actualización de los marcadores seleccionados en la solución sin necesidad de instalar el perfil Ulysses, seguir los pasos del apartado de la extensión dentro de la [URL de addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT/) para ello, compatible con Chrome, Firefox Edge, Opera y cualquier navegador basado en Chromium.
+ * [Distill Web Monitor:](https://distill.io) permite configurar monitorizaciones en cambios de partes o webs completas.
+ * [DuckDuckGo Privacy Essentials:](https://duckduckgo.com/app) elimina cookies de rastreo, añade privacidad a las búsquedas con bloqueadores de enlaces de rastreo, cifrado automático, protección de email, bloqueo de cookies de rastreo, de huella digital y activa GPC.
+ * [Flagfox:](https://flagfox.wordpress.com) muestra la bandera del país correspondiente a la ubicación de la página web que se está visitando y y ofrece numerosas herramientas.
+ * [Privacy Badger](https://privacybadger.org) potente bloqueador que aprende a encontrar rastreadores invisibles con relación al comportamiento y no en base a una lista de bloqueo.
+ * [Search by Image:](https://github.com/dessant/search-by-image#readme) busca una imagen en un buscador o de imágenes o en varios a la vez con un solo click.
+ * [Shodan:](https://www.shodan.io) indica información sobre la IP de la dirección web visualizada como puertos abiertos, ubicación, propietario, tecnologías usadas, vulnerabilidades otros servicios.
+ * [Sidebery:](https://github.com/mbnuqw/sidebery) visualiza los marcadores como un árbol de carpetas en la barra lateral. Incluye un buscador que permite encontrar de forma rápida los marcadores teniendo en cuenta las definiciones de cada uno, ejemplo: podemos buscar barco, IP, avión y nos aparecerán listados los relacionados.
+ * [SingleFile:](https://github.com/gildas-lormeau/SingleFile) añade un guardado completo de una o varias páginas en formato HTML o PDF.
+ * [User-Agent Switcher and Manager](https://add0n.com/useragent-switcher.html) cambia el user-agent a cualquier sistema operativo o navegador.
+ * [WayBackMachine:](https://github.com/internetarchive/wayback-machine-webextension) SEGUIR POR AQUÍ 
+
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
 
