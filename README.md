@@ -71,7 +71,8 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 - **Perfil Ulysses para Windows**: contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
   - Descargamos el fichero Ulysses_Windows.zip
   - En el explorador de archivos pegaremos en la barra de direcciones %APPDATA%/Mozilla/Firefox/ y moveremos ahí el fichero anterior, extrayendo su contenido y sobrescribiendo los ficheros existentes.
-    
+- **Addons Firefox**:
+- **Marcadores Ulysses**:
 > [!WARNING]
 > Este último paso elimina el acceso al perfil existente de Firefox, por lo que si lo quieres recuperar en un futuro cambia el nombre a los ficheros existentes y devuelvelos a su estado anterior para su recuperación.
 
