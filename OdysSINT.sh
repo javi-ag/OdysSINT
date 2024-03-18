@@ -1238,20 +1238,20 @@ function instalar_tor() {
 			# Instalo perfil Ulysses.
 			destino="$odyssinthome/tor-browser/Browser/TorBrowser/Data/Browser/"
 			# Verificar si el archivo ya está descargado
-			if [ ! -f "$odyssinthome/firefox/firefoxprofile.ulysses.zip" ]; then
+			if [ ! -f "$odyssinthome/firefoxprofile.ulysses.zip" ]; then
 				# Si el archivo no está presente, intentar descargarlo
 				echo -e "${bpurple}Descargando el perfil Firefox desde el repositorio de OdysSINT...${end}" | tee -a >(log) 2>&1
-				echo "--- COMANDO: wget -q --show-progress -O $odyssinthome/firefox/firefoxprofile.ulysses.zip $odyssint_firefox_url" | log
-				if ! wget -q --show-progress -O "$odyssinthome/firefox/firefoxprofile.ulysses.zip" "$odyssint_firefox_url" 2>&1 | log; then
+				echo "--- COMANDO: wget -q --show-progress -O $odyssinthome/firefoxprofile.ulysses.zip $odyssint_firefox_url" | log
+				if ! wget -q --show-progress -O "$odyssinthome/firefoxprofile.ulysses.zip" "$odyssint_firefox_url" 2>&1 | log; then
 					echo -e "${bred}No se pudo descargar el archivo. Verifica la conexión a internet.${end}" | tee -a >(log) 2>&1
 					continuar
 					return 1
 				fi
 			fi
-			# Extraer el archivo tar.xz sobrescribiendo la carpeta si existe
+			# Extraer el archivo .zip sobrescribiendo la carpeta si existe
 			echo -e "${bpurple}Extrayendo el archivo...${end}" | tee -a >(log) 2>&1
-			echo "--- COMANDO: unzip -o $odyssinthome/firefox/firefoxprofile.ulysses.zip -d $destino/firefoxprofile.ulysses" | log
-			if unzip -o "$odyssinthome/firefox/firefoxprofile.ulysses.zip" -d "$destino/firefoxprofile.ulysses" 2>&1 | log; then
+			echo "--- COMANDO: unzip -o $odyssinthome/firefoxprofile.ulysses.zip -d $destino/firefoxprofile.ulysses" | log
+			if unzip -o "$odyssinthome/firefoxprofile.ulysses.zip" -d "$destino/firefoxprofile.ulysses" 2>&1 | log; then
 				echo -e "${bgreen}Extracción completa.${end}" | tee -a >(log) 2>&1
 			else
 				echo -e "${bred}Error al extraer el archivo.${end}" | tee -a >(log) 2>&1
@@ -1264,8 +1264,6 @@ function instalar_tor() {
 			echo -e "$nuevo_perfil" >"$destino/profiles.ini"
 			echo -e "${bgreen}Perfil Ulysses agregado a Tor.${end}" | tee -a >(log) 2>&1
 			continuar
-			echo "--- COMANDO: rm -rf $odyssinthome/tor-browser/firefoxprofile.ulysses*" | log
-			rm -rf $odyssinthome/tor-browser/firefoxprofile.ulysses* 2>&1 | log
 			echo "--- COMANDO: rm -rf $odyssinthome/tor-browser-linux*" | log
 			rm -rf $odyssinthome/tor-browser-linux* 2>&1 | log
 			return
@@ -1292,11 +1290,11 @@ function instalar_perfil_firefox() {
 		destino="$HOME/.mozilla/firefox/"
 	fi
 	# Verificar si el archivo ya está descargado
-	if [ ! -f "$odyssinthome/firefox/firefoxprofile.ulysses.zip" ]; then
+	if [ ! -f "$odyssinthome/firefoxprofile.ulysses.zip" ]; then
 		# Si el archivo no está presente, intentar descargarlo
 		echo -e "${bpurple}Descargando el perfil Firefox desde el repositorio de OdysSINT...${end}" | tee -a >(log) 2>&1
-		echo "--- COMANDO: wget -q --show-progress -O $odyssinthome/firefox/firefoxprofile.ulysses.zip $odyssint_firefox_url" | log
-		if ! wget -q --show-progress -O "$odyssinthome/firefox/firefoxprofile.ulysses.zip" "$odyssint_firefox_url" 2>&1 | log; then
+		echo "--- COMANDO: wget -q --show-progress -O $odyssinthome/firefoxprofile.ulysses.zip $odyssint_firefox_url" | log
+		if ! wget -q --show-progress -O "$odyssinthome/firefoxprofile.ulysses.zip" "$odyssint_firefox_url" 2>&1 | log; then
 			echo -e "${bred}No se pudo descargar el archivo. Verifica la conexión a internet.${end}" | tee -a >(log) 2>&1
 			continuar
 			return 1
@@ -1313,8 +1311,8 @@ function instalar_perfil_firefox() {
 	fi
 	# Extraer el archivo tar.xz sobrescribiendo la carpeta si existe
 	echo -e "${bpurple}Extrayendo el archivo...${end}" | tee -a >(log) 2>&1
-	echo "--- COMANDO: unzip -o $odyssinthome/firefox/firefoxprofile.ulysses.zip -d $destino/firefoxprofile.ulysses" | log
-	if unzip -o "$odyssinthome/firefox/firefoxprofile.ulysses.zip" -d "$destino/firefoxprofile.ulysses" 2>&1 | log; then
+	echo "--- COMANDO: unzip -o $odyssinthome/firefoxprofile.ulysses.zip -d $destino/firefoxprofile.ulysses" | log
+	if unzip -o "$odyssinthome/firefoxprofile.ulysses.zip" -d "$destino/firefoxprofile.ulysses" 2>&1 | log; then
 		echo -e "${bgreen}Extracción completa.${end}" | tee -a >(log) 2>&1
 	else
 		echo -e "${bred}Error al extraer el archivo.${end}" | tee -a >(log) 2>&1
