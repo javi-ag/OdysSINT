@@ -584,23 +584,19 @@ function listar_configurar_odyssint() {
 
 	1)
 		mostrar_banner
-		verificar_conexion_internet
 		actualizar_sistema_y_requerimientos
 		;;
 	2)
 		mostrar_banner
-		verificar_conexion_internet
 		instalar_herramientas_complementarias
 		;;
 	3)
 		mostrar_banner
-		verificar_conexion_internet
 		configurar_firefox
 		;;
 
 	4)
 		mostrar_banner
-		verificar_conexion_internet
 		actualizar_y_ejecutar_script
 		;;
 	5)
@@ -816,24 +812,55 @@ function actualizar_y_ejecutar_script() {
 	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	echo -e
 
-	echo -e ${byellow}"Se va a actualizar el script desde la versión $script_version a la versión $script_version_github"${end} | tee -a >(log) 2>&1
-	echo -e ${bgreen}"Para revisar los cambios visitar $odyssint_github_url"${end}
-	echo -e ${bred}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end}
-	echo -e
-	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
-	read -p "$(echo -e ${byellow}"Presiona (s/n) para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
-	echo -e
-	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
-		echo -e ${bpurple}"Actualizando script..."${end} | tee -a >(log) 2>&1
+	# Intentar leer el archivo desde GitHub
+	script_odyssint=$(curl -sSfL "$odyssint_script_url")
+
+	# Verificar si se pudo leer el archivo
+	if [ -z "$script_odyssint" ]; then
+		declare -g script_version_update=${warning}"* Repositorio OdysSINT no disponible"${end}
+		mostrar_banner
+		return 1
+	fi
+
+	# Obtener la versión del script desde el contenido obtenido
+	script_version_github=$(echo "$script_odyssint" | grep '^declare script_version=' | cut -d '=' -f 2 | tr -d '"')
+
+	# Verifico si son iguales.
+	if [[ "$script_version" == "$script_version_github" ]]; then
+		echo -e ${bgreen}"Script ya actualizado a la versión $script_version_github"${end}
+		continuar
+		mostrar_banner
+		listar_configurar_odyssint
+	elif [[ "$script_version" < "$script_version_github" ]]; then
+		echo -e ${byellow}"Se va a actualizar el script de la versión $script_version a la versión $script_version_github"${end} | tee -a >(log) 2>&1
+		echo -e ${bgreen}"Para revisar los cambios visitar $odyssint_github_url"${end}
+		echo -e ${bred}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end}
+		echo -e
+		echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
+		read -p "$(echo -e ${byellow}"Presiona (s/n) para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
+		echo -e
+		if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+			echo -e ${bpurple}"Actualizando script..."${end} | tee -a >(log) 2>&1
+			echo "--- COMANDO: wget -O $nombre_script $odyssint_script_url" | log
+			wget -O "$nombre_script" "$odyssint_script_url" 2>&1 | log
+			echo "--- COMANDO: chmod +x $nombre_script" | log
+			chmod +x "$nombre_script" 2>&1 | log
+			echo -e ${bgreen}"Script actualizado a la versión $script_version_github, se va a reiniciar su ejecución"${end} | tee -a >(log) 2>&1
+			continuar
+			./"$nombre_script"
+		else
+			mostrar_banner
+			listar_configurar_odyssint
+		fi	
 	else
+		echo -e ${bred}"ERROR: Versión de script incorrecta ($script_version)."${end} | tee -a >(log) 2>&1
+		echo -e ${bred}"Versión actual de OdysSINT ($script_version_github)."${end} | tee -a >(log) 2>&1
+		echo -e ${bred}"Descarga de nuevo el script del repositorio"${end}
+		echo -e ${bred}"$odyssint_script_url"${end} 
+		continuar
 		mostrar_banner
 		listar_configurar_odyssint
 	fi
-	wget -O "$script_name" "$odyssint_script_url" 2>&1 | log
-	chmod +x "$script_name" 2>&1 | log
-	echo -e ${bgreen}"Script actualizado a la versión $script_version_github, se va a reiniciar su ejecución"${end} | tee -a >(log) 2>&1
-	continuar
-	./"$nombre_script"
 }
 
 # Función eliminar herramientas instaladas y limpiar directorio de OdysSINT
@@ -1611,6 +1638,7 @@ case $1 in
 	;;
 -c)
 	comprobar_directorio
+	verificar_conexion_internet
 	instalar_requerimientos
 	for app in "${aplicacionesComplementarias[@]}"; do
 		app_lower="${app,,}"
@@ -1638,9 +1666,12 @@ case $1 in
 	;;
 -a)
 	comprobar_directorio
-	wget -O "$script_name" "$odyssint_script_url" 2>&1 | log
-	chmod +x "$script_name" 2>&1 | log
-	echo -e ${bgreen}"Script actualizado a la versión $script_version_github, se va a reiniciar su ejecución"${end} | tee -a >(log) 2>&1
+	echo -e ${bpurple}"Actualizando script..."${end} | tee -a >(log) 2>&1
+	echo "--- COMANDO: wget -O $nombre_script $odyssint_script_url" | log
+	wget -O "$nombre_script" "$odyssint_script_url" 2>&1 | log
+	echo "--- COMANDO: chmod +x $nombre_script" | log
+	chmod +x "$nombre_script" 2>&1 | log
+	echo -e ${bgreen}"Script actualizado, se va a reiniciar su ejecución"${end} | tee -a >(log) 2>&1
 	continuar
 	./"$nombre_script"
 	;;
