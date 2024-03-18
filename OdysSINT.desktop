@@ -3,3 +3,4 @@ Type=Application
 Name=OdysSINT
 Exec=sh -c "$HOME/OdysSINT/OdysSINT.sh"
 Terminal=true
+Icon=Ulysses_Icon.png
