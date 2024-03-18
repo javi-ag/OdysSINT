@@ -1680,7 +1680,7 @@ case $1 in
 	desinstalar_odyssint
 	;;
 "")
-	# Inicio sin valores
+	# Inicio sin valoress
 	trap ctrl_c INT
 	# Comprueba que el directorio de trabajo existe
 	comprobar_directorio
