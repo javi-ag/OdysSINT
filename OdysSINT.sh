@@ -1323,7 +1323,7 @@ function instalar_perfil_firefox() {
 	fi
 	# Realizar un backup del archivo profiles.ini
 	echo "--- COMANDO: cp $destino/profiles.ini $destino/profiles.ini_backup" | log
-	if cp "$destino/profiles.ini" "$destino/profiles.ini_backup"; then
+	if cp "$destino/profiles.ini" "$destino/profiles.ini_backup" | tee -a >(log) 2>&1 ; then
 		echo -e "${bgreen}Perfil de Firefox agregado.${end}" | tee -a >(log) 2>&1
 	else
 		echo -e "${bred}Error al realizar el backup.${end}" | tee -a >(log) 2>&1
