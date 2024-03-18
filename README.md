@@ -84,7 +84,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
  
 - **Script configurable**: instala todas las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño. Al clonar el repositorio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
-  git clone https://github.com/javi-ag/OdysSINT.git
+  git clone --depth=1 https://github.com/javi-ag/OdysSINT.git
   cd OdysSINT
   chmod +x OdysSINT.sh
   ./OdysSINT.sh
