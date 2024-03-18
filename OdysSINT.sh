@@ -75,8 +75,8 @@ function mostrar_banner() {
 	echo -e "                         ░░████   v$script_version                         " # Muestra la versión del script
 	echo -e "                           ░░░                                             "
 	echo -e "  \t\t${bgreen}Master Ciberseguridad 12ª Edición"${end}
-	echo -e "  \t\t * Autor: ${bblue}Javier Aguilar"${end}
-	echo -e "  \t\t * Tutor: ${cyan}Juanjo Salvador"${end}
+	echo -e "  \t\t * Autor:  ${bblue}Javier Aguilar"${end}
+	echo -e "  \t\t * Tutor:  ${cyan}Juanjo Salvador"${end}
 	echo -e "  \t\t * Correo: ${byellow}odyssint@protonmail.com"${end}
 	echo -e "  \t\t * Github: ${byellow}$odyssint_github_url"${end}
 	echo -e "  \t\t $script_version_update" # Muestra mensaje en relación a las actualizaciones
@@ -1055,7 +1055,9 @@ function instalar_archivebox() {
 		echo "--- COMANDO: playwright install --with-deps chromium" | log
 		playwright install --with-deps chromium 2>&1 | log
 		echo -e ${bpurple}"Inicializando Archivebox..."${end} | tee -a >(log) 2>&1
-		echo -e ${bred}"IMPORTANTE: No olvide el usuario y contraseña, necesario para administrar entorno"${end} | tee -a >(log) 2>&1
+		echo -e ${bred}"IMPORTANTE: No olvide el usuario y contraseña"${end} | tee -a >(log) 2>&1
+		echo -e ${bred}"es necesario para administrar su entorno de ArchiveBox"${end} | tee -a >(log) 2>&1
+
 		continuar
 		echo "--- COMANDO: archivebox init --setup | tee -a >(log)" | log
 		archivebox init --setup
@@ -1302,7 +1304,7 @@ function instalar_perfil_firefox() {
 	fi
 	# Verifico si el perfil ya está instalado
 	if [[ -d "$HOME/snap/firefox/common/.mozilla/firefox/firefoxprofile.ulysses" || -d "$HOME/.mozilla/firefox/firefoxprofile.ulysses" ]]; then
-		read -p "$(echo -e ${byellow}"Perfil de Firefox ya instalado, ¿sobreescribir? (s/n):"${end})" -n 1 -r confirmacion
+		read -p "$(echo -e ${byellow}"Perfil de Firefox ya instalado, ¿sobreescribir? (s/n): "${end})" -n 1 -r confirmacion
 		echo -e
 		if [[ $confirmacion != "S" && $confirmacion != "s" ]]; then
 			continuar
@@ -1454,7 +1456,7 @@ function comprobar_instalar() {
 	local herramienta="${1//_/ }"
 	local herramienta_min="${1,,}"
 	echo -e ${byellow}"$herramienta no está instalado. ¿Desea instalarlo ahora? (s/n)."${end} | tee -a >(log) 2>&1
-	read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán root si los requerimientos no están instalados"${end})" -n 1 -r confirmacion
+	read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán root si los requerimientos no están instalados: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		verificar_conexion_internet
@@ -1473,6 +1475,18 @@ function comprobar_instalar() {
 
 # Función para comprobar si el script está actualizado
 function comprobar_version() {
+
+	if ! command -v curl &>/dev/null; then
+		echo -e ${byellow}"\"curl\" no está instalado. Es necesario para comprobar actualizaciones."${end} | tee -a >(log) 2>&1
+		echo -e ${byellow}" ¿Desea instalarlo ahora junto con los requerimientos? (s/n)."${end} | tee -a >(log) 2>&1
+		read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán root si los requerimientos no están instalados: "${end})" -n 1 -r confirmacion
+		echo -e
+		if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+			instalar_requerimientos
+		else
+			return
+		fi
+	fi	
 
 	# Intentar leer el archivo desde GitHub
 	script_odyssint=$(curl -sSfL "$odyssint_script_url")
@@ -1578,7 +1592,7 @@ case $1 in
 		app_lower="${app,,}"
 		instalar_"$app_lower"
 	done
-	read -p "$(echo -e ${byellow}"Aplicaciones OSINT, ¿Deseas lanzarlas? (s/n):"${end})" -n 1 -r confirmacion
+	read -p "$(echo -e ${byellow}"Aplicaciones OSINT, ¿Deseas lanzarlas? (s/n): "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		mostrar_banner
@@ -1589,7 +1603,7 @@ case $1 in
 	comprobar_directorio
 	verificar_conexion_internet
 	instalar_perfil_firefox
-	read -p "$(echo -e ${byellow}"Perfil de Firefox instalado, ¿Deseas lanzarlo? (s/n):"${end})" -n 1 -r confirmacion
+	read -p "$(echo -e ${byellow}"Perfil de Firefox instalado, ¿Deseas lanzarlo? (s/n): "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		firefox -P Ulysses 2>&1 | log
@@ -1615,7 +1629,7 @@ case $1 in
 	done
 	instalar_zenmap
 	instalar_tor
-	read -p "$(echo -e ${byellow}"Aplicaciones complementarias instaladas, ¿Deseas lanzarlas? (s/n):"${end})" -n 1 -r confirmacion
+	read -p "$(echo -e ${byellow}"Aplicaciones complementarias instaladas, ¿Deseas lanzarlas? (s/n): "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		mostrar_banner
