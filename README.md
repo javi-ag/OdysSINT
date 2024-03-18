@@ -57,7 +57,7 @@ Los marcadores están agrupados en las siguentes carpetas:
 - **SEGUIMIENTO:** herramientas para monitorización y seguimiento de objetivos. 
 - **TELÉFONO / SMS:** marcadores relacionados con la comunicación.
 
-El listado completo de marcadores se puede encontrar en [Listado de herramientas](https://github.com/javi-ag/OdysSINT/blob/main/Listado%20herramientas.xlsx).
+El listado completo de marcadores se puede encontrar en [listado-elementos.xlsx.](https://github.com/javi-ag/OdysSINT/blob/main/listado-elementos.xlsx)
  
 ## :jigsaw: Extensiones
 Las extensiones so están recogidas en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT):
