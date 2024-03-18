@@ -2,6 +2,7 @@
 
 ###### COLORES ######
 
+# Normales
 green="\e[0;32m\033[1m"
 red="\e[0;31m\033[1m"
 blue="\e[0;34m\033[1m"
@@ -11,7 +12,7 @@ cyan="\e[0;36m\033[1m"
 white="\e[0;37m\033[1m"
 black="\e[0;30m\033[1m"
 
-# Bold High Intensity
+# Alta intensidad 
 bgreen='\033[1;92m'
 bred='\033[1;91m'
 bblue='\033[1;94m'
@@ -21,7 +22,7 @@ bcyan='\033[1;96m'
 bwhite='\033[1;97m'
 bblack='\033[1;90m'
 
-# High Intensity backgrounds
+# Alta intensidad con fondo
 ogreen='\033[0;102m'
 ored='\033[0;101m'
 oblue='\033[0;104m'
@@ -31,7 +32,7 @@ ocyan='\033[0;106m'
 owhite='\033[0;107m'
 oblack='\033[0;100m'
 
-#Especiales
+# Especiales
 end="\033[0m\e[0m"
 warning="\e[5;31m\033[1m"
 
@@ -43,7 +44,6 @@ declare requerimientos=("git" "python3-full" "python3-pip" "python3-virtualenv" 
 declare aplicacionesOSINT=("theHarvester" "recon-ng" "Spiderfoot" "Maltego" "Zotero" "Nexfil" "Photon" "Geo-recon" "ArchiveBox")
 # Lista de aplicaciones complementarias
 declare aplicacionesComplementarias=("Terminator" "Onionshare" "KeePassXC" "Notepadqq" "Dia" "Vlc" "Audacity" "Flameshot" "Nmap" "7zip")
-
 # URLs repositorio Github OdysSINT
 declare odyssint_github_url="https://github.com/javi-ag/OdyssINT"
 declare odyssint_script_url="https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh"
@@ -51,7 +51,7 @@ declare odyssint_firefox_url="https://github.com/javi-ag/OdysSINT/raw/main/firef
 # Versión de script
 declare script_version=1.0
 #Directorio de trabajo de OdysSINT
-declare odyssinthome=$HOME/odyssint
+declare odyssinthome=$HOME/OdysSINT
 #Nombre fichero script
 declare nombre_script=$(basename "$0")
 # Nombre del archivo de log
@@ -59,7 +59,7 @@ declare logfile="$odyssinthome/logs/$(date +'%Y-%m-%d')-OdysSINT.log"
 
 ###### FUNCIONES DE MENÚS ######
 
-#Función para mostrar el banner inicial.
+#Función para mostrar el banner inicial
 function mostrar_banner() {
 	# Limpia la pantalla
 	clear
@@ -72,15 +72,14 @@ function mostrar_banner() {
 	echo -e "       ░░██████░ ░░██████░░█████  █████  █████  ████ ████  ░░███    ████   "
 	echo -e "        ░░░░░░    ░░░░░░  ░░░░██ ░░░░░  ░░░░░  ░░░░ ░░░░░  ░░░░    ░░░░    "
 	echo -e "                          ██ ░██  Instalación y uso de herramientas OSINT  "
-	echo -e "                         ░░████   v$script_version                         "
+	echo -e "                         ░░████   v$script_version                         " # Muestra la versión del script
 	echo -e "                           ░░░                                             "
 	echo -e "  \t\t${bgreen}Master Ciberseguridad 12ª Edición"${end}
 	echo -e "  \t\t * Autor: ${bblue}Javier Aguilar"${end}
 	echo -e "  \t\t * Tutor: ${cyan}Juanjo Salvador"${end}
 	echo -e "  \t\t * Correo: ${byellow}odyssint@protonmail.com"${end}
 	echo -e "  \t\t * Github: ${byellow}$odyssint_github_url"${end}
-	# Muestra la versión actual del script y si hay actualizaciones o errores.
-	echo -e "  \t\t $script_version_update"
+	echo -e "  \t\t $script_version_update" # Muestra mensaje en relación a las actualizaciones
 
 }
 # Función para mostrar el menú principal
@@ -100,16 +99,16 @@ function mostrar_menu_principal() {
 	read -p "$(echo -e ${bblack}" Selecciona una opción: "${end})" -n 1 -r menu_principal
 	echo -e
 	case $menu_principal in
-	1) #Herramientas OSINT
+	1) # Herramientas OSINT
 		mostrar_banner
 		listar_herramientas_osint
 		;;
-	2) #Herramientas complementarias
+	2) # Herramientas complementarias
 		mostrar_banner
 		listar_herramientas_complementarias
 		;;
-	3) #Marcadores y extensiones en Firefox
-		# Verificar si Firefox está instalado
+	3) # Marcadores y extensiones en Firefox
+	   # Verificar si Firefox está instalado
 		if [[ ! -d "$HOME/snap/firefox/common/.mozilla/firefox/firefoxprofile.ulysses" && ! -d "$HOME/.mozilla/firefox/firefoxprofile.ulysses" ]]; then
 			comprobar_instalar "Perfil_Firefox"
 		fi
@@ -1252,7 +1251,7 @@ function instalar_tor() {
 			# Extraer el archivo tar.xz sobrescribiendo la carpeta si existe
 			echo -e "${bpurple}Extrayendo el archivo...${end}" | tee -a >(log) 2>&1
 			echo "--- COMANDO: unzip -o $odyssinthome/firefox/firefoxprofile.ulysses.zip -d $destino/firefoxprofile.ulysses" | log
-			if unzip -o "$odyssinthome/firefox/firefoxprofile.ulysses.zip" -d "$destino" 2>&1 | log; then
+			if unzip -o "$odyssinthome/firefox/firefoxprofile.ulysses.zip" -d "$destino/firefoxprofile.ulysses" 2>&1 | log; then
 				echo -e "${bgreen}Extracción completa.${end}" | tee -a >(log) 2>&1
 			else
 				echo -e "${bred}Error al extraer el archivo.${end}" | tee -a >(log) 2>&1
@@ -1342,11 +1341,13 @@ function instalar_perfil_firefox() {
 function comprobar_directorio() {
 	if [ ! -d "$odyssinthome" ]; then
 		mkdir -p $odyssinthome
-		touch "$odyssinthome/NO_BORRAR_ESTA_CARPETA"
-		mkdir -p $odyssinthome/logs/
 		mostrar_banner
 		echo -e ${bgreen}"Se ha creado el directorio de trabajo en $odyssinthome."${end} | tee -a >(log) 2>&1
 		continuar
+	fi
+	if [ ! -d "$odyssinthome/logs/" ]; then
+	touch "$odyssinthome/NO_BORRAR_CARPETA"
+	mkdir -p $odyssinthome/logs/
 	fi
 	# Imprimo un primer mensaje en log con inicio y versión de script.
 	echo "------------- INICIO EJECUCIÓN SCRIPT - VERSIÓN ACTUAL OdysSINT $script_version -------------" | log
