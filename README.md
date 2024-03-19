@@ -95,10 +95,10 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
   - Descargamos [pasos.Ulysses.Windows.zip](https://github.com/javi-ag/OdysSINT/raw/main/pasos.Ulysses.Windows.zip), extraemos y seguimos los pasos que indican los accesos directos.
 
 - **Addons Firefox**: se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
-- **Marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT), 
+- **Marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT).
 
  > [!WARNING]
- > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará perfil de Firefox y se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
+ > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará perfil de Firefox y/o se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
 
 ## :gear: Configuración
 
@@ -113,7 +113,9 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 ## :computer: Uso
 
 ## :open_book: FAQ
-
+- No aparece ningún mensaje durante la instalación: el programa está diseñado para que sólo muestre la información relevante, para visualizar lo que está realizando abriremos el fichero de log desde el menú "Configuración de OdysSINT > Abrir log OdysSINT" o desde el directorio "OdysSINT\logs\AAAA-MM-DD-OdysSINT.log"
+- La aplicación no se instala y no aparece ningún mensaje: borraremos la carpeta de la herramientas dentro del espacio de trabajo "OdysSINT" y revisaremos el fichero de log al volver a lanzar.
+- Es script indica que no hay internet pero si dispongo de conexión externa: verificar que no tenemos bloqueado el ping a la IP 8.8.8.8.
 
 ## Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
