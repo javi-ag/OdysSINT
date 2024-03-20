@@ -60,7 +60,7 @@ Los marcadores están agrupados en las siguentes carpetas:
 El listado completo de marcadores se puede encontrar en [listado-elementos.xlsx.](https://github.com/javi-ag/OdysSINT/blob/main/listado-elementos.xlsx)
  
 ## :jigsaw: Extensiones
-Las extensiones so están recogidas en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT):
+Las extensiones están recogidas en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT):
  * [ArchiveBox Exporter:](https://github.com/ArchiveBox/archivebox-browser-extension) extensión ligada a la herramienta ArchiveBox, agiliza la captura de direcciones añadiendo automatismos.
  * [BookmarkHub:](https://github.com/dudor/BookmarkHub) permite la instalación y actualización de los marcadores seleccionados en la solución sin necesidad de instalar el perfil Ulysses, para ello seguir los pasos del apartado de la extensión dentro de la URL de addons de Ulysses, compatible con Chrome, Firefox Edge, Opera y cualquier navegador basado en Chromium.
  * [Distill Web Monitor:](https://distill.io) permite configurar monitorizaciones en cambios de partes o webs completas.
@@ -98,7 +98,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 - **Marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT).
 
  > [!WARNING]
- > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará perfil de Firefox y/o se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
+ > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
 
 ## :gear: Configuración
 
@@ -110,12 +110,15 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 - **Formato**: Ova (VirtualBox)
 - **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
 
-## :computer: Uso
+## :computer: Demostración
+
+VIDEO
 
 ## :open_book: FAQ
-- No aparece ningún mensaje durante la instalación: el programa está diseñado para que sólo muestre la información relevante, para visualizar lo que está realizando abriremos el fichero de log desde el menú "Configuración de OdysSINT > Abrir log OdysSINT" o desde el directorio "OdysSINT\logs\AAAA-MM-DD-OdysSINT.log"
-- La aplicación no se instala y no aparece ningún mensaje: borraremos la carpeta de la herramientas dentro del espacio de trabajo "OdysSINT" y revisaremos el fichero de log al volver a lanzar.
-- Es script indica que no hay internet pero si dispongo de conexión externa: verificar que no tenemos bloqueado el ping a la IP 8.8.8.8.
+- **No aparece ningún mensaje durante la instalación**: el programa está diseñado para que sólo muestre la información relevante, para visualizar lo que está realizando abriremos el fichero de log desde el menú "Configuración de OdysSINT > Abrir log OdysSINT" o desde el directorio "OdysSINT\logs\AAAA-MM-DD-OdysSINT.log"
+- **La aplicación no se instala y no aparece ningún mensaje**: borraremos la carpeta de la herramientas dentro del espacio de trabajo "OdysSINT" y revisaremos el fichero de log al volver a lanzar.
+- **El script indica que no hay internet**: la conexión a internet será necesaria cuando queramos instalar cualquier elemento.
+- **El script indica que no hay internet pero si dispongo de conexión externa**: verificar que no tenemos bloqueado el ping a la IP 8.8.8.8.
 
 ## Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
