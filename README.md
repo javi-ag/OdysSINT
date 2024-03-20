@@ -82,7 +82,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 
 - **OVA preconfigurada**: contiene todas las herramientas OSINT, herramientas complementarias, y el perfil Ulysses para Firefox y Tor con las extensiones y marcadores. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
  
-- **Script configurable**: instala todas las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño. Al clonar el repositorio hay que asegurarse de que el script tiene permisos de ejecución:
+- **Script configurable**: instala todas las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
   git clone --depth=1 https://github.com/javi-ag/OdysSINT.git
   cd OdysSINT
