@@ -1445,14 +1445,14 @@ function continuar() {
 	mostrar_banner
 }
 
-# Función para comprobar e instalar requerimeintos si no están instalados
+# Función para comprobar e instalar requerimientos si no están instalados
 function instalar_requerimientos() {
 	mostrar_banner
 	echo -e ${bpurple}"--------------------------------------------------------------------------------"${end}${opurple}
 	echo -e ${bwhite}"                                 INSTALACIÓN                                    "${end} | tee -a >(log) 2>&1
 	echo -e ${bpurple}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	echo -e "${bpurple}Comprobando requerimientos..."${end} | tee -a >(log) 2>&1
+	echo -e "${bpurple}Comprobando requerimientos, esto puede tardar..."${end} | tee -a >(log) 2>&1
 	for app in "${requerimientos[@]}"; do
 		if ! command -v "$app" &>/dev/null; then
 			echo "--- COMANDO: sudo apt-get install -y "$app"" | log
@@ -1676,6 +1676,10 @@ case $1 in
 	verificar_root
 	comprobar_directorio
 	verificar_conexion_internet
+	echo -e ${bpurple}"--------------------------------------------------------------------------------"${end}${opurple}
+	echo -e ${bwhite}"                                 INSTALACIÓN                                    "${end} | tee -a >(log) 2>&1
+	echo -e ${bpurple}"--------------------------------------------------------------------------------"${end}
+	echo -e
 	echo -e ${bpurple}"Iniciando instalación desatendida de perfil Ulysses para Firefox."${end} | tee -a >(log) 2>&1
 	instalar_perfil_firefox
 	echo -e ${bgreen}"Perfil Ulysses en Firefox instalado."${end} | tee -a >(log) 2>&1
