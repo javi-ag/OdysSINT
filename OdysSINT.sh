@@ -838,6 +838,19 @@ function actualizar_y_ejecutar_script() {
 	echo -e ${bwhite}"               CONFIGURACIÓN OdysSINT > ACTUALIZAR SCRIPT                       "${end} | tee -a >(log) 2>&1
 	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	echo -e
+	
+	if ! command -v wget &>/dev/null; then
+		echo -e ${byellow}"\"wget\" no está instalado. Es necesario para realizar la actualización."${end} | tee -a >(log) 2>&1
+		echo -e ${byellow}" ¿Desea instalarlo ahora? (s/n)."${end} | tee -a >(log) 2>&1
+		read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán root: "${end})" -n 1 -r confirmacion
+		echo -e
+		if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+			echo "--- COMANDO: apt install wget" | log
+			sudo apt install wget 2>&1 | log
+		else
+			exit
+		fi
+	fi
 
 	# Intentar leer el archivo desde GitHub
 	script_odyssint=$(curl -sSfL "$odyssint_script_url")
@@ -1714,11 +1727,24 @@ case $1 in
 	verificar_root
 	comprobar_directorio
 	echo -e ${bpurple}"Actualizando script..."${end} | tee -a >(log) 2>&1
+	if ! command -v wget &>/dev/null; then
+		echo -e ${byellow}"\"wget\" no está instalado. Es necesario para realizar la actualización."${end} | tee -a >(log) 2>&1
+		echo -e ${byellow}" ¿Desea instalarlo ahora? (s/n)."${end} | tee -a >(log) 2>&1
+		read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán root: "${end})" -n 1 -r confirmacion
+		echo -e
+		if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+			echo "--- COMANDO: apt install wget" | log
+			sudo apt install wget 2>&1 | log
+		else
+			exit
+		fi
+	fi	
 	echo "--- COMANDO: wget -O $nombre_script $odyssint_script_url" | log
 	wget -O "$nombre_script" "$odyssint_script_url" 2>&1 | log
 	echo "--- COMANDO: chmod +x $nombre_script" | log
 	chmod +x "$nombre_script" 2>&1 | log
-	echo -e ${bgreen}"Script actualizado a última versión."${end} | tee -a >(log) 2>&1
+	echo -e ${bgreen}"Script actualizado a la última versión, se va a reiniciar su ejecución"${end} | tee -a >(log) 2>&1
+	./"$nombre_script"
 	;;
 -l) # Mostrar el log
 	verificar_root
