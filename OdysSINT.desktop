@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=OdysSINT
-Exec=sh -c "$HOME/OdysSINT/OdysSINT.sh"
+Exec=gnome-terminal --geometry=80x80 -- /bin/bash -c "$HOME/OdysSINT/OdysSINT.sh; exec /bin/bash"
 Terminal=true
-Icon=Ulysses_Icon.png
+Icon=/home/ulysses/OdysSINT/Ulysses_Icon.png
