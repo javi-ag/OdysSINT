@@ -4,7 +4,7 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 
 
 ## :sailboat: ¿Qué es OdysSINT? 
-**OdysSINT** es un script de instalación y uso de herramientas OSINT en bash para entornos Debian y una serie de procedimientos que tienen como objetivo ayudar en la preparación de un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT, esta unión viene de la necesidad de reflejar, como en la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas a las que tenemos acceso hoy en día para poder alcanzar nuestro objetivo en una investigación. La solución además dispone de un perfil de Firefox denominado **Ulysses** con un conjunto de marcadores, extensiones y configuraciones especiales que permite ser configurado también, con unos pocos pasos, en otros sistemas como Windows e incluso en otros navegadores.
+**OdysSINT** es un script de instalación y uso de herramientas OSINT en bash para entornos basados en Debian que junto a una serie de procedimientos tienen como objetivo ayudar en la preparación de un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT, esta unión surge de la necesidad de reflejar, como en la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas a las que tenemos acceso hoy en día para poder alcanzar nuestro objetivo en una investigación. La solución además dispone de un perfil de Firefox denominado **Ulysses** con un conjunto de marcadores, extensiones y configuraciones especiales que permite ser configurado también, en otros navegadores compatibles con Firefox e incluso en sistemas como Windows.
 
 ## :white_check_mark: Caracteristicas OdysSINT  
 - Completo listado de herramientas OSTIN, aplicaciones complementarias, extensiones y marcadores.
@@ -80,7 +80,7 @@ Las extensiones están recogidas en el enlace de [addons de Ulysses](https://add
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
 
-- **OVA preconfigurada**: contiene todas las herramientas OSINT, herramientas complementarias, y el perfil Ulysses para Firefox y Tor con las extensiones y marcadores. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
+- **OVAs preconfiguradas**: contienen todas las herramientas OSINT, herramientas complementarias, el perfil Ulysses para Firefox y Tor con las extensiones y marcadores además de estar personalizada con logos y fondo de pantalla, en dos sabores, Debian 12.5 o Ubuntu 22.04. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
  
 - **Script configurable**: instala todas las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
@@ -103,11 +103,19 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 ## :gear: Configuración
 
 ## :arrow_down: Descargas 
-### OVA:
-- Enlace a repositorio: https://URL.com
-- **Decryption key**: pfsMdmfPZIn9NQQreDsNaA
-- **SHA256sum**: XXXXX
-- **Formato**: Ova (VirtualBox)
+### OVA Debian 12.5:
+- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EWQGZnpul-lFvVqM4_DCsfYBmKDcztTfzIE9xdawrUr18Q?e=YC8pUe)
+- **Contraseña acceso**: l76W&n30%W7V
+- **SHA256sum**: 7623bd4a3985dc1ce0caf7ec7a14ef52781008f152a5b23bc27c400b6e1e5eb1
+- **Formato**: OVA
+- **Formato**: 5,91GB
+- **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
+
+### OVA Ubuntu:
+- [**Enlace a descarga**](XXX)
+- **Contraseña acceso**: XXX
+- **SHA256sum**: XXX
+- **Formato**: OVA
 - **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
 
 ## :computer: Demostración
