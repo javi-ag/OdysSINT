@@ -12,7 +12,7 @@ cyan="\e[0;36m\033[1m"
 white="\e[0;37m\033[1m"
 black="\e[0;30m\033[1m"
 
-# Alta intensidad 
+# Alta intensidad
 bgreen='\033[1;92m'
 bred='\033[1;91m'
 bblue='\033[1;94m'
@@ -108,8 +108,8 @@ function mostrar_menu_principal() {
 		listar_herramientas_complementarias
 		;;
 	3) # Marcadores y extensiones en Firefox
-	   # Verificar si Firefox está instalado
-		if [[ ! -d "$HOME/snap/firefox/common/.mozilla/firefox/firefoxprofile.ulysses" && ! -d "$HOME/.mozilla/firefox/firefoxprofile.ulysses" ]] ; then
+		# Verificar si Firefox está instalado
+		if [[ ! -d "$HOME/snap/firefox/common/.mozilla/firefox/firefoxprofile.ulysses" && ! -d "$HOME/.mozilla/firefox/firefoxprofile.ulysses" ]]; then
 			comprobar_instalar "Perfil_Firefox"
 		fi
 		# Deshabilitar las advertencias de GTK
@@ -162,7 +162,6 @@ function mostrar_ayuda() {
 	echo -e ${bgreen}" -a) Actualiza el script de forma desatendida."${end}
 	echo -e ${bblack}" -l) Muestra el log actual en una nueva ventana de terminal."${end}
 	echo -e ${bred}" -d) DESINSTALA todo OdysSINT.${warning} NO SOLICITA CONFIRMACIÓN"${end}
-		
 
 	echo -e
 	echo -e "${bblack}Ejemplo: ./OdysSINT.sh -e${end}"
@@ -222,7 +221,7 @@ function listar_herramientas_osint() {
 		echo '-----------------------------------'
 		echo '|  MODO CLI: ./theHarvester.py    |'
 		echo '|  AYUDA:    ./theHarvester.py -h |'
-		echo '-----------------------------------'; exec $SHELL" 
+		echo '-----------------------------------'; exec $SHELL"
 		echo -e ${bgreen}"theHarvester iniciado en una nueva ventana."${end} | tee -a >(log) 2>&1
 		continuar
 		listar_herramientas_osint
@@ -395,7 +394,7 @@ function listar_herramientas_osint() {
 		mostrar_menu_principal
 		;;
 	*)
-		echo -e "${bred}Opción inválida"${end} | tee -a >(log) 2>&1 
+		echo -e "${bred}Opción inválida"${end} | tee -a >(log) 2>&1
 		continuar
 		listar_herramientas_osint
 		;;
@@ -667,6 +666,7 @@ function actualizar_sistema_y_requerimientos() {
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		verificar_conexion_internet
+		instalar_requerimientos
 		echo -e ${bpurple}"Instalando requerimientos..."${end} | tee -a >(log) 2>&1
 	else
 		mostrar_banner
@@ -733,6 +733,7 @@ function instalar_herramientas_osint() {
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		verificar_conexion_internet
+		instalar_requerimientos
 		echo -e ${bpurple}"Iniciando instalación:"${end} | tee -a >(log) 2>&1
 	else
 		mostrar_banner
@@ -771,6 +772,7 @@ function instalar_herramientas_complementarias() {
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		verificar_conexion_internet
+		instalar_requerimientos
 		echo -e ${bpurple}"Iniciando instalación:"${end} | tee -a >(log) 2>&1
 	else
 		mostrar_banner
@@ -821,6 +823,7 @@ function configurar_firefox() {
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		verificar_conexion_internet
+		instalar_requerimientos
 		echo -e ${bpurple}"Iniciando configuración:"${end} | tee -a >(log) 2>&1
 		instalar_perfil_firefox
 	else
@@ -838,7 +841,7 @@ function actualizar_y_ejecutar_script() {
 	echo -e ${bwhite}"               CONFIGURACIÓN OdysSINT > ACTUALIZAR SCRIPT                       "${end} | tee -a >(log) 2>&1
 	echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	
+
 	if ! command -v wget &>/dev/null; then
 		echo -e ${byellow}"\"wget\" no está instalado. Es necesario para realizar la actualización."${end} | tee -a >(log) 2>&1
 		echo -e ${byellow}" ¿Desea instalarlo ahora? (s/n)."${end} | tee -a >(log) 2>&1
@@ -876,8 +879,8 @@ function actualizar_y_ejecutar_script() {
 		listar_configurar_odyssint
 	elif [[ "$script_version" < "$script_version_github" ]]; then
 		echo -e ${byellow}"Se va a actualizar el script de la versión $script_version a la versión $script_version_github"${end} | tee -a >(log) 2>&1
-		echo -e ${bgreen}"Para revisar los cambios visitar $odyssint_github_url"${end}| tee -a >(log) 2>&1
-		echo -e ${bred}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end}| tee -a >(log) 2>&1
+		echo -e ${bgreen}"Para revisar los cambios visitar $odyssint_github_url"${end} | tee -a >(log) 2>&1
+		echo -e ${bred}"IMPORTANTE: Tras actualizarse se reiniciará el script."${end} | tee -a >(log) 2>&1
 		echo -e
 		echo -e ${bgreen}"--------------------------------------------------------------------------------"${end}
 		read -p "$(echo -e ${byellow}"Presiona (s/n) para confirmar y cualquier otra tecla para volver: "${end})" -n 1 -r confirmacion
@@ -895,7 +898,7 @@ function actualizar_y_ejecutar_script() {
 		else
 			mostrar_banner
 			listar_configurar_odyssint
-		fi	
+		fi
 	else
 		echo -e ${bred}"ERROR: Versión de script incorrecta ($script_version)."${end} | tee -a >(log) 2>&1
 		echo -e ${bred}"Versión actual de OdysSINT ($script_version_github)."${end} | tee -a >(log) 2>&1
@@ -1394,7 +1397,7 @@ function instalar_perfil_firefox() {
 	fi
 	# Realizar un backup del archivo profiles.ini
 	echo "--- COMANDO: cp $destino/profiles.ini $destino/profiles.ini_backup" | log
-	if cp "$destino/profiles.ini" "$destino/profiles.ini_backup" | tee -a >(log) 2>&1 ; then
+	if cp "$destino/profiles.ini" "$destino/profiles.ini_backup" | tee -a >(log) 2>&1; then
 		echo -e "${bgreen}Perfil de Firefox agregado.${end}" | tee -a >(log) 2>&1
 	else
 		echo -e "${bred}Error al realizar el backup.${end}" | tee -a >(log) 2>&1
@@ -1412,13 +1415,22 @@ function instalar_perfil_firefox() {
 function comprobar_directorio() {
 	if [ ! -d "$odyssinthome" ]; then
 		mkdir -p $odyssinthome
+	elif [ ! -d "$odyssinthome/logs/" ]; then
 		mostrar_banner
-		echo -e ${bgreen}"Se ha creado el directorio de trabajo en $odyssinthome."${end}
-		continuar
-	fi
-	if [ ! -d "$odyssinthome/logs/" ]; then
-	touch "$odyssinthome/NO_BORRAR_CARPETA"
-	mkdir -p $odyssinthome/logs/
+		mkdir -p $odyssinthome/logs/
+		acceso_directo="[Desktop Entry]\nType=Application\nName=OdysSINT\nExec=gnome-terminal --working-directory=$HOME/OdysSINT --title=\"Script OdysSINT\" --geometry=80x80 -- /bin/bash -c \"$odyssinthome/OdysSINT.sh\"\nTerminal=true\nIcon=$odyssinthome/Ulysses_Icon.png"
+		echo -e "$acceso_directo" > "OdysSINT.desktop"
+		echo -e ${bgreen}"Se ha creado el directorio de trabajo en $odyssinthome."${end} | tee -a >(log) 2>&1
+		echo -e ${byellow}"¿Crear acceso directo del script dentro de las aplicaciones del entorno? (s/n)"${end}
+		read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán permisos root: "${end})" -n 1 -r confirmacion
+		echo -e
+		if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+			# Creo el acceso directo del script
+		sudo cp "$odyssinthome/OdysSINT.desktop" "/usr/share/applications/OdysSINT.desktop"
+			echo -e ${bgreen}"Acceso directo creado, asegurate de poner el script de OdysSINT y el icono"${end} | tee -a >(log) 2>&1
+			echo -e ${bgreen}"\"Ulysses_Icon.png\" del repositorio en la carpeta $odyssinthome"${end} | tee -a >(log) 2>&1
+			continuar
+		fi
 	fi
 	# Imprimo un primer mensaje en log con inicio y versión de script.
 	echo "--- INICIO EJECUCIÓN SCRIPT - VERSIÓN ACTUAL OdysSINT $script_version -----" | log
@@ -1525,7 +1537,7 @@ function comprobar_lanzar() {
 		else
 			mostrar_banner
 			listar_herramientas_complementarias
-		fi	
+		fi
 	fi
 	#Lanzo en una nueva ventana.
 	gnome-terminal -- $SHELL -c "
@@ -1576,7 +1588,7 @@ function comprobar_version() {
 		else
 			return
 		fi
-	fi	
+	fi
 
 	# Intentar leer el archivo desde GitHub
 	script_odyssint=$(curl -sSfL "$odyssint_script_url")
@@ -1620,7 +1632,7 @@ function comprobar_version() {
 		echo -e ${bred}"ERROR: Versión de script incorrecta ($script_version)."${end} | tee -a >(log) 2>&1
 		echo -e ${bred}"Versión actual de OdysSINT ($script_version_github)."${end} | tee -a >(log) 2>&1
 		echo -e ${bred}"Descarga de nuevo el script del repositorio"${end}
-		echo -e ${bred}"$odyssint_script_url"${end} 
+		echo -e ${bred}"$odyssint_script_url"${end}
 		continuar
 	fi
 }
@@ -1640,7 +1652,7 @@ function verificar_root() {
 # Función para verificar la conexión a Internet
 function verificar_conexion_internet() {
 	echo
-	echo "--- COMANDO: ping -q -c 1 -W 1 8.8.8.8"  | log
+	echo "--- COMANDO: ping -q -c 1 -W 1 8.8.8.8" | log
 	if ! ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		echo -e ${bred}"No hay conexión a Internet. "${end}
 		echo -e ${bred}"Por favor, verifique su conexión y vuelva a intentarlo."${end}
@@ -1658,7 +1670,7 @@ function verificar_conexion_internet() {
 
 # Función para abrir el fichero de log actual
 function abrir_log() {
-	
+
 	gnome-terminal -- $SHELL -c "tail -f $logfile; exec $SHELL"
 	echo -e ${bgreen}"Log abierto en una nueva ventana."${end} | tee -a >(log) 2>&1
 	continuar
@@ -1739,7 +1751,7 @@ case $1 in
 		else
 			exit
 		fi
-	fi	
+	fi
 	echo "--- COMANDO: wget -O $nombre_script $odyssint_script_url" | log
 	wget -O "$nombre_script" "$odyssint_script_url" 2>&1 | log
 	echo "--- COMANDO: chmod +x $nombre_script" | log
@@ -1759,7 +1771,7 @@ case $1 in
 	echo -e ${bred}"--------------------------------------------------------------------------------"${end}${ored}
 	echo -e ${bwhite}"                                 DESINSTALANDO                                 "${end} | tee -a >(log) 2>&1
 	echo -e ${bred}"--------------------------------------------------------------------------------"${end}
-	echo -e	
+	echo -e
 	# Elimino todo sin confirmación
 	echo -e ${bpurple}"Iniciando desisntalación desatendida de herramientas OdysSINT."${end} | tee -a >(log) 2>&1
 	for app in "${requerimientos[@]}"; do
@@ -1774,7 +1786,7 @@ case $1 in
 		sudo apt-get remove -y $app 2>&1 | log
 	done
 	echo -e ${bgreen}"Aplicaciones complementarias desinstaladas."${end} | tee -a >(log) 2>&1
-	if [ -d "~/snap/firefox/common/.mozilla/firefox/"]; then
+	if [ -d "~/snap/firefox/common/.mozilla/firefox/" ]; then
 		destino="~/snap/firefox/common/.mozilla/firefox"
 	else
 		destino="$HOME/.mozilla/firefox"
@@ -1809,6 +1821,6 @@ case $1 in
 	;;
 *)
 	comprobar_directorio
-	echo -e ${bred}"Opción $1 no reconocida. Usar -h para ayuda"${end}  | tee -a >(log) 2>&1
+	echo -e ${bred}"Opción $1 no reconocida. Usar -h para ayuda"${end} | tee -a >(log) 2>&1
 	;;
 esac
