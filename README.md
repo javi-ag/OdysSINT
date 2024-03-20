@@ -108,7 +108,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 - **Contraseña acceso**: l76W&n30%W7V
 - **SHA256sum**: 7623bd4a3985dc1ce0caf7ec7a14ef52781008f152a5b23bc27c400b6e1e5eb1
 - **Formato**: OVA
-- **Formato**: 5,91GB
+- **Tamaño**: 5,91GB
 - **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
 
 ### OVA Ubuntu:
