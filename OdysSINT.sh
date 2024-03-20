@@ -1154,6 +1154,7 @@ function instalar_zotero() {
 		# Cambiar al directorio de Zotero
 		cd $odyssinthome/zotero
 		echo -e ${bpurple}"Descargando Zotero..."${end} | tee -a >(log) 2>&1
+		echo "--- COMANDO: wget -O zotero.tar.bz2 https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64" | log
 		wget -O zotero.tar.bz2 "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64" 2>&1 | log
 		# Instalar Zotero
 		echo -e ${bpurple}"Instalando Zotero..."${end} | tee -a >(log) 2>&1
@@ -1743,8 +1744,7 @@ case $1 in
 	wget -O "$nombre_script" "$odyssint_script_url" 2>&1 | log
 	echo "--- COMANDO: chmod +x $nombre_script" | log
 	chmod +x "$nombre_script" 2>&1 | log
-	echo -e ${bgreen}"Script actualizado a la última versión, se va a reiniciar su ejecución"${end} | tee -a >(log) 2>&1
-	./"$nombre_script"
+	echo -e ${bgreen}"Script actualizado a la última versión"${end} | tee -a >(log) 2>&1
 	;;
 -l) # Mostrar el log
 	verificar_root
