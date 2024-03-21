@@ -1,6 +1,6 @@
 # OdysSINT [![version-1.0](https://img.shields.io/badge/version-1.0-green)](https://github.com/javi-ag/OdysSINT/releases/tag/pre-release) [![CC0-1.0.1](https://img.shields.io/badge/license-cc0-blue)](https://github.com/javi-ag/OdysSINT/tree/main?tab=CC0-1.0-1-ov-file#) [![Shell](https://img.shields.io/badge/language-shell-red)](https://img.shields.io/badge/language-shell-red)
 ![1200px-WATERHOUSE_-_Ulises_y_las_Sirenas_(National_Gallery_of_Victoria,_Melbourne,_1891 _Óleo_sobre_lienzo,_100 6_x_202_cm)](https://github.com/javi-ag/OdysSINT/assets/153739397/b28f54ea-95cf-4b0f-a452-8afa41628b55)
-_Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Melbourne)_
+<sup>_Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Melbourne)_</sup>
 
 
 ## :sailboat: ¿Qué es OdysSINT? 
@@ -15,6 +15,10 @@ _Ulises y las Sirenas, John William Waterhouse (National Gallery de Victoria, Me
 - Notificación de nuevas versiones y posibilidad de actualizar desde el propio script.
 - Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox versión mayor de la 118.
 
+     ![2024-03-21_02 56 57_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/b122ab70-5cfe-4381-926a-4d78e4df44a4)
+
+     <sup>_Menú principal de script OdysSINT_</sup>
+
 ## :diving_mask: Herramientas OSINT
 Herramientas OSINT instaladas por script:
 * [theHarvester:](https://github.com/laramies/theHarvester) obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
@@ -26,7 +30,7 @@ Herramientas OSINT instaladas por script:
 * [Maltego:](https://www.maltego.com/) extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
 * [ArchiveBox:](https://github.com/ArchiveBox/ArchiveBox) archivado local de páginas webs para su visualización offline (Web\Add-on).
 * [Zotero:](https://www.zotero.org) gestor de referencias para la organización en las investigaciones (App\Add-on).
-
+  
 ## :anchor:	Herramientas Complementarias
 Herramientas adicionales instaladas también con el script:
 * [Zenamp:](https://nmap.org/zenmap) interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
