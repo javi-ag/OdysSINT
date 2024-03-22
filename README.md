@@ -15,10 +15,6 @@
 - Notificación de nuevas versiones y posibilidad de actualizar desde el propio script.
 - Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox versión mayor de la 118.
 
-     ![2024-03-21_02 56 57_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/b122ab70-5cfe-4381-926a-4d78e4df44a4)
-
-     <sup>_Menú principal de script OdysSINT_</sup>
-
 ## :diving_mask: Herramientas OSINT
 Herramientas OSINT instaladas por script:
 * [theHarvester:](https://github.com/laramies/theHarvester) obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
@@ -30,7 +26,7 @@ Herramientas OSINT instaladas por script:
 * [Maltego:](https://www.maltego.com/) extrae y analiza datos de múltiples fuentes mediante transformadas representándolos de forma visual y permitiendo encontrar relaciones y patrones (App).
 * [ArchiveBox:](https://github.com/ArchiveBox/ArchiveBox) archivado local de páginas webs para su visualización offline (Web\Add-on).
 * [Zotero:](https://www.zotero.org) gestor de referencias para la organización en las investigaciones (App\Add-on).
-  
+
 ## :anchor:	Herramientas Complementarias
 Herramientas adicionales instaladas también con el script:
 * [Zenamp:](https://nmap.org/zenmap) interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
@@ -43,6 +39,9 @@ Herramientas adicionales instaladas también con el script:
 * [VLC:](http://www.videolan.org) visualizador y conversor de videos (App).
 * [Audacity:](https://www.audacityteam.org) escucha y edita audios (App).
 * [Flameshot:](https://flameshot.org) realiza capturas de pantalla y las edita de forma simple (App).
+
+![2024-03-22_14 49 25_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/1a00b96b-e8c2-43f8-9556-baedda32f6a2)
+<sup>_Ejemplo de lanzamiento de theHarvester con script OdysSINT en OVA Ubuntu_</sup>
 
 ## :globe_with_meridians: Marcadores 
 Los marcadores están agrupados en las siguentes carpetas:
@@ -69,7 +68,7 @@ Las extensiones están recogidas en el enlace de [addons de Ulysses](https://add
  * [BookmarkHub:](https://github.com/dudor/BookmarkHub) permite la instalación y actualización de los marcadores seleccionados en la solución sin necesidad de instalar el perfil Ulysses, para ello seguir los pasos del apartado de la extensión dentro de la URL de addons de Ulysses, compatible con Chrome, Firefox Edge, Opera y cualquier navegador basado en Chromium.
  * [Distill Web Monitor:](https://distill.io) permite configurar monitorizaciones en cambios de partes o webs completas.
  * [DuckDuckGo Privacy Essentials:](https://duckduckgo.com/app) elimina cookies de rastreo, añade privacidad a las búsquedas con bloqueadores de enlaces de rastreo, cifrado automático, protección de email, bloqueo de cookies de rastreo, de huella digital y activa GPC.
- * [Flagfox:](https://flagfox.wordpress.com) muestra la bandera del país correspondiente a la ubicación de la página web que se está visitando y y ofrece numerosas herramientas.
+ * [Flagfox:](https://flagfox.wordpress.com) muestra la bandera del país correspondiente a la ubicación de la página web que se está visitando y ofrece numerosas herramientas.
  * [Privacy Badger](https://privacybadger.org) potente bloqueador que aprende a encontrar rastreadores invisibles con relación al comportamiento y no en base a una lista de bloqueo.
  * [Search by Image:](https://github.com/dessant/search-by-image#readme) busca una imagen en un buscador o de imágenes o en varios a la vez con un solo click.
  * [Shodan:](https://www.shodan.io) indica información sobre la IP de la dirección web visualizada como puertos abiertos, ubicación, propietario, tecnologías usadas, vulnerabilidades otros servicios.
@@ -81,25 +80,28 @@ Las extensiones están recogidas en el enlace de [addons de Ulysses](https://add
  * [WebScrapBook:](https://github.com/danny0838/webscrapbook) captura páginas en HTML con un solo click.
  * [Zotero](https://www.zotero.org) extensión asociada a la aplicación Zotero, permite añadir referencias a las investigaciones desde el propio navegador.
 
+![2024-03-22_13 01 50_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/622a7ae7-00ce-4f90-8e43-d52e30ed995b)
+<sup>_Inicio de Perfil Ulysses en Debian_</sup>
+
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
 
 - **OVAs preconfiguradas**: contienen todas las herramientas OSINT, herramientas complementarias, el perfil Ulysses para Firefox y Tor con las extensiones y marcadores además de estar personalizada con logos y fondo de pantalla, en dos sabores, Debian 12.5 o Ubuntu 22.04. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
  
-- **Script configurable**: instala todas las herramientas OSINT, herramientas complementarias y el perfil Ulisses de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
+- **Script configurable**: instala el acceso directo del OdysSINT, todas las herramientas OSINT, las herramientas complementarias y/o el perfil Ulisses tanto en Firefox como en Tor, todo esto de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño o para entornos ya existentes. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
   git clone --depth=1 https://github.com/javi-ag/OdysSINT.git
   cd OdysSINT
   chmod +x OdysSINT.sh
   ./OdysSINT.sh
   ```
-- **Perfil Ulysses para Windows**: contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
+- **Solo perfil Ulysses para Windows**: contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
   - Descargamos e instalamos [Firefox para Windows](https://download.mozilla.org/?product=firefox-stub&os=win&lang=es-ES).
   - Descargamos [firefoxprofile.ulysses.zip](https://github.com/javi-ag/OdysSINT/raw/main/firefoxprofile.ulysses.zip).
   - Descargamos [pasos.Ulysses.Windows.zip](https://github.com/javi-ag/OdysSINT/raw/main/pasos.Ulysses.Windows.zip), extraemos y seguimos los pasos que indican los accesos directos.
 
-- **Addons Firefox**: se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
-- **Marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT).
+- **Solo addons Firefox**: se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
+- **Solo marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT). Compatiblecon cualquier sistema operativo y navegador que acepte esta extensión.
 
  > [!WARNING]
  > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
