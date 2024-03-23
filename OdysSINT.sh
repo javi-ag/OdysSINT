@@ -1,8 +1,6 @@
 #!/bin/bash
 
-###### COLORES ######
-
-# Normales
+# Colores normales
 green="\e[0;32m\033[1m"
 red="\e[0;31m\033[1m"
 blue="\e[0;34m\033[1m"
@@ -12,7 +10,7 @@ cyan="\e[0;36m\033[1m"
 white="\e[0;37m\033[1m"
 black="\e[0;30m\033[1m"
 
-# Alta intensidad
+# Colores de alta intensidad
 bgreen='\033[1;92m'
 bred='\033[1;91m'
 bblue='\033[1;94m'
@@ -22,7 +20,7 @@ bcyan='\033[1;96m'
 bwhite='\033[1;97m'
 bblack='\033[1;90m'
 
-# Alta intensidad con fondo
+# Colores de alta intensidad con fondo
 ogreen='\033[0;102m'
 ored='\033[0;101m'
 oblue='\033[0;104m'
@@ -32,7 +30,7 @@ ocyan='\033[0;106m'
 owhite='\033[0;107m'
 oblack='\033[0;100m'
 
-# Especiales
+# Colores especiales
 end="\033[0m\e[0m"
 warning="\e[5;31m\033[1m"
 
@@ -1375,69 +1373,6 @@ function instalar_perfil_firefox() {
 	continuar
 }
 
-###### FUNCIONES VARIAS ######
-
-# Comprueba si la carpeta $odyssinthome existe, si no la crea
-function comprobar_directorio() {
-	if [ ! -d "$odyssinthome" ]; then
-		mkdir -p $odyssinthome
-	# Comprueba si la carpeta log existe, necesario cuando clonamos el repositorio ya que esta carpeta no está
-	elif [ ! -d "$odyssinthome/logs/" ]; then
-		mostrar_banner
-		mkdir -p $odyssinthome/logs/
-		acceso_directo="[Desktop Entry]\nType=Application\nName=OdysSINT\nExec=gnome-terminal --working-directory=$HOME/OdysSINT --title=\"Script OdysSINT\" --geometry=80x80 -- /bin/bash -c \"$odyssinthome/OdysSINT.sh\"\nTerminal=true\nIcon=$odyssinthome/Ulysses_Icon.png"
-		echo -e "$acceso_directo" > "OdysSINT.desktop"
-		echo -e ${bgreen}"Se ha creado el directorio de trabajo en $odyssinthome."${end} | tee -a >(log) 2>&1
-		# Solicita confirmación para crear acceso directo del script en listado de aplicaciones
-		echo -e ${byellow}"¿Crear acceso directo del script dentro de las aplicaciones del entorno? (s/n)"${end}
-		read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán permisos root: "${end})" -n 1 -r confirmacion
-		echo -e
-		if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
-		sudo cp "$odyssinthome/OdysSINT.desktop" "/usr/share/applications/OdysSINT.desktop"
-			echo -e ${bgreen}"Acceso directo creado, asegurate de poner el script de OdysSINT y el icono"${end} | tee -a >(log) 2>&1
-			echo -e ${bgreen}"\"Ulysses_Icon.png\" del repositorio en la carpeta $odyssinthome"${end} | tee -a >(log) 2>&1
-			continuar
-		fi
-	fi
-	# Imprime un primer mensaje en log con inicio y versión de script.
-	echo "--- INICIO EJECUCIÓN SCRIPT - VERSIÓN ACTUAL OdysSINT $script_version -----" | log
-}
-
-# Función para escribir en el log con fecha y hora, eliminando los códigos de escape ANSI
-function log() {
-	while IFS= read -r line; do
-		echo "[$(date +'%Y-%m-%d %H:%M:%S')] $(echo "$line" | sed -r "s/\x1B\[[0-9;]*[mGKHJ]//g")" >>"$logfile"
-	done
-}
-
-# Función para salir del script
-function salir_del_script() {
-	echo -e
-	echo -e ${byellow}"¿Estás seguro de que quieres salir del script? Presiona (s/n) para confirmar."${end}
-	read -n1 -s tecla
-	if [[ $tecla == "S" || $tecla == "s" ]]; then
-		echo -e "${bgreen}¡${bred}H${bblue}a${byellow}s${bpurple}t${bcyan}a ${bblack}p${bgreen}r${bred}o${bblue}n${byellow}t${bpurple}o${bcyan}!"${end}
-		exit
-	fi
-	mostrar_banner
-	mostrar_menu_principal
-}
-
-# Función que permite pulsar ctrl+c en cualquier momento.
-function ctrl_c() {
-	echo
-	salir_del_script
-	tput cnorm
-	exit 0
-}
-
-# Función que para y pede continuar
-function continuar() {
-	echo -e ${warning}${byellow}"Pulsa cualquier tecla para continuar"${end}
-	read -n 1 -r
-	mostrar_banner
-}
-
 # Función para comprobar e instalar requerimientos si no están instalados
 function instalar_requerimientos() {
 	mostrar_banner
@@ -1539,6 +1474,70 @@ function comprobar_instalar() {
 		mostrar_menu_principal
 	fi
 	return
+}
+
+###### FUNCIONES VARIAS ######
+
+# Comprueba si la carpeta $odyssinthome existe, si no la crea
+function comprobar_directorio() {
+	if [ ! -d "$odyssinthome" ]; then
+		mkdir -p $odyssinthome
+	# Comprueba si la carpeta log existe, necesario cuando clonamos el repositorio ya que esta carpeta no está
+	fi
+	if [ ! -d "$odyssinthome/logs/" ]; then
+		mostrar_banner
+		mkdir -p $odyssinthome/logs/
+		acceso_directo="[Desktop Entry]\nType=Application\nName=OdysSINT\nExec=gnome-terminal --working-directory=$HOME/OdysSINT --title=\"Script OdysSINT\" --geometry=80x80 -- /bin/bash -c \"$odyssinthome/OdysSINT.sh\"\nTerminal=true\nIcon=$odyssinthome/Ulysses_Icon.png"
+		echo -e "$acceso_directo" > $odyssinthome/OdysSINT.desktop
+		echo -e ${bgreen}"Se ha creado el directorio de trabajo en $odyssinthome."${end} | tee -a >(log) 2>&1
+		# Solicita confirmación para crear acceso directo del script en listado de aplicaciones
+		echo -e ${byellow}"¿Crear acceso directo del script dentro de las aplicaciones del entorno? (s/n)"${end}
+		read -p "$(echo -e ${bred}"IMPORTANTE: Se solicitarán permisos root: "${end})" -n 1 -r confirmacion
+		echo -e
+		if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+		sudo cp "$odyssinthome/OdysSINT.desktop" "/usr/share/applications/OdysSINT.desktop"
+			echo -e ${bgreen}"Acceso directo creado, asegurate de poner el script de OdysSINT y el icono"${end} | tee -a >(log) 2>&1
+			echo -e ${bgreen}"\"Ulysses_Icon.png\" del repositorio en la carpeta $odyssinthome"${end} | tee -a >(log) 2>&1
+			continuar
+		fi
+	fi
+	# Imprime un primer mensaje en log con inicio y versión de script.
+	echo "--- INICIO EJECUCIÓN SCRIPT - VERSIÓN ACTUAL OdysSINT $script_version -----" | log
+}
+
+# Función para escribir en el log con fecha y hora, eliminando los códigos de escape ANSI
+function log() {
+	while IFS= read -r line; do
+		echo "[$(date +'%Y-%m-%d %H:%M:%S')] $(echo "$line" | sed -r "s/\x1B\[[0-9;]*[mGKHJ]//g")" >>"$logfile"
+	done
+}
+
+# Función para salir del script
+function salir_del_script() {
+	echo -e
+	echo -e ${byellow}"¿Estás seguro de que quieres salir del script? Presiona (s/n) para confirmar."${end}
+	read -n1 -s tecla
+	if [[ $tecla == "S" || $tecla == "s" ]]; then
+		echo -e "${bgreen}¡${bred}H${bblue}a${byellow}s${bpurple}t${bcyan}a ${bblack}p${bgreen}r${bred}o${bblue}n${byellow}t${bpurple}o${bcyan}!"${end}
+		exit
+	fi
+	mostrar_banner
+	mostrar_menu_principal
+}
+
+# Función que permite pulsar ctrl+c en cualquier momento.
+function ctrl_c() {
+	echo
+	salir_del_script
+	tput cnorm
+	exit 0
+}
+
+# Función que para y pide continuar
+function continuar() {
+	echo -e ${warning}${byellow}"Pulsa cualquier tecla para continuar"${end}
+	read -n 1 -r
+	mostrar_banner
 }
 
 # Función para comprobar si el script está actualizado
