@@ -41,7 +41,7 @@ declare requerimientos=("git" "python3-full" "python3-pip" "python3-virtualenv" 
 # Lista de aplicaciones OSINT
 declare aplicacionesOSINT=("theHarvester" "recon-ng" "Spiderfoot" "Maltego" "Zotero" "Nexfil" "Photon" "Geo-recon" "ArchiveBox")
 # Lista de aplicaciones complementarias
-declare aplicacionesComplementarias=("Terminator" "Onionshare" "KeePassXC" "Notepadqq" "Dia" "Vlc" "Audacity" "Flameshot" "Nmap" "7zip")
+declare aplicacionesComplementarias=("Terminator" "Onionshare" "KeePassXC" "Notepadqq" "Dia" "VLC" "Audacity" "Flameshot" "Nmap" "7zip")
 # URLs repositorio Github OdysSINT
 declare odyssint_github_url="https://github.com/javi-ag/OdyssINT"
 declare odyssint_script_url="https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh"
@@ -920,6 +920,11 @@ function desinstalar_odyssint() {
 	read -p "$(echo -e ${byellow}"Presiona (s/n) para confirmar y cualquier otra tecla para continuar: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
+		# Eliminia el registro como aplicación de Tor-Browser
+		echo "--- COMANDO: cd $odyssinthome/tor-browser" | log
+		cd $odyssinthome/tor-browser 2>&1 | log
+		echo "--- COMANDO: ./start-tor-browser.desktop --unregister-app" | log
+		./start-tor-browser.desktop --unregister-app
 		for app in "${aplicacionesComplementarias[@]}"; do
 			echo "--- COMANDO: apt-get remove -y $app" | log
 			echo -e ${bpurple}"Desinstalando $app..."${end} | tee -a >(log) 2>&1
@@ -949,19 +954,25 @@ function desinstalar_odyssint() {
 		else
 			destino="$HOME/.mozilla/firefox"
 		fi
+		echo "--- COMANDO: rm -rf $destino/firefoxprofile.ulysses" | log
 		rm -rf "$destino/firefoxprofile.ulysses"
-		mv "$destino/profiles.ini_backup" "$destino/firefox/profiles.ini"
+		echo "--- COMANDO: mv $destino/profiles.ini_backup $destino/profiles.ini" | log
+		mv "$destino/profiles.ini_backup" "$destino/profiles.ini"
 		echo -e ${bpurple}"Eliminado perfil Ulysses de Firefox y recuperada configuración anterior..."${end}
 		# Elimina Maltego
 		echo -e ${bpurple}"Desinstalando Maltego..."${end}
+		echo "--- COMANDO: sudo apt remove -y maltego" | log
 		sudo apt remove -y maltego
-		# Eliminia el registro como aplicación de Tor-Browser
-		cd .$odyssinthome/tor-browser
-		./start-tor-browser.desktop --unregister-app
+	    echo -e ${bpurple}"Herramientas OSINT eliminadas..."${end}
+		echo "--- COMANDO: sudo rm -rf /usr/share/applications/OdysSINT.desktop" | log
+		#Elimina el acceso directo de OdysSINT
+		sudo rm -rf "/usr/share/applications/OdysSINT.desktop" 2>&1 | log
+		echo -e ${bpurple}"Acceso directo OdysSINT eliminado..."${end} | tee -a >(log) 2>&1
 		#Elimina la carpeta de trabajo de OdysSINT
-		echo -e ${bpurple}"Herramientas OSINT eliminadas..."${end}
 		rm -rf $odyssinthome
 		echo -e ${bpurple}"Carpeta eliminada..."${end}
+		sudo rm -rf "/usr/share/applications/OdysSINT.desktop"
+		echo -e ${bpurple}"Acceso directo OdysSINT eliminado..."${end}
 	else
 		mostrar_banner
 		listar_configurar_odyssint
@@ -1636,7 +1647,7 @@ function verificar_conexion_internet() {
 
 # Función para abrir el fichero de log actual
 function abrir_log() {
-	gnome-terminal --geometry=120x40 --title="Log OdysSINT" -- $SHELL -c "tail -f $logfile; exec $SHELL"
+	gnome-terminal --geometry=120x40 --title="Log OdysSINT - $(date +'%Y-%m-%d')" -- $SHELL -c "tail -f $logfile; exec $SHELL"
 	echo -e ${bgreen}"Log abierto en una nueva ventana."${end} | tee -a >(log) 2>&1
 	continuar
 }
@@ -1737,8 +1748,14 @@ case $1 in
 	echo -e ${bwhite}"                                 DESINSTALANDO                                 "${end} | tee -a >(log) 2>&1
 	echo -e ${bred}"--------------------------------------------------------------------------------"${end}
 	echo -e
-	# Elimino todo sin confirmación
+	# Elimina todo sin confirmación
 	echo -e ${bpurple}"Iniciando desisntalación desatendida de herramientas OdysSINT."${end} | tee -a >(log) 2>&1
+	# Eliminia el registro como aplicación de Tor-Browser
+	echo "--- COMANDO: cd $odyssinthome/tor-browser" | log
+	cd $odyssinthome/tor-browser 2>&1 | log
+	echo "--- COMANDO: ./start-tor-browser.desktop --unregister-app" | log
+	./start-tor-browser.desktop --unregister-app
+	# Elimina las aplicaciones requeridas
 	for app in "${requerimientos[@]}"; do
 		echo "--- COMANDO: apt-get remove -y $app" | log
 		echo -e ${bpurple}"Desinstalando $app..."${end} | tee -a >(log) 2>&1
@@ -1750,28 +1767,35 @@ case $1 in
 		echo -e ${bpurple}"Desinstalando $app..."${end} | tee -a >(log) 2>&1
 		sudo apt-get remove -y $app 2>&1 | log
 	done
+	# Elimina las aplicaciones complementarias
 	echo -e ${bgreen}"Aplicaciones complementarias desinstaladas."${end} | tee -a >(log) 2>&1
 	if [ -d "~/snap/firefox/common/.mozilla/firefox/" ]; then
 		destino="~/snap/firefox/common/.mozilla/firefox"
 	else
 		destino="$HOME/.mozilla/firefox"
 	fi
-	rm -rf "$destino/firefoxprofile.ulysses"
-	mv "$destino/profiles.ini_backup" "$destino/firefox/profiles.ini"
-	echo -e ${bpurple}"Eliminado perfil Ulysses de Firefox y recuperada configuración anterior..."${end}
-	echo -e ${bpurple}"Desinstalando Maltego..."${end}
-	sudo apt remove -y maltego $app 2>&1 | log
-	# Eliminio el registro como aplicacion de Tor-Browser
-	cd .$odyssinthome/tor-browser 
-	./start-tor-browser.desktop --unregister-app
-	#Elimino la carpeta de trabajo de OdysSINT
-	echo -e ${bpurple}"Herramientas OSINT eliminadas..."${end}
+	# Elimina el perfil de Ulysses y restaura la configuración anterior
+	echo "--- COMANDO: rm -rf $destino/firefoxprofile.ulysses" | log
+	rm -rf "$destino/firefoxprofile.ulysses" 2>&1 | log
+	echo "--- COMANDO: mv $destino/profiles.ini_backup $destino/profiles.ini" | log
+	mv "$destino/profiles.ini_backup" "$destino/profiles.ini" 2>&1 | log
+	echo -e ${bpurple}"Eliminado perfil Ulysses de Firefox y recuperada configuración anterior..."${end} | tee -a >(log) 2>&1
+	# Elimina Maltego
+	echo -e ${bpurple}"Desinstalando Maltego..."${end} | tee -a >(log) 2>&1
+	echo "--- COMANDO: sudo apt remove -y maltego" | log
+	sudo apt remove -y maltego 2>&1 | log
+	echo -e ${bpurple}"Herramientas OSINT eliminadas..."${end} | tee -a >(log) 2>&1
+	echo "--- COMANDO: sudo rm -rf /usr/share/applications/OdysSINT.desktop" | log
+	#Elimina el acceso directo de OdysSINT
+	sudo rm -rf "/usr/share/applications/OdysSINT.desktop" 2>&1 | log
+	echo -e ${bpurple}"Acceso directo OdysSINT eliminado..."${end} | tee -a >(log) 2>&1
+	#Elimina la carpeta de trabajo de OdysSINT
 	rm -rf $odyssinthome
 	echo -e ${bpurple}"Carpeta eliminada..."${end}
 	sudo apt autoremove -y
 	echo -e ${bgreen}"OdysSINT desinstalado."${end}
 	;;
-"")	# Inicio sin valoress
+"")	# Inicio sin valores
 	trap ctrl_c INT
 	# Comprueba si somos root
 	verificar_root
