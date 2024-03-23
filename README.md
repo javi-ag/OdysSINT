@@ -14,6 +14,8 @@
 - Instalación componente a componente o de toda la solución de modo desatendido.
 - Notificación de nuevas versiones y posibilidad de actualizar desde el propio script.
 - Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox versión mayor de la 118.
+ > [!CAUTION]
+ > Se recomeinda el uso de una solución VPN para la realización de cualquier investigación. En este proyecto no se incluye ninguna opción debido a que si se quiere disponer una solución VPN que proporcione un buen servicio y calidad es necesario un pago con suscripción.
 
 ## :diving_mask: Herramientas OSINT
 Herramientas OSINT instaladas por script:
@@ -81,7 +83,7 @@ Las extensiones están recogidas en el enlace de [addons de Ulysses](https://add
  * [Zotero](https://www.zotero.org) extensión asociada a la aplicación Zotero, permite añadir referencias a las investigaciones desde el propio navegador.
 
 ![2024-03-22_13 01 50_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/622a7ae7-00ce-4f90-8e43-d52e30ed995b)
-<sup>_Inicio de Perfil Ulysses en Debian_</sup>
+<sup>_Inicio de Perfil Ulysses en OVA Debian_</sup>
 
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
@@ -103,10 +105,8 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 - **Solo addons Firefox**: se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
 - **Solo marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT). Compatiblecon cualquier sistema operativo y navegador que acepte esta extensión.
 
- > [!WARNING]
+ > [!WARNING] 
  > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
-
-## :gear: Configuración
 
 ## :arrow_down: Descargas 
 ### OVA Debian 12.5:
@@ -115,14 +115,17 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 - **SHA256sum**: 7623bd4a3985dc1ce0caf7ec7a14ef52781008f152a5b23bc27c400b6e1e5eb1
 - **Formato**: OVA
 - **Tamaño**: 5,91GB
-- **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
+- **Usuario**: _ulysses_
+- **Contraseña**: _ulysses_
 
 ### OVA Ubuntu:
 - [**Enlace a descarga**](XXX)
 - **Contraseña acceso**: XXX
 - **SHA256sum**: XXX
 - **Formato**: OVA
-- **Credenciales**: Usuario: **ulysses** Contraseña: **ulysses**
+- **Tamaño**: X,XGB
+- **Usuario**: _ulysses_
+- **Contraseña**: _ulysses_
 
 ## :computer: Demostración
 
@@ -137,4 +140,3 @@ VIDEO
 ## Contacto :incoming_envelope:	
 Para cualquier sugeriencia o duda:
 odyssint@protonmail.com
-
