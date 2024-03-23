@@ -1636,7 +1636,7 @@ function verificar_conexion_internet() {
 
 # Función para abrir el fichero de log actual
 function abrir_log() {
-	gnome-terminal --title="Log OdysSINT" -- $SHELL -c "tail -f $logfile; exec $SHELL"
+	gnome-terminal --geometry=120x40 --title="Log OdysSINT" -- $SHELL -c "tail -f $logfile; exec $SHELL"
 	echo -e ${bgreen}"Log abierto en una nueva ventana."${end} | tee -a >(log) 2>&1
 	continuar
 }
