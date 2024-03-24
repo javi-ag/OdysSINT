@@ -29,6 +29,9 @@ Herramientas OSINT instaladas por script:
 * [ArchiveBox:](https://github.com/ArchiveBox/ArchiveBox) archivado local de páginas webs para su visualización offline (Web\Add-on).
 * [Zotero:](https://www.zotero.org) gestor de referencias para la organización en las investigaciones (App\Add-on).
 
+![2024-03-22_14 49 25_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/1a00b96b-e8c2-43f8-9556-baedda32f6a2)
+<sup>_Lanzamiento de theHarvester con script OdysSINT en OVA Ubuntu_</sup>
+
 ## :anchor:	Herramientas Complementarias
 Herramientas adicionales instaladas también con el script:
 * [Zenamp:](https://nmap.org/zenmap) interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
@@ -42,8 +45,8 @@ Herramientas adicionales instaladas también con el script:
 * [Audacity:](https://www.audacityteam.org) escucha y edita audios (App).
 * [Flameshot:](https://flameshot.org) realiza capturas de pantalla y las edita de forma simple (App).
 
-![2024-03-22_14 49 25_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/1a00b96b-e8c2-43f8-9556-baedda32f6a2)
-<sup>_Ejemplo de lanzamiento de theHarvester con script OdysSINT en OVA Ubuntu_</sup>
+![2024-03-24_04 57 00_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/94858814-42ed-41ec-9530-36685b74e9d6)
+<sup>_Apertura de Terminator tolificado por Torsocks en OVA Debian_</sup>
 
 ## :globe_with_meridians: Marcadores 
 Los marcadores están agrupados en las siguentes carpetas:
@@ -110,22 +113,25 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 
 ## :arrow_down: Descargas 
 ### OVA Debian 12.5:
-- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EWQGZnpul-lFvVqM4_DCsfYBmKDcztTfzIE9xdawrUr18Q?e=YC8pUe)
+- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/ETujetapKMFDm0dF6lPGqukByyvk7iyD9croc7yDk74SIQ?e=ME0WSg)
 - **Contraseña acceso**: l76W&n30%W7V
-- **SHA256sum**: 7623bd4a3985dc1ce0caf7ec7a14ef52781008f152a5b23bc27c400b6e1e5eb1
+- **SHA256sum**: f874dd9b25e4e9b7ad4360e7cd499525952b34067bfce938b1c307cd93b998b2
 - **Formato**: OVA
-- **Tamaño**: 5,91GB
+- **Tamaño**: 5,62GB
 - **Usuario**: _ulysses_
 - **Contraseña**: _ulysses_
 
-### OVA Ubuntu:
-- [**Enlace a descarga**](XXX)
-- **Contraseña acceso**: XXX
-- **SHA256sum**: XXX
+### OVA Ubuntu 22.04.3:
+- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EQxE7G7DFRJBgUkVR6aHn50BRjgUSg8z38fwnnddQEBNcw?e=tg2WJp)
+- **Contraseña acceso**: G'Tg2AY382%3
+- **SHA256sum**: 8f29969778f41d3615a9c58819473834d3db97e41e3518c30a3e996d80ac4543
 - **Formato**: OVA
-- **Tamaño**: X,XGB
+- **Tamaño**: 9,17GB
 - **Usuario**: _ulysses_
 - **Contraseña**: _ulysses_
+
+> [!NOTE]
+> En ambas OVAs, el usuario y la contraseña es la misma para el administrador de Archivebox.
 
 ## :computer: Demostración
 
