@@ -899,9 +899,10 @@ function desinstalar_odyssint() {
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		for app in "${requerimientos[@]}"; do
-			echo "--- COMANDO: apt-get remove -y $app" | log
-			echo -e ${bpurple}"Desinstalando $app..."${end} | tee -a >(log) 2>&1
-			sudo apt-get remove -y $app 2>&1 | log
+			app_lower="${app,,}"
+			echo "--- COMANDO: apt-get remove -y $app_lower" | log
+			echo -e ${bpurple}"Desinstalando $app_lower..."${end} | tee -a >(log) 2>&1
+			sudo apt-get remove -y $app_lower 2>&1 | log
 		done
 		echo -e ${bgreen}"Aplicaciones requeridas desinstaladas"${end} | tee -a >(log) 2>&1
 	fi
@@ -920,15 +921,15 @@ function desinstalar_odyssint() {
 	read -p "$(echo -e ${byellow}"Presiona (s/n) para confirmar y cualquier otra tecla para continuar: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
-		# Eliminia el registro como aplicación de Tor-Browser
-		echo "--- COMANDO: cd $odyssinthome/tor-browser" | log
-		cd $odyssinthome/tor-browser 2>&1 | log
-		echo "--- COMANDO: ./start-tor-browser.desktop --unregister-app" | log
-		./start-tor-browser.desktop --unregister-app
+		echo -e ${bpurple}"Eliminando registro de Tor Browser..."${end} | tee -a >(log) 2>&1
+		# Eliminio el registro como aplicacion de Tor-Browser
+		$odyssinthome/tor-browser/start-tor-browser.desktop --unregister-app 2>&1 | log
 		for app in "${aplicacionesComplementarias[@]}"; do
-			echo "--- COMANDO: apt-get remove -y $app" | log
-			echo -e ${bpurple}"Desinstalando $app..."${end} | tee -a >(log) 2>&1
-			sudo apt-get remove -y $app 2>&1 | log
+			app_lower="${app,,}"
+			echo "--- COMANDO: apt-get remove -y $app_lower" | log
+			echo -e ${bpurple}"Desinstalando $app_lower..."${end} | tee -a >(log) 2>&1
+			sudo apt-get remove -y $app_lower 2>&1 | log
+			echo "--- COMANDO: apt-get remove -y $app_lower" | log
 		done
 		echo -e ${bgreen}"Aplicaciones complementarias desinstaladas"${end} | tee -a >(log) 2>&1
 	fi
@@ -979,7 +980,9 @@ function desinstalar_odyssint() {
 	fi
 	# Elimina paquetes innecesarios
 	sudo apt autoremove -y
-	./"$nombre_script"
+	echo -e ${bpurple}"Todos los componentes de OdysSINT eliminados..."${end}
+	continuar
+	exit
 }
 
 ###### FUNCIONES DE INSTALACIONES #####
@@ -1737,7 +1740,7 @@ case $1 in
 -l) # Mostrar el log
 	verificar_root
 	comprobar_directorio
-	gnome-terminal --title="Log OdysSINT" -- $SHELL -c "tail -f $logfile; exec $SHELL"
+	gnome-terminal --geometry=120x40 --title="Log OdysSINT - $(date +'%Y-%m-%d')" -- $SHELL -c "tail -f $logfile; exec $SHELL"
 	echo -e ${bgreen}"Log abierto en una nueva ventana."${end} | tee -a >(log) 2>&1
 	;;
 -d) # Desisntalar OdysSINT
@@ -1750,22 +1753,21 @@ case $1 in
 	echo -e
 	# Elimina todo sin confirmación
 	echo -e ${bpurple}"Iniciando desisntalación desatendida de herramientas OdysSINT."${end} | tee -a >(log) 2>&1
-	# Eliminia el registro como aplicación de Tor-Browser
-	echo "--- COMANDO: cd $odyssinthome/tor-browser" | log
-	cd $odyssinthome/tor-browser 2>&1 | log
-	echo "--- COMANDO: ./start-tor-browser.desktop --unregister-app" | log
-	./start-tor-browser.desktop --unregister-app
 	# Elimina las aplicaciones requeridas
 	for app in "${requerimientos[@]}"; do
-		echo "--- COMANDO: apt-get remove -y $app" | log
-		echo -e ${bpurple}"Desinstalando $app..."${end} | tee -a >(log) 2>&1
-		sudo apt-get remove -y $app 2>&1 | log
+		app_lower="${app,,}"
+		echo "--- COMANDO: apt-get remove -y $app_lower" | log
+		echo -e ${bpurple}"Desinstalando $app_lower..."${end} | tee -a >(log) 2>&1
+		sudo apt-get remove -y $app_lower 2>&1 | log
 	done
 	echo -e ${bgreen}"Aplicaciones requeridas desinstaladas"${end} | tee -a >(log) 2>&1
+	# Eliminio el registro como aplicacion de Tor-Browser
+	$odyssinthome/tor-browser/start-tor-browser.desktop --unregister-app 2>&1 | log
 	for app in "${aplicacionesComplementarias[@]}"; do
-		echo "--- COMANDO: apt-get remove -y $app" | log
-		echo -e ${bpurple}"Desinstalando $app..."${end} | tee -a >(log) 2>&1
-		sudo apt-get remove -y $app 2>&1 | log
+		app_lower="${app,,}"
+		echo "--- COMANDO: apt remove -y $app_lower" | log
+		echo -e ${bpurple}"Desinstalando $app_lower.."${end} | tee -a >(log) 2>&1
+		sudo apt-get remove -y $app_lower 2>&1 | log
 	done
 	# Elimina las aplicaciones complementarias
 	echo -e ${bgreen}"Aplicaciones complementarias desinstaladas."${end} | tee -a >(log) 2>&1
