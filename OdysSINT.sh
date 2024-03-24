@@ -921,15 +921,20 @@ function desinstalar_odyssint() {
 	read -p "$(echo -e ${byellow}"Presiona (s/n) para confirmar y cualquier otra tecla para continuar: "${end})" -n 1 -r confirmacion
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
-		echo -e ${bpurple}"Eliminando registro de Tor Browser..."${end} | tee -a >(log) 2>&1
-		# Eliminio el registro como aplicacion de Tor-Browser
-		$odyssinthome/tor-browser/start-tor-browser.desktop --unregister-app 2>&1 | log
+		# Eliminia el registro como aplicacion de Tor-Browser
+		echo -e ${bpurple}"Desinstalando Tor-Browser..."${end} | tee -a >(log) 2>&1
+		cd $odyssinthome/tor-browser
+		echo "--- COMANDO: sudo -u $USER ./start-tor-browser.desktop --unregister-app" | log
+		sudo -u $USER ./start-tor-browser.desktop --unregister-app  2>&1 | log
+		# Eliminia Zenmap
+		echo -e ${bpurple}"Desinstalando Zenmap..."${end} | tee -a >(log) 2>&1
+		echo "--- COMANDO: sudo apt-get remove -y zenmap" | log
+		sudo apt-get remove -y zenmap 2>&1 | log
 		for app in "${aplicacionesComplementarias[@]}"; do
 			app_lower="${app,,}"
 			echo "--- COMANDO: apt-get remove -y $app_lower" | log
 			echo -e ${bpurple}"Desinstalando $app_lower..."${end} | tee -a >(log) 2>&1
 			sudo apt-get remove -y $app_lower 2>&1 | log
-			echo "--- COMANDO: apt-get remove -y $app_lower" | log
 		done
 		echo -e ${bgreen}"Aplicaciones complementarias desinstaladas"${end} | tee -a >(log) 2>&1
 	fi
@@ -950,7 +955,7 @@ function desinstalar_odyssint() {
 	echo -e
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		# Verifica la posible ubicación donde se guardan los perfiles en Firefox
-		if [ -d "~/snap/firefox/common/.mozilla/firefox/"]; then
+		if [ -d "~/snap/firefox/common/.mozilla/firefox/" ]; then
 			destino="~/snap/firefox/common/.mozilla/firefox"
 		else
 			destino="$HOME/.mozilla/firefox"
@@ -1761,15 +1766,22 @@ case $1 in
 		sudo apt-get remove -y $app_lower 2>&1 | log
 	done
 	echo -e ${bgreen}"Aplicaciones requeridas desinstaladas"${end} | tee -a >(log) 2>&1
-	# Eliminio el registro como aplicacion de Tor-Browser
-	$odyssinthome/tor-browser/start-tor-browser.desktop --unregister-app 2>&1 | log
+	# Eliminia el registro como aplicacion de Tor-Browser
+	echo -e ${bpurple}"Desinstalando Tor-Browser..."${end} | tee -a >(log) 2>&1
+	cd $odyssinthome/tor-browser
+	echo "--- COMANDO: sudo -u $USER ./start-tor-browser.desktop --unregister-app" | log
+	sudo -u $USER ./start-tor-browser.desktop --unregister-app 2>&1 | log
+	# Eliminia Zenmap
+	echo -e ${bpurple}"Desinstalando Zenmap..."${end} | tee -a >(log) 2>&1
+	echo "--- COMANDO: sudo apt-get remove -y zenmap" | log
+	sudo apt-get remove -y zenmap 2>&1 | log
+	# Elimina las aplicacione Complementarias
 	for app in "${aplicacionesComplementarias[@]}"; do
 		app_lower="${app,,}"
 		echo "--- COMANDO: apt remove -y $app_lower" | log
 		echo -e ${bpurple}"Desinstalando $app_lower.."${end} | tee -a >(log) 2>&1
 		sudo apt-get remove -y $app_lower 2>&1 | log
 	done
-	# Elimina las aplicaciones complementarias
 	echo -e ${bgreen}"Aplicaciones complementarias desinstaladas."${end} | tee -a >(log) 2>&1
 	if [ -d "~/snap/firefox/common/.mozilla/firefox/" ]; then
 		destino="~/snap/firefox/common/.mozilla/firefox"
