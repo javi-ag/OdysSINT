@@ -113,20 +113,20 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 
 ## :arrow_down: Descargas 
 ### OVA Debian 12.5:
-- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/ETujetapKMFDm0dF6lPGqukByyvk7iyD9croc7yDk74SIQ?e=ME0WSg)
+- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EV4OOh7Yk79NsLLkJJI3NMgB9-7Njw-7aI5mw8UCxSTgrw?e=t7RhHX)
 - **Contraseña acceso**: l76W&n30%W7V
-- **SHA256sum**: f874dd9b25e4e9b7ad4360e7cd499525952b34067bfce938b1c307cd93b998b2
+- **SHA256sum**: 48e6ccb5bef92e4c12ad89ce4b5bc0d137d40d9899811e0572b7e1b058dfa538
 - **Formato**: OVA
-- **Tamaño**: 5,62GB
+- **Tamaño**: 5,73GB
 - **Usuario**: _ulysses_
 - **Contraseña**: _ulysses_
 
 ### OVA Ubuntu 22.04.3:
-- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EQxE7G7DFRJBgUkVR6aHn50BRjgUSg8z38fwnnddQEBNcw?e=tg2WJp)
+- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EYlBqVEmZlFMkZsej2BeTG4BJ-SL4kmjamkxeoi12jEbqg?e=XkZWLs)
 - **Contraseña acceso**: G'Tg2AY382%3
-- **SHA256sum**: 8f29969778f41d3615a9c58819473834d3db97e41e3518c30a3e996d80ac4543
+- **SHA256sum**: 006d22543a7f786873602d2fe620f49a6707b8ad5f2c5963fd24c54098ac646f
 - **Formato**: OVA
-- **Tamaño**: 9,17GB
+- **Tamaño**: 9,54GB
 - **Usuario**: _ulysses_
 - **Contraseña**: _ulysses_
 
