@@ -923,7 +923,7 @@ function desinstalar_odyssint() {
 	if [[ $confirmacion == "S" || $confirmacion == "s" ]]; then
 		# Eliminia el registro como aplicacion de Tor-Browser
 		echo -e ${bpurple}"Desinstalando Tor-Browser..."${end} | tee -a >(log) 2>&1
-		cd $odyssinthome/tor-browser
+		cd $odyssinthome/tor-browser 2>&1 | log
 		echo "--- COMANDO: sudo -u $USER ./start-tor-browser.desktop --unregister-app" | log
 		sudo -u $USER ./start-tor-browser.desktop --unregister-app  2>&1 | log
 		# Eliminia Zenmap
@@ -1768,7 +1768,7 @@ case $1 in
 	echo -e ${bgreen}"Aplicaciones requeridas desinstaladas"${end} | tee -a >(log) 2>&1
 	# Eliminia el registro como aplicacion de Tor-Browser
 	echo -e ${bpurple}"Desinstalando Tor-Browser..."${end} | tee -a >(log) 2>&1
-	cd $odyssinthome/tor-browser
+	cd $odyssinthome/tor-browser 2>&1 | log
 	echo "--- COMANDO: sudo -u $USER ./start-tor-browser.desktop --unregister-app" | log
 	sudo -u $USER ./start-tor-browser.desktop --unregister-app 2>&1 | log
 	# Eliminia Zenmap
