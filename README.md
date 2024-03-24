@@ -113,7 +113,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 
 ## :arrow_down: Descargas 
 ### OVA Debian 12.5:
-- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EV4OOh7Yk79NsLLkJJI3NMgB9-7Njw-7aI5mw8UCxSTgrw?e=t7RhHX)
+- [**Enlace a descarga**](https://javierag-my.sharepoint.com/:u:/g/personal/javier_aguilar_javierag_onmicrosoft_com/EV4OOh7Yk79NsLLkJJI3NMgBeOPmcCqkfQr63GrWbCEJ7w?e=9pPpuJ)
 - **Contraseña acceso**: l76W&n30%W7V
 - **SHA256sum**: 48e6ccb5bef92e4c12ad89ce4b5bc0d137d40d9899811e0572b7e1b058dfa538
 - **Formato**: OVA
