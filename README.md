@@ -8,12 +8,14 @@
 
 ## :white_check_mark: Caracteristicas OdysSINT  
 - Completo listado de herramientas OSTIN, aplicaciones complementarias, extensiones y marcadores.
-- Descripción intuitiva de cada elemento.
 - Heramientas compatibles con cualquier distribución con base Debian.
-- Menú intiutivo de uso sencillo.
-- Instalación componente a componente o de toda la solución de modo desatendido.
+- Script con menú intiutivo y de uso sencillo.
+- Instalación componente a componente o de toda la solución
+- Uso del script en modo desatendido a través de argumentos.
 - Notificación de nuevas versiones y posibilidad de actualizar desde el propio script.
 - Marcadores y extensiones compatibles con cualquier sistema operativo que disponga de Firefox versión mayor de la 118.
+- Descripción intuitiva de cada elemento.
+
  > [!CAUTION]
  > Se recomeinda el uso de una solución VPN para la realización de cualquier investigación. En este proyecto no se incluye ninguna opción debido a que si se quiere disponer una solución VPN que proporcione un buen servicio y calidad es necesario un pago con suscripción.
 
