@@ -91,7 +91,7 @@ Las extensiones están recogidas en el enlace de [addons de Ulysses](https://add
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
 
-- **OVAs preconfiguradas**: contienen todas las herramientas OSINT, herramientas complementarias, el perfil Ulysses para Firefox y Tor con las extensiones y marcadores además de estar personalizada con logos y fondo de pantalla, en dos sabores, Debian 12.5 o Ubuntu 22.04. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
+- **OVAs preconfiguradas**: contienen todas las herramientas OSINT, herramientas complementarias, el perfil Ulysses para Firefox y Tor con las extensiones y marcadores además de estar personalizada con logos y fondo de pantalla, en dos sabores, Debian 12.5 o Ubuntu 22.04, ambos en castellano, se han eliminado los juegos y dejado el software por defecto y de ofimática. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
  
 - **Script configurable**: instala el acceso directo del OdysSINT, todas las herramientas OSINT, las herramientas complementarias y/o el perfil Ulisses tanto en Firefox como en Tor, todo esto de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño o para entornos ya existentes. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
