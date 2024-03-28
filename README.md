@@ -8,8 +8,8 @@
 
 ## :white_check_mark: Caracteristicas OdysSINT  
 - Completo listado de herramientas OSTIN, aplicaciones complementarias, extensiones y marcadores.
-- Heramientas compatibles con cualquier distribución con base Debian.
-- Script con menú intiutivo y de uso sencillo.
+- Herramientas compatibles con cualquier distribución con base Debian.
+- Script con menú intuitivo y de uso sencillo.
 - Instalación componente a componente o de toda la solución
 - Uso del script en modo desatendido a través de argumentos.
 - Notificación de nuevas versiones y posibilidad de actualizar desde el propio script.
@@ -17,13 +17,13 @@
 - Descripción intuitiva de cada elemento.
 
  > [!CAUTION]
- > Se recomeinda el uso de una solución VPN para la realización de cualquier investigación. En este proyecto no se incluye ninguna opción debido a que si se quiere disponer una solución VPN que proporcione un buen servicio y calidad es necesario un pago con suscripción.
+ > Se recomienda el uso de una solución VPN para la realización de cualquier investigación. En este proyecto no se incluye ninguna opción debido a que si se quiere disponer una solución VPN que proporcione un buen servicio y calidad es necesario un pago con suscripción.
 
 ## :diving_mask: Herramientas OSINT
 Herramientas OSINT instaladas por script:
 * [theHarvester:](https://github.com/laramies/theHarvester) obtiene emails, IPs y subdominios de diferentes fuentes online (CLI).
 * [Recon-ng:](https://github.com/lanmaster53/recon-ng) framework de automatización para tareas de OSINT. Permite ejecutar diferentes módulos para recopilar información de forma eficiente (CLI\Web).
-* [Spiderfoot:](https://github.com/lanmaster53/recon-ng) automatiza la recolección de información sobre activos en línea desde multiples fuentes, identificando riesgos e inteligencia (Web).
+* [Spiderfoot:](https://github.com/lanmaster53/recon-ng) automatiza la recolección de información sobre activos en línea desde múltiples fuentes, identificando riesgos e inteligencia (Web).
 * [NExfil:](https://github.com/thewhiteh4t/nexfil) encuentra nombres de usuarios en más de 300 webs en pocos segundos (CLI).
 * [Photon:](https://github.com/s0md3v/Photon) rastrea rápidamente webs y recopilar información como URLs, archivos y metadatos (CLI).
 * [Geo-recon:](https://github.com/radioactivetobi/geo-recon/tree/master) geolocalización de IPs a través de diferentes bases de datos públicas (CLI).
@@ -37,7 +37,7 @@ Herramientas OSINT instaladas por script:
 ## :anchor:	Herramientas Complementarias
 Herramientas adicionales instaladas también con el script:
 * [Zenamp:](https://nmap.org/zenmap) interfaz gráfica de Nmap, escanea redes y descubre vulnerabilidades (App).
-* [Tor Browser:](https://www.torproject.org) para navegar anonimamente, con el perfil Ulysses por la red Tor (App).
+* [Tor Browser:](https://www.torproject.org) para navegar anónimamente, con el perfil Ulysses por la red Tor (App).
 * [Terminator:](https://gnome-terminator.org) gestor de terminales Torificado por Torsocks (CLI).
 * [OnionShare:](https://onionshare.org) comparte archivos de forma segura y anónima mediante la red Tor (CLI).
 * [KeePassXC:](https://keepassxc.org) almacena datos y contraseñas de forma segura (APP).
@@ -51,7 +51,7 @@ Herramientas adicionales instaladas también con el script:
 <sup>_Apertura de Terminator tolificado por Torsocks en OVA Debian_</sup>
 
 ## :globe_with_meridians: Marcadores 
-Los marcadores están agrupados en las siguentes carpetas:
+Los marcadores están agrupados en las siguientes carpetas:
 - **OdysSINT:** URLs relacionadas con el proyecto.
 - **ANÁLISIS DOMINIO / URL:** enlaces para análisis de dominios y su contenido.
 - **ANÁLISIS INMÁGENES:** herramientas para el estudio de imágenes.
@@ -77,14 +77,14 @@ Las extensiones están recogidas en el enlace de [addons de Ulysses](https://add
  * [DuckDuckGo Privacy Essentials:](https://duckduckgo.com/app) elimina cookies de rastreo, añade privacidad a las búsquedas con bloqueadores de enlaces de rastreo, cifrado automático, protección de email, bloqueo de cookies de rastreo, de huella digital y activa GPC.
  * [Flagfox:](https://flagfox.wordpress.com) muestra la bandera del país correspondiente a la ubicación de la página web que se está visitando y ofrece numerosas herramientas.
  * [Privacy Badger](https://privacybadger.org) potente bloqueador que aprende a encontrar rastreadores invisibles con relación al comportamiento y no en base a una lista de bloqueo.
- * [Search by Image:](https://github.com/dessant/search-by-image#readme) busca una imagen en un buscador o de imágenes o en varios a la vez con un solo click.
+ * [Search by Image:](https://github.com/dessant/search-by-image#readme) busca una imagen en un buscador o de imágenes o en varios a la vez con un solo clic.
  * [Shodan:](https://www.shodan.io) indica información sobre la IP de la dirección web visualizada como puertos abiertos, ubicación, propietario, tecnologías usadas, vulnerabilidades otros servicios.
  * [Sidebery:](https://github.com/mbnuqw/sidebery) visualiza los marcadores como un árbol de carpetas en la barra lateral. Incluye un buscador que permite encontrar de forma rápida los marcadores teniendo en cuenta las definiciones de cada uno, ejemplo: podemos buscar barco, IP, avión y nos aparecerán listados los relacionados.
  * [SingleFile:](https://github.com/gildas-lormeau/SingleFile) añade un guardado completo de una o varias páginas en formato HTML o PDF.
  * [User-Agent Switcher and Manager](https://add0n.com/useragent-switcher.html) cambia el "user-agent" a cualquier sistema operativo o navegador.
  * [WayBackMachine:](https://github.com/internetarchive/wayback-machine-webextension) visualización y archivado de webs en WayBackMacnine a petición.
- * [Web Archives:](https://github.com/dessant/web-archives#readme) facilita la búsqueda de capturas y cacheado de direcciones con un solo click.
- * [WebScrapBook:](https://github.com/danny0838/webscrapbook) captura páginas en HTML con un solo click.
+ * [Web Archives:](https://github.com/dessant/web-archives#readme) facilita la búsqueda de capturas y cacheado de direcciones con un solo clic.
+ * [WebScrapBook:](https://github.com/danny0838/webscrapbook) captura páginas en HTML con un solo clic.
  * [Zotero](https://www.zotero.org) extensión asociada a la aplicación Zotero, permite añadir referencias a las investigaciones desde el propio navegador.
 
 ![2024-03-22_13 01 50_x_vmware](https://github.com/javi-ag/OdysSINT/assets/153739397/622a7ae7-00ce-4f90-8e43-d52e30ed995b)
@@ -95,7 +95,7 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
 
 - **OVAs preconfiguradas**: contienen todas las herramientas OSINT, herramientas complementarias, el perfil Ulysses para Firefox y Tor con las extensiones y marcadores además de estar personalizada con logos y fondo de pantalla, en dos sabores, Debian 12.5 o Ubuntu 22.04, ambos en castellano, se han eliminado los juegos y dejado el software por defecto y de ofimática. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
  
-- **Script configurable**: instala el acceso directo del OdysSINT, todas las herramientas OSINT, las herramientas complementarias y/o el perfil Ulisses tanto en Firefox como en Tor, todo esto de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño o para entornos ya existentes. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
+- **Script configurable**: instala el acceso directo del OdysSINT, todas las herramientas OSINT, las herramientas complementarias y/o el perfil Ulysses tanto en Firefox como en Tor, todo esto de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño o para entornos ya existentes. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
   git clone --depth=1 https://github.com/javi-ag/OdysSINT.git
   cd OdysSINT
@@ -108,10 +108,10 @@ OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferente
   - Descargamos [pasos.Ulysses.Windows.zip](https://github.com/javi-ag/OdysSINT/raw/main/pasos.Ulysses.Windows.zip), extraemos y seguimos los pasos que indican los accesos directos.
 
 - **Solo addons Firefox**: se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
-- **Solo marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT). Compatiblecon cualquier sistema operativo y navegador que acepte esta extensión.
+- **Solo marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT). Compatible con cualquier sistema operativo y navegador que acepte esta extensión.
 
  > [!WARNING] 
- > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existenes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si quereremos recuperar la información.
+ > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existentes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si queremos recuperar la información.
 
 ## :arrow_down: Descargas 
 ### OVA Debian 12.5:
@@ -146,5 +146,5 @@ VIDEO
 - **El script indica que no hay internet pero si dispongo de conexión externa**: verificar que no tenemos bloqueado el ping a la IP 8.8.8.8.
 
 ## Contacto :incoming_envelope:	
-Para cualquier sugeriencia o duda:
+Para cualquier sugerencia o duda:
 odyssint@protonmail.com
