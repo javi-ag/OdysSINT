@@ -7,7 +7,7 @@
 **OdysSINT** es un script de instalación y uso de herramientas OSINT en bash para entornos basados en Debian que junto a una serie de procedimientos tienen como objetivo ayudar en la preparación de un entorno adecuado para la realización de investigaciones. Su nombre proviene del juego de palabras Odyssey + OSINT, esta unión surge de la necesidad de reflejar, como en la epopeya de Homero, la dificultad de la exploración en las vastas aguas de información en fuentes abiertas a las que tenemos acceso hoy en día para poder alcanzar nuestro objetivo en una investigación. La solución además dispone de un perfil de Firefox denominado **Ulysses** con un conjunto de marcadores, extensiones y configuraciones especiales que permite ser configurado también, en otros navegadores compatibles con Firefox e incluso en sistemas como Windows.
 
 ## :white_check_mark: Caracteristicas OdysSINT  
-- Completo listado de herramientas OSTIN, aplicaciones complementarias, extensiones y marcadores.
+- Completo listado de herramientas OSINT, aplicaciones complementarias, extensiones y marcadores.
 - Herramientas compatibles con cualquier distribución con base Debian.
 - Script con menú intuitivo y de uso sencillo.
 - Instalación componente a componente o de toda la solución
