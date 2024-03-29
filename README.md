@@ -51,7 +51,7 @@ Herramientas adicionales instaladas también con el script:
 <sup>_Apertura de Terminator tolificado por Torsocks en OVA Debian_</sup>
 
 ## :globe_with_meridians: Marcadores 
-Los marcadores pueden ser actualizados siempre con la extensión [BookmarkHub](https://github.com/javi-ag/OdysSINT/edit/main/README.md#solo-marcadores-ulysses) y están agrupados en las siguientes carpetas:
+Los marcadores pueden ser actualizados siempre con la extensión [BookmarkHub](https://github.com/javi-ag/OdysSINT/blob/main/README.md#solo-marcadores-ulysses) y están agrupados en las siguientes carpetas:
 - **OdysSINT:** URLs relacionadas con el proyecto.
 - **ANÁLISIS DOMINIO / URL:** enlaces para análisis de dominios y su contenido.
 - **ANÁLISIS INMÁGENES:** herramientas para el estudio de imágenes.
