@@ -51,7 +51,7 @@ Herramientas adicionales instaladas también con el script:
 <sup>_Apertura de Terminator tolificado por Torsocks en OVA Debian_</sup>
 
 ## :globe_with_meridians: Marcadores 
-Los marcadores están agrupados en las siguientes carpetas:
+Los marcadores pueden ser actualizados siempre con la extensión [BookmarkHub](https://github.com/javi-ag/OdysSINT/edit/main/README.md#solo-marcadores-ulysses) y están agrupados en las siguientes carpetas:
 - **OdysSINT:** URLs relacionadas con el proyecto.
 - **ANÁLISIS DOMINIO / URL:** enlaces para análisis de dominios y su contenido.
 - **ANÁLISIS INMÁGENES:** herramientas para el estudio de imágenes.
@@ -93,25 +93,30 @@ Las extensiones están recogidas en el enlace de [addons de Ulysses](https://add
 ## :package: Instalación 
 OdysSINT tiene varias opciones de instalación que se pueden ajustar a diferentes necesidades:
 
-- **OVAs preconfiguradas**: contienen todas las herramientas OSINT, herramientas complementarias, el perfil Ulysses para Firefox y Tor con las extensiones y marcadores además de estar personalizada con logos y fondo de pantalla, en dos sabores, Debian 12.5 o Ubuntu 22.04, ambos en castellano, se han eliminado los juegos y dejado el software por defecto y de ofimática. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
+### **OVAs preconfiguradas**
+Contienen todas las herramientas OSINT, herramientas complementarias, el perfil Ulysses para Firefox y Tor con las extensiones y marcadores además de estar personalizada con logos y fondo de pantalla, en dos sabores, Debian 12.5 o Ubuntu 22.04, ambos en castellano, se han eliminado los juegos y dejado el software por defecto y de ofimática. Para quien no quiere complicarse, en pocos minutos de descarga se importa en Virtual Box o en VMWare Player y a disfrutar!!!
  
-- **Script configurable**: instala el acceso directo del OdysSINT, todas las herramientas OSINT, las herramientas complementarias y/o el perfil Ulysses tanto en Firefox como en Tor, todo esto de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño o para entornos ya existentes. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
+### **Script configurable**
+Instala el acceso directo del OdysSINT, todas las herramientas OSINT, las herramientas complementarias y/o el perfil Ulysses tanto en Firefox como en Tor, todo esto de forma conjunta o elemento a elemento, compatible con cualquier distribución basada en Debian (probado en Debian 12.5 y Ubuntu 22.04.03), la mejor opción si no queremos realizar una descarga de gran tamaño o para entornos ya existentes. Podemos descargar solo el [script](https://github.com/javi-ag/OdysSINT/raw/main/OdysSINT.sh) o clonar el repositorio, antes de su inicio hay que asegurarse de que el script tiene permisos de ejecución:
   ```bash
   git clone --depth=1 https://github.com/javi-ag/OdysSINT.git
   cd OdysSINT
   chmod +x OdysSINT.sh
   ./OdysSINT.sh
   ```
-- **Solo perfil Ulysses para Windows**: contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
+### **Solo perfil Ulysses para Windows**
+Contiene los marcadores, extensiones y configuración personalizada del proyecto y puede ser configurado siempre que se disponga de una versión de Firefox reciente. Para quien no quiere probar otro sistema operativo. Seguiremos los siguientes pasos:
   - Descargamos e instalamos [Firefox para Windows](https://download.mozilla.org/?product=firefox-stub&os=win&lang=es-ES).
   - Descargamos [firefoxprofile.ulysses.zip](https://github.com/javi-ag/OdysSINT/raw/main/firefoxprofile.ulysses.zip).
   - Descargamos [pasos.Ulysses.Windows.zip](https://github.com/javi-ag/OdysSINT/raw/main/pasos.Ulysses.Windows.zip), extraemos y seguimos los pasos que indican los accesos directos.
 
-- **Solo addons Firefox**: se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
-- **Solo marcadores Ulysses**: todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT). Compatible con cualquier sistema operativo y navegador que acepte esta extensión.
+### **Solo addons Firefox**
+Se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
+### **Solo marcadores Ulysses**
+Todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT). Compatible con cualquier sistema operativo y navegador que acepte esta extensión.
 
- > [!WARNING] 
- > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existentes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si queremos recuperar la información.
+> [!WARNING] 
+> Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existentes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si queremos recuperar la información.
 
 ## :arrow_down: Descargas 
 ### OVA Debian 12.5:
