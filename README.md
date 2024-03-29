@@ -112,8 +112,9 @@ Contiene los marcadores, extensiones y configuración personalizada del proyecto
 
 ### **Solo addons Firefox**
 Se pueden instalar en los navegadores compatibles siguiendo el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT)
+
 ### **Solo marcadores Ulysses**
-Todos los marcadores pueden ser instalados o actualizados con con la información de la extensión [BookmarkHub:](https://github.com/dudor/BookmarkHub) en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT). Compatible con cualquier sistema operativo y navegador que acepte esta extensión.
+Todos los marcadores pueden ser instalados o actualizados con la información que se encuentra en el enlace de [addons de Ulysses](https://addons.mozilla.org/es/firefox/collections/18254528/OdysSINT) en la extensión [BookmarkHub](https://github.com/dudor/BookmarkHub). Compatible con cualquier sistema operativo y navegador que acepte esta extensión.
 
 > [!WARNING] 
 > Al instalar Ulysses o sincronizar los marcadores con BookmarkHub cambiará el perfil de Firefox y/o se borrarán los marcadores existentes, [hacer una copia previamente](https://support.mozilla.org/es/kb/hacer-una-copia-de-seguridad-y-restaurar-tu-inform) si queremos recuperar la información.
